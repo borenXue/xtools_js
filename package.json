@@ -1,10 +1,10 @@
 {
-  "name": "xtools.js",
-  "version": "0.0.0",
+  "name": "xtools_js",
+  "version": "1.1.9",
   "description": "js tools",
-  "author": "xueboren <xueboren002@gmail.com>",
+  "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/front-packages#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -20,12 +20,12 @@
     "type": "git",
     "url": "git+https://github.com/borenXue/front-packages.git"
   },
+  "bugs": {
+    "url": "https://github.com/borenXue/front-packages/issues"
+  },
   "scripts": {
     "build": "tsc",
     "test": "ts-mocha src/**/*.spec.ts -R spec --bail"
-  },
-  "bugs": {
-    "url": "https://github.com/borenXue/front-packages/issues"
   },
   "dependencies": {
     "nested-property": "^2.0.0"
