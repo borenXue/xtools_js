@@ -1,6 +1,9 @@
 import { expect } from 'chai';
 import { accAdd, accSub, accMulti, accDiv } from '.';
 
+// 2.3/0.1 = 22.999999999999996
+// 2.3*0.1 = 0.22999999999999998
+
 describe('accAdd 加法测试用例', () => {
 
   it('23.458 + 22.222 = 45.68', () => {
@@ -55,6 +58,10 @@ describe('accSub 减法测试用例', () => {
 
 describe('accMulti 乘法测试用例', () => {
 
+  it('2.3 * 0.1 = 0.23', () => {
+    expect(accMulti(2.3, 0.1)).equals(0.23)
+  })
+
   it('764.234 * 2.231 = 1705.006054', () => {
     expect(accMulti(764.234, 2.231)).equals(1705.006054)
   })
@@ -72,8 +79,16 @@ describe('accMulti 乘法测试用例', () => {
 
 describe('accDiv 除法测试用例', () => {
 
-  it('876872 / 1.23 / 187 = 3812.321203426', () => {
-    expect(accDiv(876872, 1.23, 187)).equals(3812.3212034259386)
+  it('1个参数时结果为该参数', () => {
+    expect(accDiv(2.3)).equals(2.3)
+  })
+
+  it('876872 / 1.23 / 187 = 3812.321203425938', () => {
+    expect(accDiv(876872, 1.23, 187)).equals(3812.321203425938)
+  })
+
+  it('57.45 / 3 / 2 = 9.575', () => {
+    expect(accDiv(57.45, 3, 2)).equals(9.575)
   })
 
 })
