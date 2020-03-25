@@ -24,8 +24,11 @@ import { accAdd, accSub, accMulti, accDiv } from './number/index';
 // china
 import { validIdCard } from './china/idcard';
 
-// other
+// date
 import formatDate from './date/format-date';
+import { timeBetweenMonth, timeBetweenDay } from './date/index';
+
+// other
 import formatMoney from './other/format-money';
 import { padLeft } from './utils/index';
 
@@ -43,8 +46,11 @@ export {
   accDiv,
   // china
   validIdCard,
+  // date
+  formatDate,
+  timeBetweenMonth,
+  timeBetweenDay,
   // other
   padLeft,
-  formatDate,
   formatMoney,
 }
