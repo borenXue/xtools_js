@@ -15,7 +15,7 @@ describe('formatDate 测试用例', () => {
 
   it('自定义格式 YY-M-D H:m:s', () => {
     expect(formatDate('0212-08-04 4:9:7', 'YY-M-D H:m:s'))
-      .equal('212-8-4 4:9:7')
+      .equal('12-8-4 4:9:7')
   })
 
 })

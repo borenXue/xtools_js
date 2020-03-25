@@ -35,10 +35,11 @@ export default function formatDate(
 ): string {
   const dateObj = time instanceof Date ? time : new Date(time);
 
+  const year = String(dateObj.getFullYear());
   const regexValueList = [
     // 年
     ['YYYY', padLeft(dateObj.getFullYear(), 4, '0')],
-    ['YY', padLeft(dateObj.getFullYear(), 2, '0')],
+    ['YY', year.substring(year.length - 2)],
     // 月
     ['MM', padLeft(dateObj.getMonth() + 1, 2, '0')],
     ['M', padLeft(dateObj.getMonth() + 1, 1, '0')],
