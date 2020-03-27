@@ -30,6 +30,7 @@ export function timeBetweenMonth(
   ];
 }
 
+
 /**
  * 获得某两天之间的开始毫秒与结束毫秒的时间戳
  *
@@ -52,4 +53,15 @@ export function timeBetweenDay(
     new Date(formatDate(startTime, 'YYYY-MM-DD 00:00:00')).getTime(),
     +String(end.getTime()).replace(/000$/, '999'),
   ];
+}
+
+
+export function timeDayStart(day: number | Date | string,) {
+  return new Date(formatDate(day, 'YYYY-MM-DD 00:00:00')).getTime();
+}
+
+export function timeDayEnd(day: number | Date | string,) {
+  const todayZero = new Date(formatDate(day, 'YYYY-MM-DD 00:00:00'));
+  const tomorrowZero = todayZero.getTime() + 24 * 60 * 60 * 1000;
+  return tomorrowZero - 1;
 }

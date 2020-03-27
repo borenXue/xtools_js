@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { timeBetweenMonth, timeBetweenDay } from '.';
+import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from '.';
 
 describe('timeBetweenMonth 测试用例', () => {
 
@@ -40,6 +40,7 @@ describe('timeBetweenMonth 测试用例', () => {
 
 })
 
+
 describe('timeBetweenDay 测试用例', () => {
 
   it('startTime > endTime 的场景: 3月10号 和 2月20号', () => {
@@ -54,6 +55,40 @@ describe('timeBetweenDay 测试用例', () => {
       new Date('2020-02-20 00:00:00').getTime(),
       +(String(new Date('2020-03-10 23:59:59').getTime()).replace(/000$/, '999')),
     ]);
+  })
+
+})
+
+
+describe('timeDayStart 测试用例', () => {
+
+  it('2020-03-10 10:25:30', () => {
+    expect(timeDayStart("2020-03-10 10:25:30")).equal(new Date('2020-03-10 00:00:00').getTime());
+  })
+
+  it('2019-11-30 10:25:30', () => {
+    expect(timeDayStart("2019-11-30 10:25:30")).equal(new Date('2019-11-30 00:00:00').getTime());
+  })
+
+})
+
+
+describe('timeDayEnd 测试用例', () => {
+
+  it('2020-03-10 10:25:30', () => {
+    expect(timeDayEnd("2020-03-10 10:25:30")).to.deep.equal(+(String(new Date('2020-03-10 23:59:59').getTime()).replace(/000$/, '999')));
+  })
+
+  it('2019-11-30 10:25:30', () => {
+    expect(timeDayEnd("2019-11-30 10:25:30")).to.deep.equal(+(String(new Date('2019-11-30 23:59:59').getTime()).replace(/000$/, '999')));
+  })
+
+  it('2020-02-29 10:25:30', () => {
+    expect(timeDayEnd("2020-02-29 10:25:30")).to.deep.equal(+(String(new Date('2020-02-29 23:59:59').getTime()).replace(/000$/, '999')));
+  })
+
+  it('2019-02-28 10:25:30', () => {
+    expect(timeDayEnd("2019-02-28 10:25:30")).to.deep.equal(+(String(new Date('2019-02-28 23:59:59').getTime()).replace(/000$/, '999')));
   })
 
 })

@@ -26,7 +26,7 @@ import { validIdCard } from './china/idcard';
 
 // date
 import formatDate from './date/format-date';
-import { timeBetweenMonth, timeBetweenDay } from './date/index';
+import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from './date/index';
 
 // other
 import formatMoney from './other/format-money';
@@ -40,16 +40,13 @@ export {
   treeSort,
   treeFilter,
   // number
-  accAdd,
-  accSub,
-  accMulti,
-  accDiv,
+  accAdd, accSub, accMulti, accDiv,
   // china
   validIdCard,
   // date
   formatDate,
-  timeBetweenMonth,
-  timeBetweenDay,
+  timeBetweenMonth, timeBetweenDay,
+  timeDayStart, timeDayEnd,
   // other
   padLeft,
   formatMoney,
