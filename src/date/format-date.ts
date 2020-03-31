@@ -33,7 +33,12 @@ export default function formatDate(
   time: number | string | Date,
   format: string = 'YYYY-MM-DD HH:mm:ss',
 ): string {
+  if (time === null || time === undefined) return '';
+
   const dateObj = time instanceof Date ? time : new Date(time);
+
+  // Invalid Date 校验
+  if (isNaN(dateObj.getFullYear())) return time.toString();
 
   const year = String(dateObj.getFullYear());
   const regexValueList = [

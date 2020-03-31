@@ -18,4 +18,30 @@ describe('formatDate 测试用例', () => {
       .equal('12-8-4 4:9:7')
   })
 
+  it('异常检测: null --> ""', () => {
+    // @ts-ignore
+    expect(formatDate(null))
+      .equal('')
+  })
+  it('异常检测: undefined --> ""', () => {
+    // @ts-ignore
+    expect(formatDate(undefined))
+      .equal('')
+    // @ts-ignore
+    expect(formatDate())
+      .equal('')
+  })
+  it('异常检测: "" --> ""', () => {
+    expect(formatDate(''))
+      .equal('')
+  })
+  it('异常检测: "-" --> "-"', () => {
+    expect(formatDate('-'))
+      .equal('-')
+  })
+  it('异常检测: " " --> " "', () => {
+    expect(formatDate(' '))
+      .equal(' ')
+  })
+
 })
