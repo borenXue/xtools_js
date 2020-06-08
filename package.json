@@ -25,7 +25,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "ts-mocha src/**/*.spec.ts -R spec --bail"
+    "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
+    "test": "ts-mocha src/*/*.spec.ts -R spec --bail"
   },
   "dependencies": {
     "nested-property": "^2.0.0"
