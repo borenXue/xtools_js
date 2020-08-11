@@ -17,6 +17,7 @@
   - `timeDayEnd(time): number`: 该时间当天的最后一毫秒
   - `formatDate(time, 'YYYY-MM-DD HH:mm:ss')`: 格式化该时间
 * `validIdCard(idCardString): boolean`: 校验身份证是否合法
+* `heartCheck(fn, heartTime? = 500, timeout? = 30000)`: 心跳检测器
 * `formatMoney(money)`: 格式化金额, 返回格式后的字符串
 
 

@@ -30,6 +30,7 @@ import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from './da
 
 // other
 import formatMoney from './other/format-money';
+import heartCheck from './other/heart-check'
 import { padLeft } from './utils/index';
 
 export {
@@ -50,4 +51,5 @@ export {
   // other
   padLeft,
   formatMoney,
+  heartCheck,
 }
