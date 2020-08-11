@@ -16,6 +16,7 @@ export default function hearCheck(checkSyncFn: Function, heartTime = 500, timeou
         window.clearInterval(intervalId)
         resolve()
       } else if (new Date().getTime() - startTime >= timeout) {
+        window.clearInterval(intervalId)
         reject(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`)
       }
     }, heartTime)
