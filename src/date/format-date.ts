@@ -20,7 +20,7 @@ import { padLeft } from "../utils";
  * ss:   秒钟-2位, eg: 01、60
  * s:    秒钟      eg: 1、60
  *
- * SSSS: 毫秒-4位, eg: 0001
+ * SSS: 毫秒-3位, eg: 001、999
  * S:    毫秒      eg: 1、99、999
  *
  * // ddd:  天数-3位, eg: 001、365
@@ -61,8 +61,7 @@ export default function formatDate(
     ['ss', padLeft(dateObj.getSeconds(), 2, '0')],
     ['s', padLeft(dateObj.getSeconds(), 1, '0')],
     // 毫秒
-    ['SSSS', padLeft(dateObj.getMilliseconds(), 4, '0')],
-    // ['SSS', padLeft(dateObj.getMilliseconds(), 3, '0')],
+    ['SSS', padLeft(dateObj.getMilliseconds(), 3, '0')],
     // ['SS', padLeft(dateObj.getMilliseconds(), 2, '0')],
     ['S', padLeft(dateObj.getMilliseconds(), 1, '0')],
     // 天数: 1~365
