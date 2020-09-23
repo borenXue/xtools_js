@@ -31,6 +31,7 @@ import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from './da
 // other
 import formatMoney from './other/format-money';
 import heartCheck from './other/heart-check'
+import { urlAddParams, urlGetFileName, urlGetParams  } from './other/url';
 import { padLeft } from './utils/index';
 
 export {
@@ -49,6 +50,7 @@ export {
   timeBetweenMonth, timeBetweenDay,
   timeDayStart, timeDayEnd,
   // other
+  urlAddParams, urlGetFileName, urlGetParams,
   padLeft,
   formatMoney,
   heartCheck,

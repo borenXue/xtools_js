@@ -24,3 +24,5 @@ export function padRight(origin: string | number, digit: number, holder: string 
 
   return `${str}${suffix}`;
 }
+
+export type IsType<T> = (val: any) => val is T;
