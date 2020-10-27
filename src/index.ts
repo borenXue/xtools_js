@@ -26,7 +26,7 @@ import { validIdCard } from './china/idcard';
 
 // date
 import formatDate from './date/format-date';
-import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from './date/index';
+import { timeBetweenMonth, timeBetweenDay, timeMonthStart, timeMonthEnd, timeDayStart, timeDayEnd } from './date/index';
 
 // other
 import formatMoney from './other/format-money';
@@ -48,6 +48,7 @@ export {
   // date
   formatDate,
   timeBetweenMonth, timeBetweenDay,
+  timeMonthStart, timeMonthEnd,
   timeDayStart, timeDayEnd,
   // other
   urlAddParams, urlGetFileName, urlGetParams,
