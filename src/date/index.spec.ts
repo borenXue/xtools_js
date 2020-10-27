@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd } from '.';
+import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd, timeMonthEnd, timeMonthStart } from '.';
 
 describe('timeBetweenMonth 测试用例', () => {
 
@@ -59,6 +59,45 @@ describe('timeBetweenDay 测试用例', () => {
 
 })
 
+describe('timeMonthEnd 测试用例', () => {
+
+  it('2020-03-10 10:25:30', () => {
+    expect(timeMonthEnd("2020-03-10 10:25:30")).to.deep.equal(new Date('2020-04-01 00:00:00').getTime() - 1);
+  })
+
+  it('2020-02-10 10:25:30', () => {
+    expect(timeMonthEnd("2020-02-10 10:25:30")).to.deep.equal(new Date('2020-03-01 00:00:00').getTime() - 1);
+  })
+
+  it('2020-11-10 10:25:30', () => {
+    expect(timeMonthEnd("2020-11-10 10:25:30")).to.deep.equal(new Date('2020-12-01 00:00:00').getTime() - 1);
+  })
+
+  it('2020-12-10 10:25:30', () => {
+    expect(timeMonthEnd("2020-12-10 10:25:30")).to.deep.equal(new Date('2021-01-01 00:00:00').getTime() - 1);
+  })
+
+})
+
+describe('timeMonthStart 测试用例', () => {
+
+  it('2020-03-10 10:25:30', () => {
+    expect(timeMonthStart("2020-03-10 10:25:30")).to.deep.equal(new Date('2020-03-01 00:00:00').getTime());
+  })
+
+  it('2020-02-10 10:25:30', () => {
+    expect(timeMonthStart("2020-02-10 10:25:30")).to.deep.equal(new Date('2020-02-01 00:00:00').getTime());
+  })
+
+  it('2020-11-10 10:25:30', () => {
+    expect(timeMonthStart("2020-11-10 10:25:30")).to.deep.equal(new Date('2020-11-01 00:00:00').getTime());
+  })
+
+  it('2020-12-10 10:25:30', () => {
+    expect(timeMonthStart("2020-12-10 10:25:30")).to.deep.equal(new Date('2020-12-01 00:00:00').getTime());
+  })
+
+})
 
 describe('timeDayStart 测试用例', () => {
 

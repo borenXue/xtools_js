@@ -30,6 +30,19 @@ export function timeBetweenMonth(
   ];
 }
 
+export function timeMonthStart(time: number | Date | string) {
+  let start = new Date(time);
+  return new Date(`${start.getFullYear()}-${start.getMonth() + 1}-01 00:00:00`).getTime();
+}
+
+export function timeMonthEnd(time: number | Date | string) {
+  let end = new Date(time)
+  end = end.getMonth() === 11
+    ? new Date(`${end.getFullYear() + 1}-01-01 00:00:00`)
+    : new Date(`${end.getFullYear()}-${end.getMonth() + 2}-01 00:00:00`) ;
+  return end.getTime() - 1;
+}
+
 
 /**
  * 获得某两天之间的开始毫秒与结束毫秒的时间戳
