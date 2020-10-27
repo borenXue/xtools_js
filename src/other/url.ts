@@ -42,7 +42,9 @@ export function urlAddParams(url: string, param: {
   for (const key in param) {
     if (param[key] instanceof Array) {
       // TODO: 此处 typescript 应该是可以自动推断出类型的
-      (param[key] as Array<string | number | boolean>).map((item) => `&${key}=${item}`);
+      (param[key] as Array<string | number | boolean>).forEach((item) => {
+        search += `&${key}=${item}`
+      });
     } else {
       search += `&${key}=${param[key]}`;
     }
