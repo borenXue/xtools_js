@@ -29,6 +29,7 @@ import formatDate from './date/format-date';
 import { timeBetweenMonth, timeBetweenDay, timeMonthStart, timeMonthEnd, timeDayStart, timeDayEnd } from './date/index';
 
 // other
+import { fileDownload } from './other/file-download';
 import formatMoney from './other/format-money';
 import heartCheck from './other/heart-check'
 import { urlAddParams, urlGetFileName, urlGetParams  } from './other/url';
@@ -51,6 +52,7 @@ export {
   timeMonthStart, timeMonthEnd,
   timeDayStart, timeDayEnd,
   // other
+  fileDownload,
   urlAddParams, urlGetFileName, urlGetParams,
   padLeft,
   formatMoney,
