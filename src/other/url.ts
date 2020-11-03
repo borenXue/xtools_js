@@ -5,8 +5,8 @@
  * @param name 指定文件名(可选)
  *
  */
-export function urlGetFileName(url: string, name?: string) {
-  const pathname = new URL(url).pathname;
+export function urlGetFileName(urlOrFileName: string, name?: string) {
+  const pathname = urlOrFileName.indexOf('/') >= 0 ? new URL(urlOrFileName).pathname : urlOrFileName;
 
   const lastDotIdx = pathname.lastIndexOf('.');
   const ext = lastDotIdx >= 0 ? pathname.substring(lastDotIdx + 1) : '';
