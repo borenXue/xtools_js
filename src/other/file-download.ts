@@ -8,19 +8,22 @@ export interface UrlQueryParams {
   [key: string]: UrlQueryParamValueType;
 }
 
+export type FileDownloadParamsData = Array<any> | { [key: string]: any };
+export type FileDownloadParamsHeaders = { [key: string]: string };
+
 export interface FileDownloadParams {
   url: string;
   params?: UrlQueryParams;
   fileName?: string,
   withCredentials?: boolean;
-  headers?: { [key: string]: string },
+  headers?: FileDownloadParamsHeaders,
 
   successCb?: Function;
   errorCb?: (err: Error) => void;
   finalCb?: (err?: Error) => void;
 
   method?: 'GET' | 'POST';
-  data?: Array<any> | { [key: string]: any };
+  data?: FileDownloadParamsData;
   isFormData?: boolean;
 }
 
@@ -49,6 +52,7 @@ export function fileDownload(downloadParams: FileDownloadParams) {
       finalFileName = fileName ? finalFileName : suggestFileName || finalFileName;
       FileSaver.saveAs(blob, finalFileName);
       if (typeof successCb === 'function') successCb()
+      if (typeof finalCb === 'function') finalCb()
     } catch (err) {
       if (typeof errorCb === 'function') errorCb(err)
       if (typeof finalCb === 'function') finalCb(err)  
