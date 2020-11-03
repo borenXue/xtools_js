@@ -16,8 +16,8 @@ export interface FileDownloadParams {
   headers?: { [key: string]: string },
 
   successCb?: Function;
-  errorCb?: Function;
-  finalCb?: Function;
+  errorCb?: (err: Error) => void;
+  finalCb?: (err?: Error) => void;
 
   method?: 'GET' | 'POST';
   data?: Array<any> | { [key: string]: any };
@@ -26,10 +26,6 @@ export interface FileDownloadParams {
 
 export function fileDownload(downloadParams: FileDownloadParams) {
   let { url, params, headers, method, isFormData } = downloadParams;
-
-  /**
-   * 参数处理
-   */
 
   // 计算 url: url、params
   if (typeof params === 'object' && !(params instanceof Array)) {
@@ -44,14 +40,14 @@ export function fileDownload(downloadParams: FileDownloadParams) {
 
   const { withCredentials, fileName, successCb, finalCb, errorCb } = downloadParams;
 
-  // 计算最终文件名
-  const finalFileName = urlGetFileName(url, fileName)
-
   requestFileBlob({
     url, method, withCredentials
   }).then(({ blob, suggestFileName }) => {
     try {
-      FileSaver.saveAs(blob, finalFileName || suggestFileName);
+      // 计算最终文件名, 优先级: 前端指定 > 接口指定 > url 提取
+      let finalFileName = urlGetFileName(suggestFileName || url, fileName);
+      finalFileName = fileName ? finalFileName : suggestFileName || finalFileName;
+      FileSaver.saveAs(blob, finalFileName);
       if (typeof successCb === 'function') successCb()
     } catch (err) {
       if (typeof errorCb === 'function') errorCb(err)
@@ -67,11 +63,24 @@ export function getSuggestFileName(req: XMLHttpRequest) {
   try {
     const str = req.getResponseHeader('Content-Disposition');
     if (!str) return '';
-    let res = /filename\*="(.*?)"/.exec(str);
-    if (res && res[1]) return res[1];
-    res = /filename="(.*?)"/.exec(str);
-    if (res && res[1]) return res[1];
-    return '';
+
+    let finalName = '';
+
+    const list = str.split(';');
+    for (const item of list) {
+      const ii = item.split('=');
+      if (ii && ii.length === 2) {
+        if (ii[0] === 'filename*' && ii[1]) {
+          finalName = ii[1];
+        }
+        if (ii[0] === 'filename' && ii[1] && !finalName) {
+          finalName = ii[1];
+        }
+      }
+    }
+    finalName = finalName.replace(/^["']/, '').replace(/["']$/, '');
+
+    return finalName;
   } catch(err) {
     console.log('getSuggestFileName: ', err)
     return '';
