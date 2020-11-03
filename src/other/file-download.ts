@@ -41,10 +41,10 @@ export function fileDownload(downloadParams: FileDownloadParams) {
     headers['Content-Type'] = isFormData ? 'application/x-www-form-urlencoded' : 'application/json';
   }
 
-  const { withCredentials, fileName, successCb, finalCb, errorCb } = downloadParams;
+  const { withCredentials, data, fileName, successCb, finalCb, errorCb } = downloadParams;
 
   requestFileBlob({
-    url, method, withCredentials
+    url, method, withCredentials, headers, isFormData, data,
   }).then(({ blob, suggestFileName }) => {
     try {
       // 计算最终文件名, 优先级: 前端指定 > 接口指定 > url 提取
@@ -100,6 +100,9 @@ function requestFileBlob(params: {
   method?: string;
   withCredentials?: boolean;
   handler401?: Function;
+  isFormData?: boolean;
+  data?: FileDownloadParamsData;
+  headers?: FileDownloadParamsHeaders;
 }):Promise<{ blob: Blob, suggestFileName: string }> {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
@@ -121,6 +124,23 @@ function requestFileBlob(params: {
         reject(new NotSuccessError(req.status, '响应码非 200'));
       }
     };
-    req.send();
+
+    for (const key in (params.headers || {})) {
+      req.setRequestHeader(key, (params.headers || {})[key]);
+    }
+
+    if (params.method && params.method.toLowerCase() === 'post' && params.data) {
+      if (params.isFormData) {
+        const fd = new FormData();
+        for (const key in (params.data || {})) {
+          fd.append(key, (params.data || {})[key]);
+        }
+        req.send(fd);
+      } else {
+        req.send(params.data ? JSON.stringify(params.data) : '');
+      }
+    } else {
+      req.send();
+    }
   });
 }
