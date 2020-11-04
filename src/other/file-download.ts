@@ -10,12 +10,13 @@ export interface UrlQueryParams {
 
 export type FileDownloadParamsData = Array<any> | { [key: string]: any };
 export type FileDownloadParamsHeaders = { [key: string]: string };
+export type WithCredentialsFunction = (url: string, method: 'GET' | 'POST', isFormData: boolean) => boolean;
 
 export interface FileDownloadParams {
   url: string;
   params?: UrlQueryParams;
   fileName?: string,
-  withCredentials?: boolean;
+  withCredentials?: boolean | WithCredentialsFunction;
   headers?: FileDownloadParamsHeaders,
 
   successCb?: Function;
@@ -43,8 +44,13 @@ export function fileDownload(downloadParams: FileDownloadParams) {
 
   const { withCredentials, data, fileName, successCb, finalCb, errorCb } = downloadParams;
 
+  // 计算 withCredentials
+  let credentials = undefined;
+  if (typeof withCredentials === 'boolean') credentials = withCredentials;
+  if (typeof withCredentials === 'function') credentials = withCredentials(url, method || 'GET', isFormData || false);
+
   requestFileBlob({
-    url, method, withCredentials, headers, isFormData, data,
+    url, method, withCredentials: credentials, headers, isFormData, data,
   }).then(({ blob, suggestFileName }) => {
     try {
       // 计算最终文件名, 优先级: 前端指定 > 接口指定 > url 提取
