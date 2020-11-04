@@ -1,6 +1,6 @@
 import FileSaver from 'file-saver';
 import { urlGetFileName, urlAddParams } from "./url";
-import { AbortError, TimeOutError, NotSuccessError } from "../utils/errors";
+import { AbortError, TimeOutError, NotSuccessError, AjaxError } from "../utils/errors";
 
 export type UrlQueryParamValueType = string | number | boolean | string[] | number[];
 
@@ -20,8 +20,8 @@ export interface FileDownloadParams {
   headers?: FileDownloadParamsHeaders,
 
   successCb?: Function;
-  errorCb?: (err: Error) => void;
-  finalCb?: (err?: Error) => void;
+  errorCb?: (err: AjaxError) => void;
+  finalCb?: (err?: AjaxError) => void;
 
   method?: 'GET' | 'POST';
   data?: FileDownloadParamsData;
@@ -116,9 +116,9 @@ function requestFileBlob(params: {
     req.responseType = 'blob';
     req.open(params.method || 'GET', params.url, true);
 
-    req.onabort = () => reject(new AbortError('请求中断'));
-    req.ontimeout = () => reject(new TimeOutError('请求超时'));
-    req.onerror = () => reject(new Error('请求报错'));
+    req.onabort = () => reject(new AbortError('请求中断', req, req.status));
+    req.ontimeout = () => reject(new TimeOutError('请求超时', req, req.status));
+    req.onerror = () => reject(new AjaxError ('请求报错', req, req.status));
     req.onload = () => {
       if (req.status === 200) {
         const suggestFileName = getSuggestFileName(req);
@@ -127,7 +127,7 @@ function requestFileBlob(params: {
           suggestFileName,
         });
       } else {
-        reject(new NotSuccessError(req.status, '响应码非 200'));
+        reject(new NotSuccessError('响应码非 200', req, req.status));
       }
     };
 
