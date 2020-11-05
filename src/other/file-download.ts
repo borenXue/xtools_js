@@ -71,6 +71,8 @@ export function fileDownload(downloadParams: FileDownloadParams) {
 
 export function getSuggestFileName(req: XMLHttpRequest) {
   try {
+    const headers = req.getAllResponseHeaders();
+    if (!headers || headers.indexOf('content-disposition') < 0) return '';
     const str = req.getResponseHeader('Content-Disposition');
     if (!str) return '';
 
