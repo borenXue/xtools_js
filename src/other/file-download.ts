@@ -90,7 +90,7 @@ export function getSuggestFileName(req: XMLHttpRequest) {
     }
     finalName = finalName.replace(/^["']/, '').replace(/["']$/, '');
 
-    return finalName;
+    return finalName ? window.decodeURIComponent(finalName) : '';
   } catch(err) {
     console.log('getSuggestFileName: ', err)
     return '';
