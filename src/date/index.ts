@@ -78,3 +78,36 @@ export function timeDayEnd(day: number | Date | string,) {
   const tomorrowZero = todayZero.getTime() + 24 * 60 * 60 * 1000;
   return tomorrowZero - 1;
 }
+
+/**
+ * 获取指定时间或当前时间的上个月同一时间
+ * @param start Date 对象
+ */
+export function timeLastMonth(start: number | Date | string = new Date()) {
+  const startDate = start ? new Date(start) : new Date();
+
+  const year = startDate.getFullYear();
+  const mon = startDate.getMonth() + 1;
+  if (mon === 1) {
+    return new Date(`${year - 1}-12-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
+  } else {
+    return new Date(`${year}-${mon - 1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
+  }
+}
+
+/**
+ * 两个时间是否超过1个月
+ */
+export function timeIsBetweenMonth(time1: number | Date | string, time2: number | Date | string) {
+  if (!time1 || !time2) throw new Error('参数错误, 两个时间都必传');
+
+  let startTime = new Date(time1).getTime();
+  let endTime = new Date(time2).getTime();
+  if (startTime > endTime) {
+    [startTime, endTime] = [endTime, startTime];
+  }
+
+  const lastMonthTime = timeLastMonth(endTime).getTime();
+  return startTime >= lastMonthTime;
+}
+

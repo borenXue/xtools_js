@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd, timeMonthEnd, timeMonthStart } from '.';
+import { timeBetweenMonth, timeBetweenDay, timeDayStart, timeDayEnd, timeMonthEnd, timeMonthStart, timeLastMonth, timeIsBetweenMonth } from '.';
 
 describe('timeBetweenMonth 测试用例', () => {
 
@@ -128,6 +128,39 @@ describe('timeDayEnd 测试用例', () => {
 
   it('2019-02-28 10:25:30', () => {
     expect(timeDayEnd("2019-02-28 10:25:30")).to.deep.equal(+(String(new Date('2019-02-28 23:59:59').getTime()).replace(/000$/, '999')));
+  })
+
+})
+
+
+describe('timeLastMonth 测试用例', () => {
+
+  it('2020-03-10 10:25:30.666', () => {
+    expect(timeLastMonth("2020-03-10 10:25:30.666").getTime()).to.deep.equal(new Date('2020-02-10 10:25:30.666').getTime());
+  })
+
+  it('2020-02-10 10:25:30.777', () => {
+    expect(timeLastMonth("2020-02-10 10:25:30.777").getTime()).to.deep.equal(new Date('2020-01-10 10:25:30.777').getTime());
+  })
+
+  it('2020-01-10 10:25:30.888', () => {
+    expect(timeLastMonth("2020-01-10 10:25:30.888").getTime()).to.deep.equal(new Date('2019-12-10 10:25:30.888').getTime());
+  })
+
+})
+
+describe('timeIsBetweenMonth 测试用例', () => {
+
+  it('2020-02-10 10:25:30.666  ~~  2020-03-10 10:25:30.666', () => {
+    expect(timeIsBetweenMonth("2020-02-10 10:25:30.666", "2020-03-10 10:25:30.666")).to.deep.equal(true);
+  })
+
+  it('2020-02-10 10:25:30.667  ~~  2020-03-10 10:25:30.666', () => {
+    expect(timeIsBetweenMonth("2020-02-10 10:25:30.667", "2020-03-10 10:25:30.666")).to.deep.equal(true);
+  })
+
+  it('2020-02-10 10:25:30.665  ~~  2020-03-10 10:25:30.666', () => {
+    expect(timeIsBetweenMonth("2020-02-10 10:25:30.665", "2020-03-10 10:25:30.666")).to.deep.equal(false);
   })
 
 })
