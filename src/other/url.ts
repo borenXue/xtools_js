@@ -6,7 +6,16 @@
  *
  */
 export function urlGetFileName(urlOrFileName: string, name?: string) {
-  const pathname = urlOrFileName.indexOf('/') >= 0 ? new URL(urlOrFileName).pathname : urlOrFileName;
+  let pathname = '';
+  if (urlOrFileName.indexOf('/') >= 0) {
+    try {
+      pathname = new URL(urlOrFileName).pathname;
+    } catch(err) {
+      pathname = urlOrFileName;
+    }
+  } else {
+    pathname = urlOrFileName;
+  }
 
   const lastDotIdx = pathname.lastIndexOf('.');
   const ext = lastDotIdx >= 0 ? pathname.substring(lastDotIdx + 1) : '';

@@ -112,4 +112,10 @@ describe('getFileName 测试用例', () => {
     });
   })
 
+  describe('测试 urlOrFileName 为 fileName 的场景', () => {
+    it(`urlGetFileName('a/b/c/def') = def`, () => {
+      expect(urlGetFileName('a/b/c/def')).equal('def');
+    });
+  })
+
 });
