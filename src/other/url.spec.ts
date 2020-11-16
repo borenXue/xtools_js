@@ -63,6 +63,10 @@ describe('getFileName 测试用例', () => {
       expect(urlGetFileName('http://a/b/c/def')).equal('def');
     });
 
+    it(`urlGetFileName('http://a/b/c/%E4%B8%AD%E6%96%87') = 中文`, () => {
+      expect(urlGetFileName('http://a/b/c/%E4%B8%AD%E6%96%87')).equal('中文');
+    });
+
     it(`urlGetFileName('http://a/b/c/def.txt') = def.txt`, () => {
       expect(urlGetFileName('http://a/b/c/def.txt')).equal('def.txt');
     });

@@ -20,7 +20,7 @@ export function urlGetFileName(urlOrFileName: string, name?: string) {
   const lastDotIdx = pathname.lastIndexOf('.');
   const ext = lastDotIdx >= 0 ? pathname.substring(lastDotIdx + 1) : '';
   const pureName = pathname.substring(pathname.lastIndexOf('/') + 1, lastDotIdx >= 0 ? lastDotIdx : pathname.length);
-  if (!name) return `${pureName}${ext ? '.' : ''}${ext || ''}`
+  if (!name) return `${decodeURI(pureName)}${ext ? '.' : ''}${ext || ''}`
 
   const nameLastDotIdx = name.lastIndexOf('.');
   let nameExt = nameLastDotIdx >= 0 ? name.substring(nameLastDotIdx + 1) : '';
@@ -34,7 +34,7 @@ export function urlGetFileName(urlOrFileName: string, name?: string) {
   namePureName = namePureName.replace('#{name}', pureName);
   namePureName = namePureName.replace(/#{ext}/g, ext || '');
   namePureName = namePureName.replace(/#{ext(:([-\w]+)){0,1}}/g, ext || '$2');
-  return `${namePureName}${nameExt ? '.' : ''}${nameExt}`;
+  return `${decodeURI(namePureName)}${nameExt ? '.' : ''}${nameExt}`;
 }
 
 export function urlAddParams(url: string, param: {
