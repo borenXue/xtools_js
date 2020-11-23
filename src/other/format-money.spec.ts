@@ -49,3 +49,76 @@ describe('formatMoney 测试用例', () => {
 
 })
 
+describe('formatMoney 参数 decimal 测试 ', () => {
+  it('34.45 (decimal: 1) --> 34.5', () => {
+    expect(formatMoney(34.45, { decimal: 1 })).equal('34.5')
+  })
+
+  it('34.04 (decimal: 1) --> 34.0', () => {
+    expect(formatMoney(34.04, { decimal: 1 })).equal('34.0')
+  })
+
+  it('34.12345 (decimal: 4) --> 34.1235', () => {
+    expect(formatMoney(34.12345, { decimal: 4 })).equal('34.1235')
+  })
+
+  it('-34.12345 (decimal: 4) --> -34.1235', () => {
+    expect(formatMoney(-34.12345, { decimal: 4 })).equal('-34.1235')
+  })
+
+  it('34.05 (decimal: 5) --> 34.05000', () => {
+    expect(formatMoney(34.05, { decimal: 5 })).equal('34.05000')
+  })
+
+  it('34.05 (decimal: 0) --> 34', () => {
+    expect(formatMoney(34.05, { decimal: 0 })).equal('34')
+  })
+
+  // 异常参数处理
+  it('34.05 (decimal: -1) --> 34', () => {
+    expect(formatMoney(34.05, { decimal: -1 })).equal('34')
+  })
+  it('34.05 (decimal: 2.5) --> 34.050', () => {
+    expect(formatMoney(34.05, { decimal: 2.5 })).equal('34.050')
+  })
+  it('34.05 (decimal: 2.45) --> 34.05', () => {
+    expect(formatMoney(34.05, { decimal: 2.45 })).equal('34.05')
+  })
+});
+
+describe('formatMoney 参数 trim 测试 ', () => {
+  it('34.45 (decimal: 1, trim: true) --> 34.5', () => {
+    expect(formatMoney(34.45, { decimal: 1, trim: true })).equal('34.5')
+  })
+
+  it('34.04 (decimal: 1, trim: true) --> 34', () => {
+    expect(formatMoney(34.04, { decimal: 1, trim: true })).equal('34')
+  })
+
+  it('34.12345 (decimal: 4, trim: true) --> 34.1235', () => {
+    expect(formatMoney(34.12345, { decimal: 4, trim: true })).equal('34.1235')
+  })
+
+  it('-34.12345 (decimal: 4, trim: true) --> -34.1235', () => {
+    expect(formatMoney(-34.12345, { decimal: 4, trim: true })).equal('-34.1235')
+  })
+
+  it('34.05 (decimal: 5, trim: true) --> 34.05', () => {
+    expect(formatMoney(34.05, { decimal: 5, trim: true })).equal('34.05')
+  })
+
+  it('34.05 (decimal: 0, trim: true) --> 34', () => {
+    expect(formatMoney(34.05, { decimal: 0, trim: true })).equal('34')
+  })
+
+  // 异常参数处理
+  it('34.05 (decimal: -1, trim: true) --> 34', () => {
+    expect(formatMoney(34.05, { decimal: -1, trim: true })).equal('34')
+  })
+  it('34.05 (decimal: 2.5, trim: true) --> 34.05', () => {
+    expect(formatMoney(34.05, { decimal: 2.5, trim: true })).equal('34.05')
+  })
+  it('34.05 (decimal: 2.45, trim: true) --> 34.05', () => {
+    expect(formatMoney(34.05, { decimal: 2.45, trim: true })).equal('34.05')
+  })
+});
