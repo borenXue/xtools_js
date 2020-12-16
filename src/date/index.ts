@@ -25,7 +25,7 @@ export function timeBetweenMonth(
   end = new Date(end.getTime() - 1);
 
   return [
-    new Date(formatDate(startTime, 'YYYY-MM-01 00:00:00')).getTime(),
+    new Date(formatDate(startTime, 'YYYY/MM/01 00:00:00')).getTime(),
     end.getTime(),
   ];
 }
@@ -60,21 +60,21 @@ export function timeBetweenDay(
     [startTime, endTime] = [endTime, startTime];
   }
 
-  const end = new Date(formatDate(endTime, 'YYYY-MM-DD 23:59:59'));
+  const end = new Date(formatDate(endTime, 'YYYY/MM/DD 23:59:59'));
 
   return [
-    new Date(formatDate(startTime, 'YYYY-MM-DD 00:00:00')).getTime(),
+    new Date(formatDate(startTime, 'YYYY/MM/DD 00:00:00')).getTime(),
     +String(end.getTime()).replace(/000$/, '999'),
   ];
 }
 
 
 export function timeDayStart(day: number | Date | string,) {
-  return new Date(formatDate(day, 'YYYY-MM-DD 00:00:00')).getTime();
+  return new Date(formatDate(day, 'YYYY/MM/DD 00:00:00')).getTime();
 }
 
 export function timeDayEnd(day: number | Date | string,) {
-  const todayZero = new Date(formatDate(day, 'YYYY-MM-DD 00:00:00'));
+  const todayZero = new Date(formatDate(day, 'YYYY/MM/DD 00:00:00'));
   const tomorrowZero = todayZero.getTime() + 24 * 60 * 60 * 1000;
   return tomorrowZero - 1;
 }
