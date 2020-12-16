@@ -19,8 +19,8 @@ export function timeBetweenMonth(
   let end = new Date(endTime);
   // 得到 endTime 所在月份的下个月的第一毫秒的 Date 对象
   end = end.getMonth() === 11
-    ? new Date(`${end.getFullYear() + 1}-01-01 00:00:00`)
-    : new Date(`${end.getFullYear()}-${end.getMonth() + 2}-01 00:00:00`);
+    ? new Date(`${end.getFullYear() + 1}/01/01 00:00:00`)
+    : new Date(`${end.getFullYear()}/${end.getMonth() + 2}/01 00:00:00`);
   // 得到 endTime 所在月份最后一毫秒
   end = new Date(end.getTime() - 1);
 
@@ -32,14 +32,14 @@ export function timeBetweenMonth(
 
 export function timeMonthStart(time: number | Date | string) {
   let start = new Date(time);
-  return new Date(`${start.getFullYear()}-${start.getMonth() + 1}-01 00:00:00`).getTime();
+  return new Date(`${start.getFullYear()}/${start.getMonth() + 1}/01 00:00:00`).getTime();
 }
 
 export function timeMonthEnd(time: number | Date | string) {
   let end = new Date(time)
   end = end.getMonth() === 11
-    ? new Date(`${end.getFullYear() + 1}-01-01 00:00:00`)
-    : new Date(`${end.getFullYear()}-${end.getMonth() + 2}-01 00:00:00`) ;
+    ? new Date(`${end.getFullYear() + 1}/01/01 00:00:00`)
+    : new Date(`${end.getFullYear()}/${end.getMonth() + 2}/01 00:00:00`) ;
   return end.getTime() - 1;
 }
 
@@ -89,9 +89,9 @@ export function timeLastMonth(start: number | Date | string = new Date()) {
   const year = startDate.getFullYear();
   const mon = startDate.getMonth() + 1;
   if (mon === 1) {
-    return new Date(`${year - 1}-12-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
+    return new Date(`${year - 1}/12/${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
   } else {
-    return new Date(`${year}-${mon - 1}-${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
+    return new Date(`${year}/${mon - 1}/${startDate.getDate()} ${startDate.getHours()}:${startDate.getMinutes()}:${startDate.getSeconds()}.${startDate.getMilliseconds()}`)
   }
 }
 
