@@ -1,3 +1,5 @@
+/* babel-disable-autofix-file */
+
 import { padRight } from '../utils/index'
 
 /**
