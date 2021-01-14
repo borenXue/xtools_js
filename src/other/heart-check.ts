@@ -7,14 +7,14 @@
 export default function hearCheck(checkSyncFn: Function, heartTime = 500, timeout = 30000) {
   return new Promise((resolve, reject) => {
     if (checkSyncFn()) {
-      resolve()
+      resolve(true)
       return
     }
     const startTime = new Date().getTime()
     const intervalId = window.setInterval(() => {
       if (checkSyncFn()) {
         window.clearInterval(intervalId)
-        resolve()
+        resolve(true)
       } else if (new Date().getTime() - startTime >= timeout) {
         window.clearInterval(intervalId)
         reject(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`)
