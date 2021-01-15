@@ -13,6 +13,9 @@
       "chai"
     ]
   },
+  "exclude": [
+    "src/**/*.spec.ts"
+  ],
   "include": [
     "src/**/*",
     "index.d.ts"

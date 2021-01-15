@@ -1,6 +1,6 @@
 {
   "name": "xtools_js",
-  "version": "1.4.21",
+  "version": "2.0.1",
   "description": "js tools",
   "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/front-packages#readme",
@@ -33,6 +33,8 @@
     "types:es": "tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib/_es",
     "types:umd": "TODO: tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib --isolatedModules false",
     "check": "tsc --noEmit",
+    "prepublish": "npm run test && npm run build",
+    "postpublish": "npm run deploy:docs",
     "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
     "test": "ts-mocha src/*/*.spec.ts -R spec --bail"
   },

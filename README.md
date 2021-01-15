@@ -21,3 +21,12 @@ import { arrayToTree, treeForEach, accAdd } from 'xtools_js'
 
 // ...
 ```
+
+<!--
+
+发布:
+1、提交所有改动
+2、修改 package.json 、package-lock.json 中的版本号
+3、npm run test && npm run build
+
+-->
