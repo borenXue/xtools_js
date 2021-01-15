@@ -1,6 +1,7 @@
 import { padLeft } from "../utils";
 
 /**
+ * 日期格式化
  *
  * YYYY: 年份-4位, eg: 2021
  * YY:   年份-2位, eg: 21

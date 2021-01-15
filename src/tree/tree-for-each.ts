@@ -10,6 +10,13 @@ export interface TreeForEachCallback<TreeItem extends TreeItemLike> {
   ): void
 }
 
+/**
+ * 遍历树中的每个节点, 深度优先原则
+ *
+ * @param tree 树结构数组
+ * @param fn 回调函数
+ * @param childrenKey 子节点集合的属性名, 默认为'children'
+ */
 export default function treeForEach<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeForEachCallback<TreeItem>,

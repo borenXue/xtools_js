@@ -1,4 +1,11 @@
 /**
+ * url 辅助工具
+ *
+ * @packageDocumentation
+ * @module Url
+ */
+
+/**
  * 获取最终文件名
  *
  * @param url 文件的 url 地址

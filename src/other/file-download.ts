@@ -1,3 +1,10 @@
+/**
+ * 文件相关函数: 文件下载、文件上传
+ *
+ * @packageDocumentation
+ * @module File
+ */
+
 import FileSaver from 'file-saver';
 import { urlGetFileName, urlAddParams } from "./url";
 import { AbortError, TimeOutError, NotSuccessError, AjaxError } from "../utils/errors";

@@ -1,4 +1,5 @@
 /**
+ * 心跳检测
  * 
  * @param checkSyncFn 检测方法-只能返回 true or false
  * @param heartTime 心跳间隔, 单位毫秒 - 默认 500ms
