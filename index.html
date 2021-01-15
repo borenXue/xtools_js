@@ -1,0 +1,204 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>xtools_js - v1.4.21</title>
+	<meta name="description" content="Documentation for xtools_js - v1.4.21">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">xtools_js - v1.4.21</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>xtools_js - v1.4.21</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#xtoolsjs" id="xtoolsjs" style="color: inherit; text-decoration: none;">
+					<h1><code>xtools.js</code></h1>
+				</a>
+				<a href="#功能概览" id="功能概览" style="color: inherit; text-decoration: none;">
+					<h2>功能概览</h2>
+				</a>
+				<ul>
+					<li>数学计算<ul>
+							<li><code>accAdd(n1, n2, n3, ...)</code>: 将参数依次相加, n1 + n2 + n3 + ...</li>
+							<li><code>accSub(n1, n2, n3, ...)</code>: 将参数依次相减, n1 - n2 - n3 -...</li>
+							<li><code>accMulti(n1, n2, n3, ...)</code>: 将参数依次相乘, n1 * n2 * n3 * ...</li>
+							<li><code>accDiv(n1, n2, n3, ...)</code>: 将参数依次相除, n1 / n2 / n3 / ...</li>
+						</ul>
+					</li>
+					<li>数组与树<ul>
+							<li><code>arrayToTree(arrData, options)</code>: 将数组转化为树</li>
+							<li><code>treeForEach(tree, callback, childrenKey)</code>: 依顺序遍历树中的第一项, 并执行 callback</li>
+						</ul>
+					</li>
+					<li>日期相关<ul>
+							<li><code>timeBetweenMonth(startTime, endTime): [number, number]</code>: 返回两个时间所在月份区间的第一毫秒与最后一毫秒 (时间戳)</li>
+							<li><code>timeBetweenDay(startTime, endTime): [number, number]</code>: 返回两个时间所在日期区间的第一毫秒与最后一毫秒 (时间戳)</li>
+							<li><code>timeDayStart(time): number</code>: 该时间当天的第一毫秒</li>
+							<li><code>timeDayEnd(time): number</code>: 该时间当天的最后一毫秒</li>
+							<li><code>formatDate(time, &#39;YYYY-MM-DD HH:mm:ss&#39;)</code>: 格式化该时间</li>
+						</ul>
+					</li>
+					<li><code>validIdCard(idCardString): boolean</code>: 校验身份证是否合法</li>
+					<li><code>heartCheck(fn, heartTime? = 500, timeout? = 30000)</code>: 心跳检测器</li>
+					<li><code>formatMoney(money)</code>: 格式化金额, 返回格式后的字符串</li>
+				</ul>
+				<a href="#数组-ampamp-树-操作" id="数组-ampamp-树-操作" style="color: inherit; text-decoration: none;">
+					<h2>数组 &amp;&amp; 树 操作</h2>
+				</a>
+				<a href="#arraytotreearrdata-options-数组转树" id="arraytotreearrdata-options-数组转树" style="color: inherit; text-decoration: none;">
+					<h3><code>arrayToTree(arrData, options)</code> 数组转树</h3>
+				</a>
+				<p><code>options</code> 参数用法, 请参考 <a href="src/tree/types.ts">ArrayToTreeOptions 定义</a></p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { arrayToTree } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;xtools_js&#x27;</span>
+
+<span class="hljs-keyword">const</span> arr = [
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">0</span> },
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">1</span> },
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">1</span> },
+  { <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">2</span> },
+]
+<span class="hljs-keyword">const</span> tree = arrayToTree(arr, { <span class="hljs-attr">rootIdValue</span>: <span class="hljs-number">0</span> })
+
+<span class="hljs-comment">// tree 结果如下:</span>
+<span class="hljs-comment">// [</span>
+<span class="hljs-comment">//   { &quot;id&quot;: 1, &quot;parentId&quot;: 0,</span>
+<span class="hljs-comment">//     &quot;children&quot;: [</span>
+<span class="hljs-comment">//         { &quot;id&quot;: 2, &quot;parentId&quot;: 1,</span>
+<span class="hljs-comment">//           &quot;children&quot;: [</span>
+<span class="hljs-comment">//               { &quot;id&quot;: 4, &quot;parentId&quot;: 2, &quot;children&quot;: [] }</span>
+<span class="hljs-comment">//           ],</span>
+<span class="hljs-comment">//         },</span>
+<span class="hljs-comment">//         { &quot;id&quot;: 3, &quot;parentId&quot;: 1, &quot;children&quot;: [] }</span>
+<span class="hljs-comment">//     ],</span>
+<span class="hljs-comment">//   }</span>
+<span class="hljs-comment">// ]</span></code></pre>
+				<a href="#treeforeachtree-callback-childrenkey-遍历树并今次执行-callback" id="treeforeachtree-callback-childrenkey-遍历树并今次执行-callback" style="color: inherit; text-decoration: none;">
+					<h3><code>treeForEach(tree, callback, childrenKey)</code> 遍历树并今次执行 callback</h3>
+				</a>
+				<ul>
+					<li>遍历的顺序: 将 tree 转为格式化的 json 文件后, 从上往下阅读的顺序即是遍历顺序</li>
+					<li>tree 为数组格式</li>
+					<li>childrenKey 为可选参数, 默认值为 <code>&#39;children&#39;</code></li>
+					<li>回调函数中的 parent: 因父节点先于子节点被遍历, 所以该 parent 为 callback 函数中修改后值</li>
+				</ul>
+				<pre><code class="language-javascript">treeForEach(tree, <span class="hljs-function">(<span class="hljs-params">item, index, level, globalIndex, parent</span>) =&gt;</span> {
+  <span class="hljs-comment">// item: 当前项</span>
+  <span class="hljs-comment">// index: 当前项在同级中的顺序</span>
+  <span class="hljs-comment">// level: 当前项所在层级, 从1开始</span>
+  <span class="hljs-comment">// globalIndex: 当前项在 forEach 中的遍历顺序, 从0开始</span>
+  <span class="hljs-comment">// parent: 当前项的父节点</span>
+})
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/array____tree_helper.html">Array &amp;&amp; <wbr>Tree <wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/date_helper.html">Date <wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/file.html">File</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/idcard.html">Id<wbr>Card</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/math_helper.html">Math <wbr>Helper</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/others.html">Others</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/url.html">Url</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

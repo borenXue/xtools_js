@@ -1,0 +1,6266 @@
+{
+	"id": 0,
+	"name": "xtools_js - v1.4.21",
+	"kind": 0,
+	"flags": {},
+	"originalName": "",
+	"children": [
+		{
+			"id": 54,
+			"name": "Array && Tree Helper",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/tree/types.ts",
+			"children": [
+				{
+					"id": 107,
+					"name": "ArrayItemLike",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"indexSignature": [
+						{
+							"id": 108,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 109,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/array-to-tree.ts",
+							"line": 11,
+							"character": 30
+						}
+					]
+				},
+				{
+					"id": 68,
+					"name": "ArrayToTreeOptions",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 69,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 72,
+							"name": "childrenKey",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "下级节点数组所在的属性名",
+								"text": "默认值: 'children'\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 44,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "typeOperator",
+								"operator": "keyof",
+								"target": {
+									"type": "typeParameter",
+									"name": "T"
+								}
+							}
+						},
+						{
+							"id": 74,
+							"name": "dataFieldKey",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "是否将数据放到 tree 中的指定字段中, null 代表不放, string 类型代表所放的字段名",
+								"text": "默认值: null\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 60,
+									"character": 14
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "null"
+									}
+								]
+							}
+						},
+						{
+							"id": 70,
+							"name": "idKey",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "id 的属性名",
+								"text": "默认值: 'id'\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 28,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 77,
+							"name": "orphansFlagKey",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "标记某个节点为孤儿节点时 使用的属性名 (相当于给该节点添加一个新的属性, 用来标记是否是孤儿节点, 值为 true 或 false)",
+								"text": "   string: 属性名, 为空字符串时等同于 null\n\n   null: 不添加标记\n\n\n默认值: '__is_orphans'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 138,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "null"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							}
+						},
+						{
+							"id": 76,
+							"name": "orphansHandleType",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "孤儿节点的处理方式即检测到源数据中包含孤儿节点时 如何处理这些节点",
+								"text": "默认值为 'root-warning'\n\n   error: 程序抛出异常\n\n   ignore: 直接忽略孤儿节点, 不抛异常、不警告、不返回\n\n   ignore-warning: 不抛异常、不返回, 但会在控制台警告(console.warn)\n\n   root: 不抛异常、不警告、但会作为一级节点返回\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n   root-warning: 不抛异常、但会在控制台警告(console.warn)、且会作为一级节点返回\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 123,
+									"character": 19
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 76,
+								"name": "orphansHandleType"
+							}
+						},
+						{
+							"id": 78,
+							"name": "orphansParent",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "返回孤儿节点的方式",
+								"text": "   ignore: 直接将孤儿节点作为一级节点返回\n\n   create: 创建一个父节点, 将孤儿节点放到 children 数组中, 并将创建的父节点作为一级节点返回\n\n\n默认值: 'ignore'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n\neg:\n   源数据: [ ..., { id: 1, parentId: 1234 } ]\n     当源数据中不包含 parentId 为 1234 节点时, id=1的这个节点即为孤儿节点\n   当 orphansParent='ignore' 时, 返回结果示例如下: (该节点被作为一级节点返回)\n       [\n         ...,\n         { id: 1, parentId: 1234 }\n       ]\n   当 orphansParent='create' 时, 返回结果示例如下: (该节点的父节点被创建 并 作为一级节点返回)\n       [\n         ...,\n         {\n           id: 1234,\n           children: [ { id: 1, parentId: 1234 } ]\n         }\n       ]\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 170,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "stringLiteral",
+										"value": "ignore"
+									},
+									{
+										"type": "stringLiteral",
+										"value": "create"
+									}
+								]
+							}
+						},
+						{
+							"id": 79,
+							"name": "orphansPosition",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "孤儿元素们在树结构中的位置 (孤儿元素之前不支持排序)",
+								"text": " head: 孤儿元素放到所有普通元素的前面\n\n tail: 孤儿元素放到所有普通元素的后面\n\n默认值: 'tail'\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 180,
+									"character": 17
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "stringLiteral",
+										"value": "head"
+									},
+									{
+										"type": "stringLiteral",
+										"value": "tail"
+									}
+								]
+							}
+						},
+						{
+							"id": 71,
+							"name": "parentIdKey",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "父 id 的属性名【支持 nested 语法】",
+								"text": "eg: 'parent.id'、'parentId'\n\n默认值: 'parentId'\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 37,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 73,
+							"name": "rootIdValue",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "根节点的 ID 值",
+								"text": "只有当某个普通节点的 parentId 为 null 或 undefined 或 rootIdValue 时, 该节点才会被判定为一级节点\n\n默认值: undefined\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 53,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "null"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								]
+							}
+						},
+						{
+							"id": 75,
+							"name": "sort",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "指定排序规则, 默认值: null",
+								"text": "默认设置: 孤儿项自动设置为一级节点, 并且放到所有普通节点的后面, 普通节点不排序\n\n\n有关孤儿节点的排序的前提是:\n   只有当 孤儿节点的处理方式 orphansHandleType 为 root 或 root-warning 时才会生效\n     因为其他情况下, 孤儿节点会被丢弃, 不包含在结果树中\n多个孤儿节点之间不会相互排序, 只支持使用源数组数据中的默认顺序\n\n\nnull: 不排序, 使用原始数据数组中的顺序, 仅孤儿项后置为一级节点\n\nSortFunction: 自定义排序函数, 注: 也需要处理孤儿项的排序规则 (__is_orphans=true, 代表为孤儿节点)\n\nsortKey: 任意非空字符串, 指定根据哪个属性的值来进行排序\n\nsortType: 'desc' 或 'asc', 配合 sortSortKey 指定的属性名, 来决定是降序 或者 升序, 默认为 asc 即升序\n\n\neg:\n   sort = null: 代表使用默认排序规则, 即普通节点不排序 + 孤儿节点放到所有普通节点的后面\n   sort = function: 代表排序处理完全交由该 function 来进行处理, 包括孤儿节点的排序\n   sort = 'order': 代表使用属性 order 的值进行排序处理(默认升序) + 孤儿节点放到所有普通节点的后面\n         等效于: sort=['order']、sort=['order', 'asc]\n   sort = ['order', 'asc']  与 sort='order' 效果完全一致\n   sort = ['order', 'desc'] 与 sort='order' 效果一致, 唯一不同点: 普通节点按降序处理外\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 94,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "null"
+									},
+									{
+										"type": "reference",
+										"id": 63,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "T"
+											}
+										],
+										"name": "SortFunction"
+									},
+									{
+										"type": "reference",
+										"id": 81,
+										"name": "sortKey"
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"id": 81,
+												"name": "sortKey"
+											}
+										]
+									},
+									{
+										"type": "tuple",
+										"elements": [
+											{
+												"type": "reference",
+												"id": 81,
+												"name": "sortKey"
+											},
+											{
+												"type": "reference",
+												"id": 80,
+												"name": "sortType"
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								72,
+								74,
+								70,
+								77,
+								76,
+								78,
+								79,
+								71,
+								73,
+								75
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 22,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 59,
+					"name": "OrphansStore",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 60,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"indexSignature": [
+						{
+							"id": 61,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 62,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "typeParameter",
+									"name": "T"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 7,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 63,
+					"name": "SortFunction",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 64,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "reference",
+								"id": 55,
+								"name": "TreeItemLike"
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 65,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 66,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "T",
+										"constraint": {
+											"type": "reference",
+											"id": 55,
+											"name": "TreeItemLike"
+										}
+									}
+								},
+								{
+									"id": 67,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "T",
+										"constraint": {
+											"type": "reference",
+											"id": 55,
+											"name": "TreeItemLike"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 18,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 142,
+					"name": "TreeFilterCallback",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 143,
+							"name": "TreeItem",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 144,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 145,
+									"name": "currentItem",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "TreeItem"
+									}
+								},
+								{
+									"id": 146,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 147,
+									"name": "currentArray",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem"
+										}
+									}
+								},
+								{
+									"id": 148,
+									"name": "level",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 149,
+									"name": "globalIndex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 150,
+									"name": "originParent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 143,
+										"name": "TreeItem"
+									}
+								},
+								{
+									"id": 151,
+									"name": "originTree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-filter.ts",
+							"line": 3,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 84,
+					"name": "TreeForEachCallback",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 85,
+							"name": "TreeItem",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "reference",
+								"id": 55,
+								"name": "TreeItemLike"
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 86,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 87,
+									"name": "currentItem",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "TreeItem",
+										"constraint": {
+											"type": "reference",
+											"id": 55,
+											"name": "TreeItemLike"
+										}
+									}
+								},
+								{
+									"id": 88,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 89,
+									"name": "level",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 90,
+									"name": "globalIndex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 91,
+									"name": "parent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 85,
+										"name": "TreeItem"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-for-each.ts",
+							"line": 3,
+							"character": 36
+						}
+					]
+				},
+				{
+					"id": 55,
+					"name": "TreeItemLike",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"indexSignature": [
+						{
+							"id": 57,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 58,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					],
+					"children": [
+						{
+							"id": 56,
+							"name": "children",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/tree/types.ts",
+									"line": 3,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"id": 55,
+									"name": "TreeItemLike"
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								56
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 2,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 110,
+					"name": "TreeItemStore",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 111,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "reference",
+								"id": 107,
+								"name": "ArrayItemLike"
+							}
+						}
+					],
+					"indexSignature": [
+						{
+							"id": 112,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 113,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "typeParameter",
+								"name": "T",
+								"constraint": {
+									"type": "reference",
+									"id": 107,
+									"name": "ArrayItemLike"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/array-to-tree.ts",
+							"line": 16,
+							"character": 30
+						}
+					]
+				},
+				{
+					"id": 121,
+					"name": "TreeMapCallback",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 122,
+							"name": "TreeItem",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"signatures": [
+						{
+							"id": 123,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 124,
+									"name": "currentItem",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeParameter",
+										"name": "TreeItem"
+									}
+								},
+								{
+									"id": 125,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 126,
+									"name": "parent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "typeParameter",
+												"name": "TreeItem"
+											},
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											}
+										]
+									}
+								},
+								{
+									"id": 127,
+									"name": "extra",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 128,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"children": [
+												{
+													"id": 132,
+													"name": "globalIndex",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"comment": {
+														"shortText": "全局索引"
+													},
+													"sources": [
+														{
+															"fileName": "src/tree/tree-map.ts",
+															"line": 27,
+															"character": 17
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 131,
+													"name": "level",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"comment": {
+														"shortText": "当前项所在层级, 从 1 开始"
+													},
+													"sources": [
+														{
+															"fileName": "src/tree/tree-map.ts",
+															"line": 23,
+															"character": 11
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 130,
+													"name": "nextItem",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "src/tree/tree-map.ts",
+															"line": 19,
+															"character": 14
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "typeParameter",
+																"name": "TreeItem"
+															},
+															{
+																"type": "intrinsic",
+																"name": "undefined"
+															}
+														]
+													}
+												},
+												{
+													"id": 133,
+													"name": "originTree",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"comment": {
+														"shortText": "源数据"
+													},
+													"sources": [
+														{
+															"fileName": "src/tree/tree-map.ts",
+															"line": 31,
+															"character": 16
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "typeParameter",
+															"name": "TreeItem"
+														}
+													}
+												},
+												{
+													"id": 129,
+													"name": "previousItem",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "src/tree/tree-map.ts",
+															"line": 18,
+															"character": 18
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "typeParameter",
+																"name": "TreeItem"
+															},
+															{
+																"type": "intrinsic",
+																"name": "undefined"
+															}
+														]
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Variables",
+													"kind": 32,
+													"children": [
+														132,
+														131,
+														130,
+														133,
+														129
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/tree/tree-map.ts",
+													"line": 17,
+													"character": 10
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "typeParameter",
+										"name": "TreeItem"
+									},
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-map.ts",
+							"line": 3,
+							"character": 32
+						}
+					]
+				},
+				{
+					"id": 82,
+					"name": "orphansHandleType",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 16,
+							"character": 29
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "stringLiteral",
+								"value": "error"
+							},
+							{
+								"type": "stringLiteral",
+								"value": "ignore"
+							},
+							{
+								"type": "stringLiteral",
+								"value": "ignore-warning"
+							},
+							{
+								"type": "stringLiteral",
+								"value": "root"
+							},
+							{
+								"type": "stringLiteral",
+								"value": "root-warning"
+							}
+						]
+					}
+				},
+				{
+					"id": 81,
+					"name": "sortKey",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 14,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"id": 55,
+							"name": "TreeItemLike"
+						}
+					}
+				},
+				{
+					"id": 80,
+					"name": "sortType",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/tree/types.ts",
+							"line": 13,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "stringLiteral",
+								"value": "desc"
+							},
+							{
+								"type": "stringLiteral",
+								"value": "asc"
+							}
+						]
+					}
+				},
+				{
+					"id": 114,
+					"name": "arrayToTree",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 115,
+							"name": "arrayToTree",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "将数组转化为树形结构"
+							},
+							"typeParameter": [
+								{
+									"id": 116,
+									"name": "ArrayItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 107,
+										"name": "ArrayItemLike"
+									}
+								},
+								{
+									"id": 117,
+									"name": "TreeItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 118,
+									"name": "array",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "源数据, 对象格式的数组"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "ArrayItem",
+											"constraint": {
+												"type": "reference",
+												"id": 107,
+												"name": "ArrayItemLike"
+											}
+										}
+									}
+								},
+								{
+									"id": 119,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"text": "自定义配置对象\n\n"
+									},
+									"type": {
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "reference",
+												"id": 68,
+												"typeArguments": [
+													{
+														"type": "typeParameter",
+														"name": "TreeItem",
+														"constraint": {
+															"type": "reference",
+															"id": 55,
+															"name": "TreeItemLike"
+														}
+													}
+												],
+												"name": "ArrayToTreeOptions"
+											}
+										],
+										"name": "Partial"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "typeParameter",
+									"name": "TreeItem",
+									"constraint": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/array-to-tree.ts",
+							"line": 44,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 152,
+					"name": "treeFilter",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 153,
+							"name": "treeFilter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"typeParameter": [
+								{
+									"id": 154,
+									"name": "TreeItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 155,
+									"name": "tree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									}
+								},
+								{
+									"id": 156,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 142,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "TreeItem",
+												"constraint": {
+													"type": "reference",
+													"id": 55,
+													"name": "TreeItemLike"
+												}
+											}
+										],
+										"name": "TreeFilterCallback"
+									}
+								},
+								{
+									"id": 157,
+									"name": "childrenKey",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeOperator",
+										"operator": "keyof",
+										"target": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									},
+									"defaultValue": "\"children\""
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "typeParameter",
+									"name": "TreeItem",
+									"constraint": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-filter.ts",
+							"line": 15,
+							"character": 34
+						}
+					]
+				},
+				{
+					"id": 92,
+					"name": "treeForEach",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 93,
+							"name": "treeForEach",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "遍历树中的每个节点, 深度优先原则"
+							},
+							"typeParameter": [
+								{
+									"id": 94,
+									"name": "TreeItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 95,
+									"name": "tree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "树结构数组"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									}
+								},
+								{
+									"id": 96,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "回调函数"
+									},
+									"type": {
+										"type": "reference",
+										"id": 84,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "TreeItem",
+												"constraint": {
+													"type": "reference",
+													"id": 55,
+													"name": "TreeItemLike"
+												}
+											}
+										],
+										"name": "TreeForEachCallback"
+									}
+								},
+								{
+									"id": 97,
+									"name": "childrenKey",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "子节点集合的属性名, 默认为'children'\n"
+									},
+									"type": {
+										"type": "typeOperator",
+										"operator": "keyof",
+										"target": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									},
+									"defaultValue": "\"children\""
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-for-each.ts",
+							"line": 20,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 134,
+					"name": "treeMap",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 135,
+							"name": "treeMap",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"typeParameter": [
+								{
+									"id": 136,
+									"name": "TreeItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 137,
+									"name": "tree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									}
+								},
+								{
+									"id": 138,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 121,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "TreeItem",
+												"constraint": {
+													"type": "reference",
+													"id": 55,
+													"name": "TreeItemLike"
+												}
+											}
+										],
+										"name": "TreeMapCallback"
+									}
+								},
+								{
+									"id": 139,
+									"name": "deleteUndefined",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								},
+								{
+									"id": 140,
+									"name": "childrenKey",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "typeOperator",
+										"operator": "keyof",
+										"target": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									},
+									"defaultValue": "\"children\""
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "typeParameter",
+									"name": "TreeItem",
+									"constraint": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-map.ts",
+							"line": 36,
+							"character": 31
+						}
+					]
+				},
+				{
+					"id": 99,
+					"name": "treeSort",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 100,
+							"name": "treeSort",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"typeParameter": [
+								{
+									"id": 101,
+									"name": "TreeItem",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							],
+							"parameters": [
+								{
+									"id": 102,
+									"name": "tree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "TreeItem",
+											"constraint": {
+												"type": "reference",
+												"id": 55,
+												"name": "TreeItemLike"
+											}
+										}
+									}
+								},
+								{
+									"id": 103,
+									"name": "sortBy",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"id": 63,
+												"typeArguments": [
+													{
+														"type": "typeParameter",
+														"name": "TreeItem",
+														"constraint": {
+															"type": "reference",
+															"id": 55,
+															"name": "TreeItemLike"
+														}
+													}
+												],
+												"name": "SortFunction"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"defaultValue": "\"id\""
+								},
+								{
+									"id": 104,
+									"name": "sortType",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "stringLiteral",
+												"value": "desc"
+											},
+											{
+												"type": "stringLiteral",
+												"value": "asc"
+											}
+										]
+									},
+									"defaultValue": "\"asc\""
+								},
+								{
+									"id": 105,
+									"name": "childrenKey",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\"children\""
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "typeParameter",
+									"name": "TreeItem",
+									"constraint": {
+										"type": "reference",
+										"id": 55,
+										"name": "TreeItemLike"
+									}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/tree/tree-sort.ts",
+							"line": 3,
+							"character": 32
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						107,
+						68,
+						59,
+						63,
+						142,
+						84,
+						55,
+						110,
+						121
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						82,
+						81,
+						80
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						114,
+						152,
+						92,
+						134,
+						99
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/tree/types.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 21,
+			"name": "Date Helper",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/date/format-date.ts",
+			"children": [
+				{
+					"id": 22,
+					"name": "formatDate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 23,
+							"name": "formatDate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "日期格式化",
+								"text": "YYYY: 年份-4位, eg: 2021\nYY:   年份-2位, eg: 21\n\nMM:   月份-2位, eg: 01、12\nM:    月份,     eg: 1、12\n\nDD:   日期-2位, eg: 01、30\nD:    日期,     eg: 1、30\n\nHH:   小时-2位, eg: 01、24\nH:    小时      eg: 1、12\n\nmm:   分钟-2位, eg: 01、60\nm:\n\nss:   秒钟-2位, eg: 01、60\ns:    秒钟      eg: 1、60\n\nSSS: 毫秒-3位, eg: 001、999\nS:    毫秒      eg: 1、99、999\n\n// ddd:  天数-3位, eg: 001、365\n// d:    天数      eg: 1、99、365\n"
+							},
+							"parameters": [
+								{
+									"id": 24,
+									"name": "time",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "日期、时间、日期字符串"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											}
+										]
+									}
+								},
+								{
+									"id": 25,
+									"name": "format",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "期望的格式\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\"YYYY-MM-DD HH:mm:ss\""
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/format-date.ts",
+							"line": 33,
+							"character": 34
+						}
+					]
+				},
+				{
+					"id": 37,
+					"name": "timeBetweenDay",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 38,
+							"name": "timeBetweenDay",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "获得某两天之间的开始毫秒与结束毫秒的时间戳",
+								"returns": "时间戳数组 - start: 开始月份的第0毫秒, end: 结束月份的最后一毫秒\n"
+							},
+							"parameters": [
+								{
+									"id": 39,
+									"name": "startTime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "开始月份中的任意一个时刻"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 40,
+									"name": "endTime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "结束月份中的任意一个时刻"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "tuple",
+								"elements": [
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 54,
+							"character": 30
+						}
+					]
+				},
+				{
+					"id": 27,
+					"name": "timeBetweenMonth",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 28,
+							"name": "timeBetweenMonth",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "获得两个月份之间的开始毫秒与结束毫秒的时间戳",
+								"returns": "时间戳数组 - start: 开始月份的第0毫秒, end: 结束月份的最后一毫秒\n"
+							},
+							"parameters": [
+								{
+									"id": 29,
+									"name": "startTime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "开始月份中的任意一个时刻"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 30,
+									"name": "endTime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "结束月份中的任意一个时刻"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "tuple",
+								"elements": [
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 10,
+							"character": 32
+						}
+					]
+				},
+				{
+					"id": 44,
+					"name": "timeDayEnd",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 45,
+							"name": "timeDayEnd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 46,
+									"name": "day",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 76,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 41,
+					"name": "timeDayStart",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 42,
+							"name": "timeDayStart",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 43,
+									"name": "day",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 72,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 50,
+					"name": "timeIsBetweenMonth",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 51,
+							"name": "timeIsBetweenMonth",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "两个时间是否超过1个月"
+							},
+							"parameters": [
+								{
+									"id": 52,
+									"name": "time1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 53,
+									"name": "time2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 101,
+							"character": 34
+						}
+					]
+				},
+				{
+					"id": 47,
+					"name": "timeLastMonth",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 48,
+							"name": "timeLastMonth",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "获取指定时间或当前时间的上个月同一时间"
+							},
+							"parameters": [
+								{
+									"id": 49,
+									"name": "start",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "Date 对象\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"defaultValue": "new Date()"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Date"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 86,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": "timeMonthEnd",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 35,
+							"name": "timeMonthEnd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 36,
+									"name": "time",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 38,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": "timeMonthStart",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 32,
+							"name": "timeMonthStart",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 33,
+									"name": "time",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "reference",
+												"name": "Date"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/date/index.ts",
+							"line": 33,
+							"character": 30
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						22,
+						37,
+						27,
+						44,
+						41,
+						50,
+						47,
+						34,
+						31
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/date/format-date.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 243,
+			"name": "File",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/other/file-download.ts",
+			"comment": {
+				"shortText": "文件相关函数: 文件下载、文件上传"
+			},
+			"children": [
+				{
+					"id": 247,
+					"name": "FileDownloadParams",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 263,
+							"name": "data",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 34,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 266,
+								"name": "FileDownloadParamsData"
+							}
+						},
+						{
+							"id": 254,
+							"name": "errorCb",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 30,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 255,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"signatures": [
+												{
+													"id": 256,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {
+														"isExported": true
+													},
+													"parameters": [
+														{
+															"id": 257,
+															"name": "err",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {
+																"isExported": true
+															},
+															"type": {
+																"type": "reference",
+																"id": 198,
+																"name": "AjaxError"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "void"
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": 250,
+							"name": "fileName",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 25,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							}
+						},
+						{
+							"id": 258,
+							"name": "finalCb",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 31,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 259,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"signatures": [
+												{
+													"id": 260,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {
+														"isExported": true
+													},
+													"parameters": [
+														{
+															"id": 261,
+															"name": "err",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"type": {
+																"type": "reference",
+																"id": 198,
+																"name": "AjaxError"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "void"
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": 252,
+							"name": "headers",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 27,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 270,
+								"name": "FileDownloadParamsHeaders"
+							}
+						},
+						{
+							"id": 264,
+							"name": "isFormData",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 35,
+									"character": 12
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "false"
+									},
+									{
+										"type": "intrinsic",
+										"name": "true"
+									}
+								]
+							}
+						},
+						{
+							"id": 262,
+							"name": "method",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 33,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "stringLiteral",
+										"value": "GET"
+									},
+									{
+										"type": "stringLiteral",
+										"value": "POST"
+									}
+								]
+							}
+						},
+						{
+							"id": 249,
+							"name": "params",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 24,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 244,
+								"name": "UrlQueryParams"
+							}
+						},
+						{
+							"id": 253,
+							"name": "successCb",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 29,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Function"
+							}
+						},
+						{
+							"id": 248,
+							"name": "url",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 23,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 251,
+							"name": "withCredentials",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 26,
+									"character": 17
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									{
+										"type": "reference",
+										"id": 274,
+										"name": "WithCredentialsFunction"
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								263,
+								254,
+								250,
+								258,
+								252,
+								264,
+								262,
+								249,
+								253,
+								248,
+								251
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 22,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 244,
+					"name": "UrlQueryParams",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"indexSignature": [
+						{
+							"id": 245,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 246,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 265,
+								"name": "UrlQueryParamValueType"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 14,
+							"character": 31
+						}
+					]
+				},
+				{
+					"id": 266,
+					"name": "FileDownloadParamsData",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 18,
+							"character": 34
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Array"
+							},
+							{
+								"type": "reflection",
+								"declaration": {
+									"id": 267,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {
+										"isExported": true
+									},
+									"indexSignature": [
+										{
+											"id": 268,
+											"name": "__index",
+											"kind": 8192,
+											"kindString": "Index signature",
+											"flags": {
+												"isExported": true
+											},
+											"parameters": [
+												{
+													"id": 269,
+													"name": "key",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExported": true
+													},
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/other/file-download.ts",
+											"line": 18,
+											"character": 49
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": 270,
+					"name": "FileDownloadParamsHeaders",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 19,
+							"character": 37
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 271,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"indexSignature": [
+								{
+									"id": 272,
+									"name": "__index",
+									"kind": 8192,
+									"kindString": "Index signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 273,
+											"name": "key",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 19,
+									"character": 39
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 265,
+					"name": "UrlQueryParamValueType",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 12,
+							"character": 34
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "intrinsic",
+								"name": "string"
+							},
+							{
+								"type": "intrinsic",
+								"name": "number"
+							},
+							{
+								"type": "intrinsic",
+								"name": "boolean"
+							},
+							{
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							},
+							{
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": 274,
+					"name": "WithCredentialsFunction",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 20,
+							"character": 35
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 275,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 276,
+									"name": "__call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 277,
+											"name": "url",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 278,
+											"name": "method",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "stringLiteral",
+														"value": "GET"
+													},
+													{
+														"type": "stringLiteral",
+														"value": "POST"
+													}
+												]
+											}
+										},
+										{
+											"id": 279,
+											"name": "isFormData",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 20,
+									"character": 37
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 280,
+					"name": "fileDownload",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 281,
+							"name": "fileDownload",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 282,
+									"name": "downloadParams",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 247,
+										"name": "FileDownloadParams"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 38,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 283,
+					"name": "getSuggestFileName",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 284,
+							"name": "getSuggestFileName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 285,
+									"name": "req",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "XMLHttpRequest"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/file-download.ts",
+							"line": 79,
+							"character": 34
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						247,
+						244
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						266,
+						270,
+						265,
+						274
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						280,
+						283
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/other/file-download.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "IdCard",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/china/idcard.ts",
+			"comment": {
+				"shortText": "身份证相关函数"
+			},
+			"children": [
+				{
+					"id": 2,
+					"name": "validIdCard",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 3,
+							"name": "validIdCard",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "身份证号的合法校验\n - 注意: 合规并不代表身份证号真实存在"
+							},
+							"parameters": [
+								{
+									"id": 4,
+									"name": "idcard",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "身份证号\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/china/idcard.ts",
+							"line": 47,
+							"character": 27
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/china/idcard.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 158,
+			"name": "Math Helper",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/number/index.ts",
+			"children": [
+				{
+					"id": 159,
+					"name": "accAdd",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 160,
+							"name": "accAdd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "加法函数"
+							},
+							"parameters": [
+								{
+									"id": 161,
+									"name": "num1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 162,
+									"name": "num2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 163,
+									"name": "rest",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isRest": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/number/index.ts",
+							"line": 21,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 174,
+					"name": "accDiv",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 175,
+							"name": "accDiv",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "除法函数"
+							},
+							"parameters": [
+								{
+									"id": 176,
+									"name": "num1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 177,
+									"name": "num2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "1"
+								},
+								{
+									"id": 178,
+									"name": "rest",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isRest": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/number/index.ts",
+							"line": 95,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 169,
+					"name": "accMulti",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 170,
+							"name": "accMulti",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "乘法函数"
+							},
+							"parameters": [
+								{
+									"id": 171,
+									"name": "num1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 172,
+									"name": "num2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "1"
+								},
+								{
+									"id": 173,
+									"name": "rest",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isRest": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/number/index.ts",
+							"line": 75,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 164,
+					"name": "accSub",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 165,
+							"name": "accSub",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "减法函数"
+							},
+							"parameters": [
+								{
+									"id": 166,
+									"name": "num1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 167,
+									"name": "num2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 168,
+									"name": "rest",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isRest": true
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/number/index.ts",
+							"line": 48,
+							"character": 22
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						159,
+						174,
+						169,
+						164
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/number/index.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "Others",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/utils/index.ts",
+			"children": [
+				{
+					"id": 210,
+					"name": "AbortError",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 212,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 213,
+									"name": "new AbortError",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 214,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "string"
+													}
+												]
+											}
+										},
+										{
+											"id": 215,
+											"name": "req",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "XMLHttpRequest"
+											}
+										},
+										{
+											"id": 216,
+											"name": "code",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 210,
+										"name": "AbortError"
+									},
+									"overwrites": {
+										"type": "reference",
+										"id": 201,
+										"name": "AjaxError.__constructor"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 13,
+									"character": 21
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"id": 201,
+								"name": "AjaxError.__constructor"
+							}
+						},
+						{
+							"id": 217,
+							"name": "code",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 2,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 199,
+								"name": "AjaxError.code"
+							}
+						},
+						{
+							"id": 219,
+							"name": "message",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 974,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 207,
+								"name": "Error.message"
+							}
+						},
+						{
+							"id": 211,
+							"name": "name",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 13,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"defaultValue": "\"AbortError\"",
+							"overwrites": {
+								"type": "reference",
+								"id": 206,
+								"name": "Error.name"
+							}
+						},
+						{
+							"id": 218,
+							"name": "req",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 3,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "XMLHttpRequest"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 200,
+								"name": "AjaxError.req"
+							}
+						},
+						{
+							"id": 220,
+							"name": "stack",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 975,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 208,
+								"name": "Error.stack"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								212
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								217,
+								219,
+								211,
+								218,
+								220
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/errors.ts",
+							"line": 12,
+							"character": 23
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"id": 198,
+							"name": "AjaxError"
+						}
+					]
+				},
+				{
+					"id": 198,
+					"name": "AjaxError",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 201,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 202,
+									"name": "new AjaxError",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 203,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "string"
+													}
+												]
+											}
+										},
+										{
+											"id": 204,
+											"name": "req",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "XMLHttpRequest"
+											}
+										},
+										{
+											"id": 205,
+											"name": "code",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 198,
+										"name": "AjaxError"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 3,
+									"character": 23
+								}
+							]
+						},
+						{
+							"id": 199,
+							"name": "code",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 2,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						},
+						{
+							"id": 207,
+							"name": "message",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 974,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 207,
+								"name": "Error.message"
+							}
+						},
+						{
+							"id": 206,
+							"name": "name",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 973,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 206,
+								"name": "Error.name"
+							}
+						},
+						{
+							"id": 200,
+							"name": "req",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 3,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "XMLHttpRequest"
+							}
+						},
+						{
+							"id": 208,
+							"name": "stack",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 975,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 208,
+								"name": "Error.stack"
+							}
+						},
+						{
+							"id": 209,
+							"name": "Error",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isStatic": true,
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 984,
+									"character": 17
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "ErrorConstructor"
+							},
+							"extendedBy": [
+								{
+									"type": "reference",
+									"id": 198,
+									"name": "AjaxError"
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								201
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								199,
+								207,
+								206,
+								200,
+								208,
+								209
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/errors.ts",
+							"line": 1,
+							"character": 22
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"id": 209,
+							"name": "Error"
+						}
+					],
+					"extendedBy": [
+						{
+							"type": "reference",
+							"id": 210,
+							"name": "AbortError"
+						},
+						{
+							"type": "reference",
+							"id": 221,
+							"name": "TimeOutError"
+						},
+						{
+							"type": "reference",
+							"id": 232,
+							"name": "NotSuccessError"
+						}
+					]
+				},
+				{
+					"id": 232,
+					"name": "NotSuccessError",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 234,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 235,
+									"name": "new NotSuccessError",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 236,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "string"
+													}
+												]
+											}
+										},
+										{
+											"id": 237,
+											"name": "req",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "XMLHttpRequest"
+											}
+										},
+										{
+											"id": 238,
+											"name": "code",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 232,
+										"name": "NotSuccessError"
+									},
+									"overwrites": {
+										"type": "reference",
+										"id": 201,
+										"name": "AjaxError.__constructor"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 26,
+									"character": 26
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"id": 201,
+								"name": "AjaxError.__constructor"
+							}
+						},
+						{
+							"id": 239,
+							"name": "code",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 2,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 199,
+								"name": "AjaxError.code"
+							}
+						},
+						{
+							"id": 241,
+							"name": "message",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 974,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 207,
+								"name": "Error.message"
+							}
+						},
+						{
+							"id": 233,
+							"name": "name",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 26,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"defaultValue": "\"NotSuccessError\"",
+							"overwrites": {
+								"type": "reference",
+								"id": 206,
+								"name": "Error.name"
+							}
+						},
+						{
+							"id": 240,
+							"name": "req",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 3,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "XMLHttpRequest"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 200,
+								"name": "AjaxError.req"
+							}
+						},
+						{
+							"id": 242,
+							"name": "stack",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 975,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 208,
+								"name": "Error.stack"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								234
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								239,
+								241,
+								233,
+								240,
+								242
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/errors.ts",
+							"line": 25,
+							"character": 28
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"id": 198,
+							"name": "AjaxError"
+						}
+					]
+				},
+				{
+					"id": 221,
+					"name": "TimeOutError",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 223,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 224,
+									"name": "new TimeOutError",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 225,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "string"
+													}
+												]
+											}
+										},
+										{
+											"id": 226,
+											"name": "req",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "XMLHttpRequest"
+											}
+										},
+										{
+											"id": 227,
+											"name": "code",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true,
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "undefined"
+													},
+													{
+														"type": "intrinsic",
+														"name": "number"
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 221,
+										"name": "TimeOutError"
+									},
+									"overwrites": {
+										"type": "reference",
+										"id": 201,
+										"name": "AjaxError.__constructor"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 19,
+									"character": 23
+								}
+							],
+							"overwrites": {
+								"type": "reference",
+								"id": 201,
+								"name": "AjaxError.__constructor"
+							}
+						},
+						{
+							"id": 228,
+							"name": "code",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 2,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 199,
+								"name": "AjaxError.code"
+							}
+						},
+						{
+							"id": 230,
+							"name": "message",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 974,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 207,
+								"name": "Error.message"
+							}
+						},
+						{
+							"id": 222,
+							"name": "name",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 19,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"defaultValue": "\"TimeOutError\"",
+							"overwrites": {
+								"type": "reference",
+								"id": 206,
+								"name": "Error.name"
+							}
+						},
+						{
+							"id": 229,
+							"name": "req",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "src/utils/errors.ts",
+									"line": 3,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "XMLHttpRequest"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 200,
+								"name": "AjaxError.req"
+							}
+						},
+						{
+							"id": 231,
+							"name": "stack",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 975,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"id": 208,
+								"name": "Error.stack"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								223
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								228,
+								230,
+								222,
+								229,
+								231
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/errors.ts",
+							"line": 18,
+							"character": 25
+						}
+					],
+					"extendedTypes": [
+						{
+							"type": "reference",
+							"id": 198,
+							"name": "AjaxError"
+						}
+					]
+				},
+				{
+					"id": 16,
+					"name": "IsType",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 17,
+							"name": "T",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/index.ts",
+							"line": 28,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 18,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 19,
+									"name": "__call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 20,
+											"name": "val",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "predicate",
+										"name": "val",
+										"asserts": false,
+										"targetType": {
+											"type": "typeParameter",
+											"name": "T"
+										}
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/utils/index.ts",
+									"line": 28,
+									"character": 23
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 287,
+					"name": "formatMoney",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 288,
+							"name": "formatMoney",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 289,
+									"name": "money",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 290,
+									"name": "__namedParameters",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"originalName": "__1",
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 291,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"children": [
+												{
+													"id": 292,
+													"name": "decimal",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "src/other/format-money.ts",
+															"line": 2,
+															"character": 60
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "intrinsic",
+																"name": "undefined"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															}
+														]
+													}
+												},
+												{
+													"id": 293,
+													"name": "trim",
+													"kind": 32,
+													"kindString": "Variable",
+													"flags": {
+														"isExported": true
+													},
+													"sources": [
+														{
+															"fileName": "src/other/format-money.ts",
+															"line": 2,
+															"character": 66
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "intrinsic",
+																"name": "undefined"
+															},
+															{
+																"type": "intrinsic",
+																"name": "false"
+															},
+															{
+																"type": "intrinsic",
+																"name": "true"
+															}
+														]
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Variables",
+													"kind": 32,
+													"children": [
+														292,
+														293
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/other/format-money.ts",
+													"line": 2,
+													"character": 50
+												}
+											]
+										}
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/format-money.ts",
+							"line": 2,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 295,
+					"name": "hearCheck",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 296,
+							"name": "hearCheck",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "心跳检测"
+							},
+							"parameters": [
+								{
+									"id": 297,
+									"name": "checkSyncFn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "检测方法-只能返回 true or false"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Function"
+									}
+								},
+								{
+									"id": 298,
+									"name": "heartTime",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "心跳间隔, 单位毫秒 - 默认 500ms"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "500"
+								},
+								{
+									"id": 299,
+									"name": "timeout",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "超时时间, 单位毫秒 - 默认 30000ms, 即30秒\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "30000"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/heart-check.ts",
+							"line": 8,
+							"character": 33
+						}
+					]
+				},
+				{
+					"id": 6,
+					"name": "padLeft",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 7,
+							"name": "padLeft",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 8,
+									"name": "origin",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 9,
+									"name": "digit",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 10,
+									"name": "holder",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\" \""
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/index.ts",
+							"line": 2,
+							"character": 23
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": "padRight",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 12,
+							"name": "padRight",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 13,
+									"name": "origin",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 14,
+									"name": "digit",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 15,
+									"name": "holder",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "\" \""
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/index.ts",
+							"line": 15,
+							"character": 24
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						210,
+						198,
+						232,
+						221
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						16
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						287,
+						295,
+						6,
+						11
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/utils/index.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 179,
+			"name": "Url",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/Users/xueboren/MyDream/abcdefg/root-all-projects/packages-npm/xtools_js/src/other/url.ts",
+			"comment": {
+				"shortText": "url 辅助工具"
+			},
+			"children": [
+				{
+					"id": 184,
+					"name": "urlAddParams",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 185,
+							"name": "urlAddParams",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 186,
+									"name": "url",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 187,
+									"name": "param",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 188,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"indexSignature": [
+												{
+													"id": 189,
+													"name": "__index",
+													"kind": 8192,
+													"kindString": "Index signature",
+													"flags": {
+														"isExported": true
+													},
+													"parameters": [
+														{
+															"id": 190,
+															"name": "key",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {
+																"isExported": true
+															},
+															"type": {
+																"type": "intrinsic",
+																"name": "string"
+															}
+														}
+													],
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "intrinsic",
+																"name": "string"
+															},
+															{
+																"type": "intrinsic",
+																"name": "number"
+															},
+															{
+																"type": "intrinsic",
+																"name": "boolean"
+															},
+															{
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "string"
+																}
+															},
+															{
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "number"
+																}
+															}
+														]
+													}
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/other/url.ts",
+													"line": 47,
+													"character": 48
+												}
+											]
+										}
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/url.ts",
+							"line": 47,
+							"character": 28
+						}
+					]
+				},
+				{
+					"id": 180,
+					"name": "urlGetFileName",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 181,
+							"name": "urlGetFileName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "获取最终文件名"
+							},
+							"parameters": [
+								{
+									"id": 182,
+									"name": "urlOrFileName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 183,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"comment": {
+										"text": "指定文件名(可选)\n\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/url.ts",
+							"line": 15,
+							"character": 30
+						}
+					]
+				},
+				{
+					"id": 191,
+					"name": "urlGetParams",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 192,
+							"name": "urlGetParams",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 193,
+									"name": "url",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 194,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {
+										"isExported": true
+									},
+									"indexSignature": [
+										{
+											"id": 195,
+											"name": "__index",
+											"kind": 8192,
+											"kindString": "Index signature",
+											"flags": {
+												"isExported": true
+											},
+											"parameters": [
+												{
+													"id": 196,
+													"name": "key",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExported": true
+													},
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											],
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/url.ts",
+							"line": 73,
+							"character": 28
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						184,
+						180,
+						191
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/other/url.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"kind": 1,
+			"children": [
+				54,
+				21,
+				243,
+				1,
+				158,
+				5,
+				179
+			]
+		}
+	]
+}
