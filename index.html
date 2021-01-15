@@ -62,84 +62,21 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#xtoolsjs" id="xtoolsjs" style="color: inherit; text-decoration: none;">
-					<h1><code>xtools.js</code></h1>
+				<a href="#xtools_js" id="xtools_js" style="color: inherit; text-decoration: none;">
+					<h1><code>xtools_js</code></h1>
 				</a>
-				<a href="#功能概览" id="功能概览" style="color: inherit; text-decoration: none;">
-					<h2>功能概览</h2>
-				</a>
-				<ul>
-					<li>数学计算<ul>
-							<li><code>accAdd(n1, n2, n3, ...)</code>: 将参数依次相加, n1 + n2 + n3 + ...</li>
-							<li><code>accSub(n1, n2, n3, ...)</code>: 将参数依次相减, n1 - n2 - n3 -...</li>
-							<li><code>accMulti(n1, n2, n3, ...)</code>: 将参数依次相乘, n1 * n2 * n3 * ...</li>
-							<li><code>accDiv(n1, n2, n3, ...)</code>: 将参数依次相除, n1 / n2 / n3 / ...</li>
-						</ul>
-					</li>
-					<li>数组与树<ul>
-							<li><code>arrayToTree(arrData, options)</code>: 将数组转化为树</li>
-							<li><code>treeForEach(tree, callback, childrenKey)</code>: 依顺序遍历树中的第一项, 并执行 callback</li>
-						</ul>
-					</li>
-					<li>日期相关<ul>
-							<li><code>timeBetweenMonth(startTime, endTime): [number, number]</code>: 返回两个时间所在月份区间的第一毫秒与最后一毫秒 (时间戳)</li>
-							<li><code>timeBetweenDay(startTime, endTime): [number, number]</code>: 返回两个时间所在日期区间的第一毫秒与最后一毫秒 (时间戳)</li>
-							<li><code>timeDayStart(time): number</code>: 该时间当天的第一毫秒</li>
-							<li><code>timeDayEnd(time): number</code>: 该时间当天的最后一毫秒</li>
-							<li><code>formatDate(time, &#39;YYYY-MM-DD HH:mm:ss&#39;)</code>: 格式化该时间</li>
-						</ul>
-					</li>
-					<li><code>validIdCard(idCardString): boolean</code>: 校验身份证是否合法</li>
-					<li><code>heartCheck(fn, heartTime? = 500, timeout? = 30000)</code>: 心跳检测器</li>
-					<li><code>formatMoney(money)</code>: 格式化金额, 返回格式后的字符串</li>
-				</ul>
-				<a href="#数组-ampamp-树-操作" id="数组-ampamp-树-操作" style="color: inherit; text-decoration: none;">
-					<h2>数组 &amp;&amp; 树 操作</h2>
-				</a>
-				<a href="#arraytotreearrdata-options-数组转树" id="arraytotreearrdata-options-数组转树" style="color: inherit; text-decoration: none;">
-					<h3><code>arrayToTree(arrData, options)</code> 数组转树</h3>
-				</a>
-				<p><code>options</code> 参数用法, 请参考 <a href="src/tree/types.ts">ArrayToTreeOptions 定义</a></p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { arrayToTree } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;xtools_js&#x27;</span>
+				<p>实用 JS 工具库, <a href="https://borenxue.github.io/xtools_js/">文档地址</a>, <a href="https://www.npmjs.com/package/xtools_js">npmjs.com 链接</a></p>
+				<br/>
+				<blockquote>
+					<p>安装依赖</p>
+				</blockquote>
+				<pre><code class="language-shell">npm install -S xtools_js</code></pre>
+				<blockquote>
+					<p>使用</p>
+				</blockquote>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { arrayToTree, treeForEach, accAdd } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;xtools_js&#x27;</span>
 
-<span class="hljs-keyword">const</span> arr = [
-  { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">0</span> },
-  { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">1</span> },
-  { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">1</span> },
-  { <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">parentId</span>: <span class="hljs-number">2</span> },
-]
-<span class="hljs-keyword">const</span> tree = arrayToTree(arr, { <span class="hljs-attr">rootIdValue</span>: <span class="hljs-number">0</span> })
-
-<span class="hljs-comment">// tree 结果如下:</span>
-<span class="hljs-comment">// [</span>
-<span class="hljs-comment">//   { &quot;id&quot;: 1, &quot;parentId&quot;: 0,</span>
-<span class="hljs-comment">//     &quot;children&quot;: [</span>
-<span class="hljs-comment">//         { &quot;id&quot;: 2, &quot;parentId&quot;: 1,</span>
-<span class="hljs-comment">//           &quot;children&quot;: [</span>
-<span class="hljs-comment">//               { &quot;id&quot;: 4, &quot;parentId&quot;: 2, &quot;children&quot;: [] }</span>
-<span class="hljs-comment">//           ],</span>
-<span class="hljs-comment">//         },</span>
-<span class="hljs-comment">//         { &quot;id&quot;: 3, &quot;parentId&quot;: 1, &quot;children&quot;: [] }</span>
-<span class="hljs-comment">//     ],</span>
-<span class="hljs-comment">//   }</span>
-<span class="hljs-comment">// ]</span></code></pre>
-				<a href="#treeforeachtree-callback-childrenkey-遍历树并今次执行-callback" id="treeforeachtree-callback-childrenkey-遍历树并今次执行-callback" style="color: inherit; text-decoration: none;">
-					<h3><code>treeForEach(tree, callback, childrenKey)</code> 遍历树并今次执行 callback</h3>
-				</a>
-				<ul>
-					<li>遍历的顺序: 将 tree 转为格式化的 json 文件后, 从上往下阅读的顺序即是遍历顺序</li>
-					<li>tree 为数组格式</li>
-					<li>childrenKey 为可选参数, 默认值为 <code>&#39;children&#39;</code></li>
-					<li>回调函数中的 parent: 因父节点先于子节点被遍历, 所以该 parent 为 callback 函数中修改后值</li>
-				</ul>
-				<pre><code class="language-javascript">treeForEach(tree, <span class="hljs-function">(<span class="hljs-params">item, index, level, globalIndex, parent</span>) =&gt;</span> {
-  <span class="hljs-comment">// item: 当前项</span>
-  <span class="hljs-comment">// index: 当前项在同级中的顺序</span>
-  <span class="hljs-comment">// level: 当前项所在层级, 从1开始</span>
-  <span class="hljs-comment">// globalIndex: 当前项在 forEach 中的遍历顺序, 从0开始</span>
-  <span class="hljs-comment">// parent: 当前项的父节点</span>
-})
-</code></pre>
+<span class="hljs-comment">// ...</span></code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
