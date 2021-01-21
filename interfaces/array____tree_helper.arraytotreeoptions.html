@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>函数 <a href="../modules/array____tree_helper.html#arraytotree">arrayToTree</a> 的选项</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -113,7 +120,7 @@
 					<div class="tsd-signature tsd-kind-icon">children<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L44">src/tree/types.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L58">src/tree/types.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -129,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<wbr>Field<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L60">src/tree/types.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L74">src/tree/types.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -145,7 +152,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L28">src/tree/types.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L42">src/tree/types.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">orphans<wbr>Flag<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L138">src/tree/types.ts:138</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L151">src/tree/types.ts:151</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +178,7 @@
 						<p>   string: 属性名, 为空字符串时等同于 null</p>
 						<p>   null: 不添加标记</p>
 						<p>默认值: &#39;__is_orphans&#39;</p>
-						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据
+						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>
 						额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的</p>
 					</div>
 				</section>
@@ -181,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">orphans<wbr>Handle<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="array____tree_helper.arraytotreeoptions.html#orphanshandletype" class="tsd-signature-type">orphansHandleType</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L123">src/tree/types.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L136">src/tree/types.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -189,14 +196,14 @@
 							<p>孤儿节点的处理方式即检测到源数据中包含孤儿节点时 如何处理这些节点</p>
 						</div>
 						<p>默认值为 &#39;root-warning&#39;</p>
-						<p>   error: 程序抛出异常</p>
-						<p>   ignore: 直接忽略孤儿节点, 不抛异常、不警告、不返回</p>
-						<p>   ignore-warning: 不抛异常、不返回, 但会在控制台警告(console.warn)</p>
-						<p>   root: 不抛异常、不警告、但会作为一级节点返回
+						<p>   <code>error</code>: 程序抛出异常</p>
+						<p>   <code>ignore</code>: 直接忽略孤儿节点, 不抛异常、不警告、不返回</p>
+						<p>   <code>ignore-warning</code>: 不抛异常、不返回, 但会在控制台警告(console.warn)</p>
+						<p>   <code>root</code>: 不抛异常、不警告、但会作为一级节点返回<br/>
 						通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点</p>
-						<p>   root-warning: 不抛异常、但会在控制台警告(console.warn)、且会作为一级节点返回
+						<p>   <code>root-warning</code>: 不抛异常、但会在控制台警告(console.warn)、且会作为一级节点返回
 						通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点</p>
-						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据
+						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>
 						额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的</p>
 					</div>
 				</section>
@@ -206,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">orphans<wbr>Parent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"ignore"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"create"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L170">src/tree/types.ts:170</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L176">src/tree/types.ts:176</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,24 +223,28 @@
 						<p>   ignore: 直接将孤儿节点作为一级节点返回</p>
 						<p>   create: 创建一个父节点, 将孤儿节点放到 children 数组中, 并将创建的父节点作为一级节点返回</p>
 						<p>默认值: &#39;ignore&#39;</p>
-						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据
+						<p>孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>
 						额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的</p>
-						<p>eg:
-							源数据: [ ..., { id: 1, parentId: 1234 } ]
-							当源数据中不包含 parentId 为 1234 节点时, id=1的这个节点即为孤儿节点
-							当 orphansParent=&#39;ignore&#39; 时, 返回结果示例如下: (该节点被作为一级节点返回)
-							[
-							...,
-							{ id: 1, parentId: 1234 }
-							]
-							当 orphansParent=&#39;create&#39; 时, 返回结果示例如下: (该节点的父节点被创建 并 作为一级节点返回)
-							[
-							...,
-							{
-							id: 1234,
-							children: [ { id: 1, parentId: 1234 } ]
-							}
-						]</p>
+						<a href="#举例说明" id="举例说明" style="color: inherit; text-decoration: none;">
+							<h3>举例说明</h3>
+						</a>
+						<ul>
+							<li>什么是<code>孤儿节点</code>?<ul>
+									<li>源数据: <code>[ ..., { id: 1, parentId: 1234 } ]</code><ul>
+											<li>当源数据中不包含 parentId 为 1234 节点时, id=1的这个节点即为孤儿节点<br></li>
+										</ul>
+									</li>
+									<li>当 orphansParent=&#39;ignore&#39; 时, 返回结果示例如下: (该节点被作为一级节点返回)<ul>
+											<li><code>[ ..., { id: 1, parentId: 1234 }]</code></li>
+										</ul>
+									</li>
+									<li>当 orphansParent=&#39;create&#39; 时, 返回结果示例如下: (该节点的父节点被创建 并 作为一级节点返回)<ul>
+											<li><code>[ ..., { id: 1234, children: [ { id: 1, parentId: 1234 } ] } ]</code></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -242,7 +253,7 @@
 					<div class="tsd-signature tsd-kind-icon">orphans<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"head"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"tail"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L180">src/tree/types.ts:180</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L186">src/tree/types.ts:186</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,7 +271,7 @@
 					<div class="tsd-signature tsd-kind-icon">parent<wbr>IdKey<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L37">src/tree/types.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L51">src/tree/types.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -277,7 +288,7 @@
 					<div class="tsd-signature tsd-kind-icon">root<wbr>IdValue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L53">src/tree/types.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L67">src/tree/types.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -294,29 +305,48 @@
 					<div class="tsd-signature tsd-kind-icon">sort<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="array____tree_helper.sortfunction.html" class="tsd-signature-type">SortFunction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="../modules/array____tree_helper.html#sortkey" class="tsd-signature-type">sortKey</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><a href="../modules/array____tree_helper.html#sortkey" class="tsd-signature-type">sortKey</a><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><a href="../modules/array____tree_helper.html#sortkey" class="tsd-signature-type">sortKey</a><span class="tsd-signature-symbol">, </span><a href="../modules/array____tree_helper.html#sorttype" class="tsd-signature-type">sortType</a><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L94">src/tree/types.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L107">src/tree/types.ts:107</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>指定排序规则, 默认值: null</p>
 						</div>
-						<p>默认设置: 孤儿项自动设置为一级节点, 并且放到所有普通节点的后面, 普通节点不排序</p>
-						<p>有关孤儿节点的排序的前提是:
-							只有当 孤儿节点的处理方式 orphansHandleType 为 root 或 root-warning 时才会生效
-							因为其他情况下, 孤儿节点会被丢弃, 不包含在结果树中
-						多个孤儿节点之间不会相互排序, 只支持使用源数组数据中的默认顺序</p>
-						<p>null: 不排序, 使用原始数据数组中的顺序, 仅孤儿项后置为一级节点</p>
-						<p>SortFunction: 自定义排序函数, 注: 也需要处理孤儿项的排序规则 (__is_orphans=true, 代表为孤儿节点)</p>
-						<p>sortKey: 任意非空字符串, 指定根据哪个属性的值来进行排序</p>
-						<p>sortType: &#39;desc&#39; 或 &#39;asc&#39;, 配合 sortSortKey 指定的属性名, 来决定是降序 或者 升序, 默认为 asc 即升序</p>
-						<p>eg:
-							sort = null: 代表使用默认排序规则, 即普通节点不排序 + 孤儿节点放到所有普通节点的后面
-							sort = function: 代表排序处理完全交由该 function 来进行处理, 包括孤儿节点的排序
-							sort = &#39;order&#39;: 代表使用属性 order 的值进行排序处理(默认升序) + 孤儿节点放到所有普通节点的后面
-							等效于: sort=[&#39;order&#39;]、sort=[&#39;order&#39;, &#39;asc]
-							sort = [&#39;order&#39;, &#39;asc&#39;]  与 sort=&#39;order&#39; 效果完全一致
-						sort = [&#39;order&#39;, &#39;desc&#39;] 与 sort=&#39;order&#39; 效果一致, 唯一不同点: 普通节点按降序处理外</p>
+						<ul>
+							<li>默认设置: 孤儿项自动设置为一级节点, 并且放到所有普通节点的后面, 普通节点不排序</li>
+							<li>有关孤儿节点的排序的前提是:<ul>
+									<li>只有当 孤儿节点的处理方式 orphansHandleType 为 root 或 root-warning 时才会生效<ul>
+											<li>因为其他情况下, 孤儿节点会被丢弃, 不包含在结果树中</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>多个孤儿节点之间不会相互排序, 只支持使用源数组数据中的默认顺序</li>
+						</ul>
+						<br/>
+						<ul>
+							<li><p>null: 不排序, 使用原始数据数组中的顺序, 仅孤儿项后置为一级节点</p>
+							</li>
+							<li><p>SortFunction: 自定义排序函数, 注: 也需要处理孤儿项的排序规则 (__is_orphans=true, 代表为孤儿节点)</p>
+							</li>
+							<li><p>sortKey: 任意非空字符串, 指定根据哪个属性的值来进行排序</p>
+							</li>
+							<li><p>sortType: &#39;desc&#39; 或 &#39;asc&#39;, 配合 sortSortKey 指定的属性名, 来决定是降序 或者 升序, 默认为 asc 即升序</p>
+							</li>
+						</ul>
+						<a href="#举例说明" id="举例说明" style="color: inherit; text-decoration: none;">
+							<h2>举例说明</h2>
+						</a>
+						<ul>
+							<li><code>sort = null</code>: 代表使用默认排序规则, 即普通节点不排序 + 孤儿节点放到所有普通节点的后面</li>
+							<li><code>sort = function</code>: 代表排序处理完全交由该 function 来进行处理, 包括孤儿节点的排序</li>
+							<li><code>sort = &#39;order&#39;</code>: 代表使用属性 order 的值进行排序处理(默认升序) + 孤儿节点放到所有普通节点的后面<ul>
+									<li>等效于: sort=[&#39;order&#39;]、sort=[&#39;order&#39;, &#39;asc]</li>
+								</ul>
+							</li>
+							<li><code>sort = [&#39;order&#39;, &#39;asc&#39;]</code>  与 <code>sort=&#39;order&#39;</code> 效果完全一致</li>
+							<li><code>sort = [&#39;order&#39;, &#39;desc&#39;]</code> 与 <code>sort=&#39;order&#39;</code> 效果一致, 唯一不同点: 普通节点按降序处理外</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -401,9 +431,6 @@
 						<a href="array____tree_helper.sortfunction.html" class="tsd-kind-icon">Sort<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.treefiltercallback.html" class="tsd-kind-icon">Tree<wbr>Filter<wbr>Callback</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="array____tree_helper.treeforeachcallback.html" class="tsd-kind-icon">Tree<wbr>For<wbr>Each<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
@@ -428,9 +455,6 @@
 						<a href="../modules/array____tree_helper.html#arraytotree" class="tsd-kind-icon">array<wbr>ToTree</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/array____tree_helper.html#treefilter" class="tsd-kind-icon">tree<wbr>Filter</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../modules/array____tree_helper.html#treeforeach" class="tsd-kind-icon">tree<wbr>For<wbr>Each</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
@@ -452,7 +476,6 @@
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

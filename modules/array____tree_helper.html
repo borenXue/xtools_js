@@ -75,7 +75,6 @@
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.arraytotreeoptions.html" class="tsd-kind-icon">Array<wbr>ToTree<wbr>Options</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.orphansstore.html" class="tsd-kind-icon">Orphans<wbr>Store</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.sortfunction.html" class="tsd-kind-icon">Sort<wbr>Function</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.treefiltercallback.html" class="tsd-kind-icon">Tree<wbr>Filter<wbr>Callback</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.treeforeachcallback.html" class="tsd-kind-icon">Tree<wbr>For<wbr>Each<wbr>Callback</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/array____tree_helper.treeitemlike.html" class="tsd-kind-icon">Tree<wbr>Item<wbr>Like</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/array____tree_helper.treeitemstore.html" class="tsd-kind-icon">Tree<wbr>Item<wbr>Store</a></li>
@@ -94,7 +93,6 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="array____tree_helper.html#arraytotree" class="tsd-kind-icon">array<wbr>ToTree</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="array____tree_helper.html#treefilter" class="tsd-kind-icon">tree<wbr>Filter</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="array____tree_helper.html#treeforeach" class="tsd-kind-icon">tree<wbr>For<wbr>Each</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="array____tree_helper.html#treemap" class="tsd-kind-icon">tree<wbr>Map</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="array____tree_helper.html#treesort" class="tsd-kind-icon">tree<wbr>Sort</a></li>
@@ -111,9 +109,14 @@
 					<div class="tsd-signature tsd-kind-icon">orphans<wbr>Handle<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"ignore"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"ignore-warning"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"root"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"root-warning"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L16">src/tree/types.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L24">src/tree/types.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>孤儿节点处理方式, 具体含义请参考 <a href="../interfaces/array____tree_helper.arraytotreeoptions.html">ArrayToTreeOptions</a> 中的 orphansHandleType 属性说明</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="sortkey" class="tsd-anchor"></a>
@@ -121,9 +124,14 @@
 					<div class="tsd-signature tsd-kind-icon">sort<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="../interfaces/array____tree_helper.treeitemlike.html" class="tsd-signature-type">TreeItemLike</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L14">src/tree/types.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L19">src/tree/types.ts:19</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>用于排序的字段名</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="sorttype" class="tsd-anchor"></a>
@@ -131,9 +139,14 @@
 					<div class="tsd-signature tsd-kind-icon">sort<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"desc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"asc"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/types.ts#L13">src/tree/types.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L15">src/tree/types.ts:15</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>排序方式, desc=降序, asc=升序</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -148,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/array-to-tree.ts#L44">src/tree/array-to-tree.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/array-to-tree.ts#L44">src/tree/array-to-tree.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,43 +189,8 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/array____tree_helper.arraytotreeoptions.html" class="tsd-signature-type">ArrayToTreeOptions</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>自定义配置对象</p>
+										<p>自定义配置对象, 默认配置值请参考 <a href="../interfaces/array____tree_helper.arraytotreeoptions.html">ArrayToTreeOptions</a></p>
 									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-					<a name="treefilter" class="tsd-anchor"></a>
-					<h3>tree<wbr>Filter</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">tree<wbr>Filter&lt;TreeItem&gt;<span class="tsd-signature-symbol">(</span>tree<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span>, fn<span class="tsd-signature-symbol">: </span><a href="../interfaces/array____tree_helper.treefiltercallback.html" class="tsd-signature-type">TreeFilterCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">&gt;</span>, childrenKey<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/tree-filter.ts#L15">src/tree/tree-filter.ts:15</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>TreeItem<span class="tsd-signature-symbol">: </span><a href="../interfaces/array____tree_helper.treeitemlike.html" class="tsd-signature-type">TreeItemLike</a></h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>tree: <span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>fn: <a href="../interfaces/array____tree_helper.treefiltercallback.html" class="tsd-signature-type">TreeFilterCallback</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> childrenKey: <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol"> = &quot;children&quot;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -229,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/tree-for-each.ts#L20">src/tree/tree-for-each.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/tree-for-each.ts#L38">src/tree/tree-for-each.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,9 +256,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/tree-map.ts#L36">src/tree/tree-map.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/tree-map.ts#L44">src/tree/tree-map.ts:44</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>类似 Array.property.map 的功能</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -300,6 +283,8 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> childrenKey: <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol"> = &quot;children&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -316,9 +301,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/tree/tree-sort.ts#L3">src/tree/tree-sort.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/tree-sort.ts#L11">src/tree/tree-sort.ts:11</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>类似 Array.property.sort 的功能</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -338,6 +328,8 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> childrenKey: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;children&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TreeItem</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -390,9 +382,6 @@
 						<a href="../interfaces/array____tree_helper.sortfunction.html" class="tsd-kind-icon">Sort<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../interfaces/array____tree_helper.treefiltercallback.html" class="tsd-kind-icon">Tree<wbr>Filter<wbr>Callback</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="../interfaces/array____tree_helper.treeforeachcallback.html" class="tsd-kind-icon">Tree<wbr>For<wbr>Each<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
@@ -417,9 +406,6 @@
 						<a href="array____tree_helper.html#arraytotree" class="tsd-kind-icon">array<wbr>ToTree</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.html#treefilter" class="tsd-kind-icon">tree<wbr>Filter</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="array____tree_helper.html#treeforeach" class="tsd-kind-icon">tree<wbr>For<wbr>Each</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
@@ -441,7 +427,6 @@
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>

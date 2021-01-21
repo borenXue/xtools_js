@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TreeItemLike | xtools_js - v2.0.1</title>
+	<title>formatMoneyOptions | xtools_js - v2.0.1</title>
 	<meta name="description" content="Documentation for xtools_js - v2.0.1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,30 +54,33 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/array____tree_helper.html">Array &amp;&amp; Tree Helper</a>
+					<a href="../modules/others.html">Others</a>
 				</li>
 				<li>
-					<a href="array____tree_helper.treeitemlike.html">TreeItemLike</a>
+					<a href="others.formatmoneyoptions.html">formatMoneyOptions</a>
 				</li>
 			</ul>
-			<h1>Interface TreeItemLike</h1>
+			<h1>Interface formatMoneyOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>金额格式化函数 <a href="../modules/others.html#formatmoney">formatMoney</a> 的选项对象</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">TreeItemLike</span>
+						<span class="target">formatMoneyOptions</span>
 					</li>
 				</ul>
-			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-module">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
@@ -86,7 +89,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="array____tree_helper.treeitemlike.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,14 +99,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="children" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> children</h3>
-					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="array____tree_helper.treeitemlike.html" class="tsd-signature-type">TreeItemLike</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="decimal" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decimal</h3>
+					<div class="tsd-signature tsd-kind-icon">decimal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/tree/types.ts#L3">src/tree/types.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/format-money.ts#L9">src/other/format-money.ts:9</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>小数位个数, 默认为2</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="trim" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> trim</h3>
+					<div class="tsd-signature tsd-kind-icon">trim<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/format-money.ts#L13">src/other/format-money.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>是否删除小数位最后无意义的 0, 默认 false 即不删除</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -112,7 +136,7 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/array____tree_helper.html">Array &amp;&amp; <wbr>Tree <wbr>Helper</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -127,7 +151,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/math_helper.html">Math <wbr>Helper</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/others.html">Others</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -137,59 +161,44 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="array____tree_helper.arrayitemlike.html" class="tsd-kind-icon">Array<wbr>Item<wbr>Like</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/others.aborterror.html" class="tsd-kind-icon">Abort<wbr>Error</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.arraytotreeoptions.html" class="tsd-kind-icon">Array<wbr>ToTree<wbr>Options</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/others.ajaxerror.html" class="tsd-kind-icon">Ajax<wbr>Error</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.orphansstore.html" class="tsd-kind-icon">Orphans<wbr>Store</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/others.notsuccesserror.html" class="tsd-kind-icon">Not<wbr>Success<wbr>Error</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.sortfunction.html" class="tsd-kind-icon">Sort<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.treeforeachcallback.html" class="tsd-kind-icon">Tree<wbr>For<wbr>Each<wbr>Callback</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/others.timeouterror.html" class="tsd-kind-icon">Time<wbr>Out<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="array____tree_helper.treeitemlike.html" class="tsd-kind-icon">Tree<wbr>Item<wbr>Like</a>
+						<a href="others.formatmoneyoptions.html" class="tsd-kind-icon">format<wbr>Money<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="array____tree_helper.treeitemlike.html#children" class="tsd-kind-icon">children</a>
+								<a href="others.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="others.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.treeitemstore.html" class="tsd-kind-icon">Tree<wbr>Item<wbr>Store</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/others.html#formatmoney" class="tsd-kind-icon">format<wbr>Money</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="array____tree_helper.treemapcallback.html" class="tsd-kind-icon">Tree<wbr>Map<wbr>Callback</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/others.html#hearcheck" class="tsd-kind-icon">hear<wbr>Check</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/array____tree_helper.html#orphanshandletype" class="tsd-kind-icon">orphans<wbr>Handle<wbr>Type</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/others.html#padleft" class="tsd-kind-icon">pad<wbr>Left</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/array____tree_helper.html#sortkey" class="tsd-kind-icon">sort<wbr>Key</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/array____tree_helper.html#sorttype" class="tsd-kind-icon">sort<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/array____tree_helper.html#arraytotree" class="tsd-kind-icon">array<wbr>ToTree</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/array____tree_helper.html#treeforeach" class="tsd-kind-icon">tree<wbr>For<wbr>Each</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/array____tree_helper.html#treemap" class="tsd-kind-icon">tree<wbr>Map</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="../modules/array____tree_helper.html#treesort" class="tsd-kind-icon">tree<wbr>Sort</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/others.html#padright" class="tsd-kind-icon">pad<wbr>Right</a>
 					</li>
 				</ul>
 			</nav>

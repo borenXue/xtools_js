@@ -69,6 +69,9 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "函数 {@link arrayToTree} 的选项"
+					},
 					"typeParameter": [
 						{
 							"id": 69,
@@ -96,7 +99,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 44,
+									"line": 58,
 									"character": 13
 								}
 							],
@@ -124,7 +127,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 60,
+									"line": 74,
 									"character": 14
 								}
 							],
@@ -157,7 +160,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 28,
+									"line": 42,
 									"character": 7
 								}
 							],
@@ -176,12 +179,12 @@
 							},
 							"comment": {
 								"shortText": "标记某个节点为孤儿节点时 使用的属性名 (相当于给该节点添加一个新的属性, 用来标记是否是孤儿节点, 值为 true 或 false)",
-								"text": "   string: 属性名, 为空字符串时等同于 null\n\n   null: 不添加标记\n\n\n默认值: '__is_orphans'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
+								"text": "   string: 属性名, 为空字符串时等同于 null\n\n   null: 不添加标记\n\n\n默认值: '__is_orphans'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
 							},
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 138,
+									"line": 151,
 									"character": 16
 								}
 							],
@@ -213,12 +216,12 @@
 							},
 							"comment": {
 								"shortText": "孤儿节点的处理方式即检测到源数据中包含孤儿节点时 如何处理这些节点",
-								"text": "默认值为 'root-warning'\n\n   error: 程序抛出异常\n\n   ignore: 直接忽略孤儿节点, 不抛异常、不警告、不返回\n\n   ignore-warning: 不抛异常、不返回, 但会在控制台警告(console.warn)\n\n   root: 不抛异常、不警告、但会作为一级节点返回\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n   root-warning: 不抛异常、但会在控制台警告(console.warn)、且会作为一级节点返回\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
+								"text": "默认值为 'root-warning'\n\n   `error`: 程序抛出异常\n\n   `ignore`: 直接忽略孤儿节点, 不抛异常、不警告、不返回\n\n   `ignore-warning`: 不抛异常、不返回, 但会在控制台警告(console.warn)\n\n   `root`: 不抛异常、不警告、但会作为一级节点返回<br/>\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n   `root-warning`: 不抛异常、但会在控制台警告(console.warn)、且会作为一级节点返回\n       通过 orphansParent 参数可控制, 该节点作为一级节点, 还是使用空的父节点包装后, 父节点作为一级节点\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n"
 							},
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 123,
+									"line": 136,
 									"character": 19
 								}
 							],
@@ -238,12 +241,12 @@
 							},
 							"comment": {
 								"shortText": "返回孤儿节点的方式",
-								"text": "   ignore: 直接将孤儿节点作为一级节点返回\n\n   create: 创建一个父节点, 将孤儿节点放到 children 数组中, 并将创建的父节点作为一级节点返回\n\n\n默认值: 'ignore'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n\neg:\n   源数据: [ ..., { id: 1, parentId: 1234 } ]\n     当源数据中不包含 parentId 为 1234 节点时, id=1的这个节点即为孤儿节点\n   当 orphansParent='ignore' 时, 返回结果示例如下: (该节点被作为一级节点返回)\n       [\n         ...,\n         { id: 1, parentId: 1234 }\n       ]\n   当 orphansParent='create' 时, 返回结果示例如下: (该节点的父节点被创建 并 作为一级节点返回)\n       [\n         ...,\n         {\n           id: 1234,\n           children: [ { id: 1, parentId: 1234 } ]\n         }\n       ]\n"
+								"text": "   ignore: 直接将孤儿节点作为一级节点返回\n\n   create: 创建一个父节点, 将孤儿节点放到 children 数组中, 并将创建的父节点作为一级节点返回\n\n\n默认值: 'ignore'\n\n\n孤儿节点: 指某个节点的父节点非空, 且不等于根节点, 且源数组中不包含其父节点的数据<br/>\n   额外说明: 返回结果中包含的孤儿节点 也是允许有 下级节点的\n\n### 举例说明\n\n* 什么是`孤儿节点`?\n   - 源数据: `[ ..., { id: 1, parentId: 1234 } ]`\n     + 当源数据中不包含 parentId 为 1234 节点时, id=1的这个节点即为孤儿节点<br>\n   - 当 orphansParent='ignore' 时, 返回结果示例如下: (该节点被作为一级节点返回)\n     + `[ ..., { id: 1, parentId: 1234 }]`\n   - 当 orphansParent='create' 时, 返回结果示例如下: (该节点的父节点被创建 并 作为一级节点返回)\n     + `[ ..., { id: 1234, children: [ { id: 1, parentId: 1234 } ] } ]`\n"
 							},
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 170,
+									"line": 176,
 									"character": 15
 								}
 							],
@@ -276,7 +279,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 180,
+									"line": 186,
 									"character": 17
 								}
 							],
@@ -309,7 +312,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 37,
+									"line": 51,
 									"character": 13
 								}
 							],
@@ -333,7 +336,7 @@
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 53,
+									"line": 67,
 									"character": 13
 								}
 							],
@@ -369,12 +372,12 @@
 							},
 							"comment": {
 								"shortText": "指定排序规则, 默认值: null",
-								"text": "默认设置: 孤儿项自动设置为一级节点, 并且放到所有普通节点的后面, 普通节点不排序\n\n\n有关孤儿节点的排序的前提是:\n   只有当 孤儿节点的处理方式 orphansHandleType 为 root 或 root-warning 时才会生效\n     因为其他情况下, 孤儿节点会被丢弃, 不包含在结果树中\n多个孤儿节点之间不会相互排序, 只支持使用源数组数据中的默认顺序\n\n\nnull: 不排序, 使用原始数据数组中的顺序, 仅孤儿项后置为一级节点\n\nSortFunction: 自定义排序函数, 注: 也需要处理孤儿项的排序规则 (__is_orphans=true, 代表为孤儿节点)\n\nsortKey: 任意非空字符串, 指定根据哪个属性的值来进行排序\n\nsortType: 'desc' 或 'asc', 配合 sortSortKey 指定的属性名, 来决定是降序 或者 升序, 默认为 asc 即升序\n\n\neg:\n   sort = null: 代表使用默认排序规则, 即普通节点不排序 + 孤儿节点放到所有普通节点的后面\n   sort = function: 代表排序处理完全交由该 function 来进行处理, 包括孤儿节点的排序\n   sort = 'order': 代表使用属性 order 的值进行排序处理(默认升序) + 孤儿节点放到所有普通节点的后面\n         等效于: sort=['order']、sort=['order', 'asc]\n   sort = ['order', 'asc']  与 sort='order' 效果完全一致\n   sort = ['order', 'desc'] 与 sort='order' 效果一致, 唯一不同点: 普通节点按降序处理外\n"
+								"text": "* 默认设置: 孤儿项自动设置为一级节点, 并且放到所有普通节点的后面, 普通节点不排序\n* 有关孤儿节点的排序的前提是:\n   * 只有当 孤儿节点的处理方式 orphansHandleType 为 root 或 root-warning 时才会生效\n     - 因为其他情况下, 孤儿节点会被丢弃, 不包含在结果树中\n* 多个孤儿节点之间不会相互排序, 只支持使用源数组数据中的默认顺序\n\n<br/>\n\n- null: 不排序, 使用原始数据数组中的顺序, 仅孤儿项后置为一级节点\n\n- SortFunction: 自定义排序函数, 注: 也需要处理孤儿项的排序规则 (__is_orphans=true, 代表为孤儿节点)\n\n- sortKey: 任意非空字符串, 指定根据哪个属性的值来进行排序\n\n- sortType: 'desc' 或 'asc', 配合 sortSortKey 指定的属性名, 来决定是降序 或者 升序, 默认为 asc 即升序\n\n\n## 举例说明\n+ `sort = null`: 代表使用默认排序规则, 即普通节点不排序 + 孤儿节点放到所有普通节点的后面\n+ `sort = function`: 代表排序处理完全交由该 function 来进行处理, 包括孤儿节点的排序\n+ `sort = 'order'`: 代表使用属性 order 的值进行排序处理(默认升序) + 孤儿节点放到所有普通节点的后面\n   - 等效于: sort=['order']、sort=['order', 'asc]\n+ `sort = ['order', 'asc']`  与 `sort='order'` 效果完全一致\n+ `sort = ['order', 'desc']` 与 `sort='order'` 效果一致, 唯一不同点: 普通节点按降序处理外\n"
 							},
 							"sources": [
 								{
 									"fileName": "src/tree/types.ts",
-									"line": 94,
+									"line": 107,
 									"character": 6
 								}
 							],
@@ -451,7 +454,7 @@
 					"sources": [
 						{
 							"fileName": "src/tree/types.ts",
-							"line": 22,
+							"line": 36,
 							"character": 35
 						}
 					]
@@ -524,6 +527,9 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "排序函数, 返回 `-1`、`0`、`1`"
+					},
 					"typeParameter": [
 						{
 							"id": 64,
@@ -548,6 +554,9 @@
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
+							},
+							"comment": {
+								"shortText": "排序函数, 返回 `-1`、`0`、`1`"
 							},
 							"parameters": [
 								{
@@ -596,152 +605,8 @@
 					"sources": [
 						{
 							"fileName": "src/tree/types.ts",
-							"line": 18,
+							"line": 29,
 							"character": 29
-						}
-					]
-				},
-				{
-					"id": 142,
-					"name": "TreeFilterCallback",
-					"kind": 256,
-					"kindString": "Interface",
-					"flags": {
-						"isExported": true
-					},
-					"typeParameter": [
-						{
-							"id": 143,
-							"name": "TreeItem",
-							"kind": 131072,
-							"kindString": "Type parameter",
-							"flags": {
-								"isExported": true
-							}
-						}
-					],
-					"signatures": [
-						{
-							"id": 144,
-							"name": "__call",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {
-								"isExported": true
-							},
-							"parameters": [
-								{
-									"id": 145,
-									"name": "currentItem",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "typeParameter",
-										"name": "TreeItem"
-									}
-								},
-								{
-									"id": 146,
-									"name": "index",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 147,
-									"name": "currentArray",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "array",
-										"elementType": {
-											"type": "typeParameter",
-											"name": "TreeItem"
-										}
-									}
-								},
-								{
-									"id": 148,
-									"name": "level",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 149,
-									"name": "globalIndex",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 150,
-									"name": "originParent",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"type": {
-										"type": "reference",
-										"id": 143,
-										"name": "TreeItem"
-									}
-								},
-								{
-									"id": 151,
-									"name": "originTree",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true,
-										"isOptional": true
-									},
-									"type": {
-										"type": "array",
-										"elementType": {
-											"type": "typeParameter",
-											"name": "TreeItem"
-										}
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "boolean"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "src/tree/tree-filter.ts",
-							"line": 3,
-							"character": 35
 						}
 					]
 				},
@@ -752,6 +617,9 @@
 					"kindString": "Interface",
 					"flags": {
 						"isExported": true
+					},
+					"comment": {
+						"shortText": "{@link treeForEach} 的回调函数"
 					},
 					"typeParameter": [
 						{
@@ -777,6 +645,9 @@
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
+							},
+							"comment": {
+								"shortText": "{@link treeForEach} 的回调函数"
 							},
 							"parameters": [
 								{
@@ -861,7 +732,7 @@
 					"sources": [
 						{
 							"fileName": "src/tree/tree-for-each.ts",
-							"line": 3,
+							"line": 6,
 							"character": 36
 						}
 					]
@@ -1301,10 +1172,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "孤儿节点处理方式, 具体含义请参考 {@link ArrayToTreeOptions} 中的 orphansHandleType 属性说明"
+					},
 					"sources": [
 						{
 							"fileName": "src/tree/types.ts",
-							"line": 16,
+							"line": 24,
 							"character": 29
 						}
 					],
@@ -1342,10 +1216,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "用于排序的字段名"
+					},
 					"sources": [
 						{
 							"fileName": "src/tree/types.ts",
-							"line": 14,
+							"line": 19,
 							"character": 19
 						}
 					],
@@ -1367,10 +1244,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "排序方式, desc=降序, asc=升序"
+					},
 					"sources": [
 						{
 							"fileName": "src/tree/types.ts",
-							"line": 13,
+							"line": 15,
 							"character": 20
 						}
 					],
@@ -1473,7 +1353,7 @@
 										"isOptional": true
 									},
 									"comment": {
-										"text": "自定义配置对象\n\n"
+										"text": "自定义配置对象, 默认配置值请参考 {@link ArrayToTreeOptions}\n\n"
 									},
 									"type": {
 										"type": "reference",
@@ -1518,132 +1398,6 @@
 							"fileName": "src/tree/array-to-tree.ts",
 							"line": 44,
 							"character": 35
-						}
-					]
-				},
-				{
-					"id": 152,
-					"name": "treeFilter",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 153,
-							"name": "treeFilter",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {
-								"isExported": true
-							},
-							"typeParameter": [
-								{
-									"id": 154,
-									"name": "TreeItem",
-									"kind": 131072,
-									"kindString": "Type parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "reference",
-										"id": 55,
-										"name": "TreeItemLike"
-									}
-								}
-							],
-							"parameters": [
-								{
-									"id": 155,
-									"name": "tree",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "array",
-										"elementType": {
-											"type": "typeParameter",
-											"name": "TreeItem",
-											"constraint": {
-												"type": "reference",
-												"id": 55,
-												"name": "TreeItemLike"
-											}
-										}
-									}
-								},
-								{
-									"id": 156,
-									"name": "fn",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "reference",
-										"id": 142,
-										"typeArguments": [
-											{
-												"type": "typeParameter",
-												"name": "TreeItem",
-												"constraint": {
-													"type": "reference",
-													"id": 55,
-													"name": "TreeItemLike"
-												}
-											}
-										],
-										"name": "TreeFilterCallback"
-									}
-								},
-								{
-									"id": 157,
-									"name": "childrenKey",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "typeOperator",
-										"operator": "keyof",
-										"target": {
-											"type": "typeParameter",
-											"name": "TreeItem",
-											"constraint": {
-												"type": "reference",
-												"id": 55,
-												"name": "TreeItemLike"
-											}
-										}
-									},
-									"defaultValue": "\"children\""
-								}
-							],
-							"type": {
-								"type": "array",
-								"elementType": {
-									"type": "typeParameter",
-									"name": "TreeItem",
-									"constraint": {
-										"type": "reference",
-										"id": 55,
-										"name": "TreeItemLike"
-									}
-								}
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "src/tree/tree-filter.ts",
-							"line": 15,
-							"character": 34
 						}
 					]
 				},
@@ -1772,7 +1526,7 @@
 					"sources": [
 						{
 							"fileName": "src/tree/tree-for-each.ts",
-							"line": 20,
+							"line": 38,
 							"character": 35
 						}
 					]
@@ -1793,6 +1547,9 @@
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
+							},
+							"comment": {
+								"shortText": "类似 Array.property.map 的功能"
 							},
 							"typeParameter": [
 								{
@@ -1819,6 +1576,7 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {},
 									"type": {
 										"type": "array",
 										"elementType": {
@@ -1840,6 +1598,7 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {},
 									"type": {
 										"type": "reference",
 										"id": 121,
@@ -1865,6 +1624,7 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {},
 									"type": {
 										"type": "intrinsic",
 										"name": "boolean"
@@ -1878,6 +1638,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "\n"
 									},
 									"type": {
 										"type": "typeOperator",
@@ -1912,7 +1675,7 @@
 					"sources": [
 						{
 							"fileName": "src/tree/tree-map.ts",
-							"line": 36,
+							"line": 44,
 							"character": 31
 						}
 					]
@@ -1933,6 +1696,9 @@
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
+							},
+							"comment": {
+								"shortText": "类似 Array.property.sort 的功能"
 							},
 							"typeParameter": [
 								{
@@ -1959,6 +1725,7 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {},
 									"type": {
 										"type": "array",
 										"elementType": {
@@ -2038,6 +1805,9 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {
+										"text": "\n"
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "string"
@@ -2062,7 +1832,7 @@
 					"sources": [
 						{
 							"fileName": "src/tree/tree-sort.ts",
-							"line": 3,
+							"line": 11,
 							"character": 32
 						}
 					]
@@ -2077,7 +1847,6 @@
 						68,
 						59,
 						63,
-						142,
 						84,
 						55,
 						110,
@@ -2098,7 +1867,6 @@
 					"kind": 64,
 					"children": [
 						114,
-						152,
 						92,
 						134,
 						99
@@ -2142,7 +1910,7 @@
 							},
 							"comment": {
 								"shortText": "日期格式化",
-								"text": "YYYY: 年份-4位, eg: 2021\nYY:   年份-2位, eg: 21\n\nMM:   月份-2位, eg: 01、12\nM:    月份,     eg: 1、12\n\nDD:   日期-2位, eg: 01、30\nD:    日期,     eg: 1、30\n\nHH:   小时-2位, eg: 01、24\nH:    小时      eg: 1、12\n\nmm:   分钟-2位, eg: 01、60\nm:\n\nss:   秒钟-2位, eg: 01、60\ns:    秒钟      eg: 1、60\n\nSSS: 毫秒-3位, eg: 001、999\nS:    毫秒      eg: 1、99、999\n\n// ddd:  天数-3位, eg: 001、365\n// d:    天数      eg: 1、99、365\n"
+								"text": "| 占位符 | 含义 | 示例 |\n| :----- | :----: | :----: |\n| YYYY | 年份-4位 | 2021 |\n| YY | 年份-2位 | 21 |\n| MM | 月份-2位 | 01、12|\n| M | 月份-2位 | 1、12 |\n| DD | 日期-2位 | 01、30 |\n| D | 日期 | 1、30 |\n| HH | 小时-2位 | 01、24 |\n| H | 小时 | 1、24 |\n| mm | 分钟-2位 | 01、60 |\n| m | 分钟 | 1、60 |\n| ss | 秒钟-2位 | 01、60 |\n| s | 秒钟 | 1、60 |\n| SSS | 毫秒 - 3位 | 001、023、999 |\n| S | 毫秒 | 1、23、999 |\n| \bTODO: ddd | 待开发；天数-3位 | 001、099、365 |\n| \bTODO: d | 待开发；天数 | 1、99、365 |\n"
 							},
 							"parameters": [
 								{
@@ -2201,7 +1969,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/format-date.ts",
-							"line": 33,
+							"line": 29,
 							"character": 34
 						}
 					]
@@ -2305,7 +2073,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 54,
+							"line": 66,
 							"character": 30
 						}
 					]
@@ -2431,6 +2199,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "返回当前天的最后一毫秒",
+								"returns": "对应天最后一毫秒的时间戳\n"
+							},
 							"parameters": [
 								{
 									"id": 46,
@@ -2439,6 +2211,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "任意日期"
 									},
 									"type": {
 										"type": "union",
@@ -2468,7 +2243,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 76,
+							"line": 99,
 							"character": 26
 						}
 					]
@@ -2490,6 +2265,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "返回当前天的第一毫秒",
+								"returns": "对应天第一毫秒的时间戳\n"
+							},
 							"parameters": [
 								{
 									"id": 43,
@@ -2498,6 +2277,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "任意日期"
 									},
 									"type": {
 										"type": "union",
@@ -2527,7 +2309,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 72,
+							"line": 89,
 							"character": 28
 						}
 					]
@@ -2550,7 +2332,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "两个时间是否超过1个月"
+								"shortText": "两个时间是否超过1个月",
+								"returns": "是否超过\n"
 							},
 							"parameters": [
 								{
@@ -2560,6 +2343,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "时间1"
 									},
 									"type": {
 										"type": "union",
@@ -2586,6 +2372,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "时间2"
 									},
 									"type": {
 										"type": "union",
@@ -2615,7 +2404,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 101,
+							"line": 128,
 							"character": 34
 						}
 					]
@@ -2638,7 +2427,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "获取指定时间或当前时间的上个月同一时间"
+								"shortText": "获取指定时间或当前时间的上个月同一时间",
+								"returns": "上个月同一时刻\n"
 							},
 							"parameters": [
 								{
@@ -2650,7 +2440,7 @@
 										"isExported": true
 									},
 									"comment": {
-										"text": "Date 对象\n"
+										"text": "任意日期"
 									},
 									"type": {
 										"type": "union",
@@ -2681,7 +2471,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 86,
+							"line": 110,
 							"character": 29
 						}
 					]
@@ -2703,6 +2493,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "该月最后一毫秒",
+								"returns": "该月最后一毫秒的时间戳\n"
+							},
 							"parameters": [
 								{
 									"id": 36,
@@ -2711,6 +2505,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "任意时间"
 									},
 									"type": {
 										"type": "union",
@@ -2740,7 +2537,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 38,
+							"line": 50,
 							"character": 28
 						}
 					]
@@ -2762,6 +2559,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "该月第一毫秒",
+								"returns": "该月第一毫秒的时间戳\n"
+							},
 							"parameters": [
 								{
 									"id": 33,
@@ -2770,6 +2571,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "任意时间"
 									},
 									"type": {
 										"type": "union",
@@ -2799,7 +2603,7 @@
 					"sources": [
 						{
 							"fileName": "src/date/index.ts",
-							"line": 33,
+							"line": 39,
 							"character": 30
 						}
 					]
@@ -2851,6 +2655,9 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "fileDownload 函数的参数格式"
+					},
 					"children": [
 						{
 							"id": 263,
@@ -2861,10 +2668,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "请求 body 体的数据"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 34,
+									"line": 84,
 									"character": 6
 								}
 							],
@@ -2883,10 +2693,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "下载失败后的回调"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 30,
+									"line": 71,
 									"character": 9
 								}
 							],
@@ -2952,10 +2765,14 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "下载后的文件名",
+								"text": "支持内置动态变量用法 `#{name}`、`#{ext}`、 `#{ext:xxx}`, 具体用法可参考 {@link urlGetFileName}\n"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 25,
+									"line": 54,
 									"character": 10
 								}
 							],
@@ -2982,10 +2799,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "下载成功及失败后的回调"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 31,
+									"line": 75,
 									"character": 9
 								}
 							],
@@ -3052,10 +2872,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "请求额外的 headers 配置"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 27,
+									"line": 62,
 									"character": 9
 								}
 							],
@@ -3074,10 +2897,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "是否为 formdata 格式, 仅 `method为POST` 时有效"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 35,
+									"line": 88,
 									"character": 12
 								}
 							],
@@ -3108,10 +2934,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "请求方法, `GET`, `POST`, post 默认为 `json` 格式, 可通过 `isFormData` 来设置为 `formdata` 格式"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 33,
+									"line": 80,
 									"character": 8
 								}
 							],
@@ -3138,10 +2967,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "url 参数, 会自动拼接到 url 中的 `?...` 部分"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 24,
+									"line": 48,
 									"character": 8
 								}
 							],
@@ -3160,10 +2992,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "下载成功后的回调"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 29,
+									"line": 67,
 									"character": 11
 								}
 							],
@@ -3180,10 +3015,13 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "下载链接"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 23,
+									"line": 44,
 									"character": 5
 								}
 							],
@@ -3201,10 +3039,13 @@
 								"isExported": true,
 								"isOptional": true
 							},
+							"comment": {
+								"shortText": "请求是否携带 cookie, 支持通过函数动态判断"
+							},
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 26,
+									"line": 58,
 									"character": 17
 								}
 							],
@@ -3246,7 +3087,7 @@
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 22,
+							"line": 40,
 							"character": 35
 						}
 					]
@@ -3259,6 +3100,9 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "url 请求参数对象"
+					},
 					"indexSignature": [
 						{
 							"id": 245,
@@ -3267,6 +3111,9 @@
 							"kindString": "Index signature",
 							"flags": {
 								"isExported": true
+							},
+							"comment": {
+								"shortText": "url 请求参数对象"
 							},
 							"parameters": [
 								{
@@ -3293,7 +3140,7 @@
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 14,
+							"line": 20,
 							"character": 31
 						}
 					]
@@ -3306,10 +3153,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "请求 body 体的数据格式"
+					},
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 18,
+							"line": 27,
 							"character": 34
 						}
 					],
@@ -3369,7 +3219,7 @@
 									"sources": [
 										{
 											"fileName": "src/other/file-download.ts",
-											"line": 18,
+											"line": 27,
 											"character": 49
 										}
 									]
@@ -3386,10 +3236,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "请求头对象"
+					},
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 19,
+							"line": 31,
 							"character": 37
 						}
 					],
@@ -3436,7 +3289,7 @@
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 19,
+									"line": 31,
 									"character": 39
 								}
 							]
@@ -3451,10 +3304,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "url 请求参数对象中的 值 的格式"
+					},
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 12,
+							"line": 15,
 							"character": 34
 						}
 					],
@@ -3498,10 +3354,13 @@
 					"flags": {
 						"isExported": true
 					},
+					"comment": {
+						"shortText": "动态判断是否需要携带cookie"
+					},
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 20,
+							"line": 35,
 							"character": 35
 						}
 					],
@@ -3583,7 +3442,7 @@
 							"sources": [
 								{
 									"fileName": "src/other/file-download.ts",
-									"line": 20,
+									"line": 35,
 									"character": 37
 								}
 							]
@@ -3607,6 +3466,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "文件下载",
+								"text": "文件名规则判断优先级: `fileName` 参数 > 接口response header中指定 > url 中提取\n\n\n"
+							},
 							"parameters": [
 								{
 									"id": 282,
@@ -3615,6 +3478,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "下载选项配置\n"
 									},
 									"type": {
 										"type": "reference",
@@ -3632,54 +3498,8 @@
 					"sources": [
 						{
 							"fileName": "src/other/file-download.ts",
-							"line": 38,
+							"line": 100,
 							"character": 28
-						}
-					]
-				},
-				{
-					"id": 283,
-					"name": "getSuggestFileName",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 284,
-							"name": "getSuggestFileName",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {
-								"isExported": true
-							},
-							"parameters": [
-								{
-									"id": 285,
-									"name": "req",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "reference",
-										"name": "XMLHttpRequest"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "src/other/file-download.ts",
-							"line": 79,
-							"character": 34
 						}
 					]
 				}
@@ -3707,8 +3527,7 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						280,
-						283
+						280
 					]
 				}
 			],
@@ -3751,7 +3570,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "身份证号的合法校验\n - 注意: 合规并不代表身份证号真实存在"
+								"shortText": "身份证号的合法校验\n - 注意: 合规并不代表身份证号真实存在",
+								"returns": "是否合法\n"
 							},
 							"parameters": [
 								{
@@ -3763,7 +3583,7 @@
 										"isExported": true
 									},
 									"comment": {
-										"text": "身份证号\n"
+										"text": "身份证号"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -3780,7 +3600,7 @@
 					"sources": [
 						{
 							"fileName": "src/china/idcard.ts",
-							"line": 47,
+							"line": 48,
 							"character": 27
 						}
 					]
@@ -3831,7 +3651,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "加法函数"
+								"shortText": "加法函数",
+								"returns": "计算结果\n"
 							},
 							"parameters": [
 								{
@@ -3889,7 +3710,7 @@
 					"sources": [
 						{
 							"fileName": "src/number/index.ts",
-							"line": 21,
+							"line": 23,
 							"character": 22
 						}
 					]
@@ -3912,7 +3733,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "除法函数"
+								"shortText": "除法函数",
+								"returns": "计算结果\n"
 							},
 							"parameters": [
 								{
@@ -3969,7 +3791,7 @@
 					"sources": [
 						{
 							"fileName": "src/number/index.ts",
-							"line": 95,
+							"line": 103,
 							"character": 22
 						}
 					]
@@ -3992,7 +3814,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "乘法函数"
+								"shortText": "乘法函数",
+								"returns": "计算结果\n"
 							},
 							"parameters": [
 								{
@@ -4050,7 +3873,7 @@
 					"sources": [
 						{
 							"fileName": "src/number/index.ts",
-							"line": 75,
+							"line": 81,
 							"character": 24
 						}
 					]
@@ -4073,7 +3896,8 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "减法函数"
+								"shortText": "减法函数",
+								"returns": "计算结果\n"
 							},
 							"parameters": [
 								{
@@ -4131,7 +3955,7 @@
 					"sources": [
 						{
 							"fileName": "src/number/index.ts",
-							"line": 48,
+							"line": 52,
 							"character": 22
 						}
 					]
@@ -5377,88 +5201,108 @@
 					]
 				},
 				{
-					"id": 16,
-					"name": "IsType",
-					"kind": 4194304,
-					"kindString": "Type alias",
+					"id": 287,
+					"name": "formatMoneyOptions",
+					"kind": 256,
+					"kindString": "Interface",
 					"flags": {
 						"isExported": true
 					},
-					"typeParameter": [
+					"comment": {
+						"shortText": "金额格式化函数 {@link formatMoney} 的选项对象"
+					},
+					"children": [
 						{
-							"id": 17,
-							"name": "T",
-							"kind": 131072,
-							"kindString": "Type parameter",
+							"id": 288,
+							"name": "decimal",
+							"kind": 1024,
+							"kindString": "Property",
 							"flags": {
-								"isExported": true
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "小数位个数, 默认为2"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/format-money.ts",
+									"line": 9,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
 							}
+						},
+						{
+							"id": 289,
+							"name": "trim",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "是否删除小数位最后无意义的 0, 默认 false 即不删除"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/format-money.ts",
+									"line": 13,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "false"
+									},
+									{
+										"type": "intrinsic",
+										"name": "true"
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								288,
+								289
+							]
 						}
 					],
 					"sources": [
 						{
-							"fileName": "src/utils/index.ts",
-							"line": 28,
-							"character": 18
+							"fileName": "src/other/format-money.ts",
+							"line": 5,
+							"character": 35
 						}
-					],
-					"type": {
-						"type": "reflection",
-						"declaration": {
-							"id": 18,
-							"name": "__type",
-							"kind": 65536,
-							"kindString": "Type literal",
-							"flags": {
-								"isExported": true
-							},
-							"signatures": [
-								{
-									"id": 19,
-									"name": "__call",
-									"kind": 4096,
-									"kindString": "Call signature",
-									"flags": {
-										"isExported": true
-									},
-									"parameters": [
-										{
-											"id": 20,
-											"name": "val",
-											"kind": 32768,
-											"kindString": "Parameter",
-											"flags": {
-												"isExported": true
-											},
-											"type": {
-												"type": "intrinsic",
-												"name": "any"
-											}
-										}
-									],
-									"type": {
-										"type": "predicate",
-										"name": "val",
-										"asserts": false,
-										"targetType": {
-											"type": "typeParameter",
-											"name": "T"
-										}
-									}
-								}
-							],
-							"sources": [
-								{
-									"fileName": "src/utils/index.ts",
-									"line": 28,
-									"character": 23
-								}
-							]
-						}
-					}
+					]
 				},
 				{
-					"id": 287,
+					"id": 290,
 					"name": "formatMoney",
 					"kind": 64,
 					"kindString": "Function",
@@ -5467,21 +5311,28 @@
 					},
 					"signatures": [
 						{
-							"id": 288,
+							"id": 291,
 							"name": "formatMoney",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "金额格式化",
+								"returns": "格式化后的金额, 字符串类型\n"
+							},
 							"parameters": [
 								{
-									"id": 289,
+									"id": 292,
 									"name": "money",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "金额值"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5489,106 +5340,20 @@
 									}
 								},
 								{
-									"id": 290,
-									"name": "__namedParameters",
+									"id": 293,
+									"name": "options",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
 									},
-									"originalName": "__1",
+									"comment": {
+										"text": "选项对象, 默认值: {decimal: 2, trim: false}\n"
+									},
 									"type": {
-										"type": "reflection",
-										"declaration": {
-											"id": 291,
-											"name": "__type",
-											"kind": 65536,
-											"kindString": "Type literal",
-											"flags": {
-												"isExported": true
-											},
-											"children": [
-												{
-													"id": 292,
-													"name": "decimal",
-													"kind": 32,
-													"kindString": "Variable",
-													"flags": {
-														"isExported": true
-													},
-													"sources": [
-														{
-															"fileName": "src/other/format-money.ts",
-															"line": 2,
-															"character": 60
-														}
-													],
-													"type": {
-														"type": "union",
-														"types": [
-															{
-																"type": "intrinsic",
-																"name": "undefined"
-															},
-															{
-																"type": "intrinsic",
-																"name": "number"
-															}
-														]
-													}
-												},
-												{
-													"id": 293,
-													"name": "trim",
-													"kind": 32,
-													"kindString": "Variable",
-													"flags": {
-														"isExported": true
-													},
-													"sources": [
-														{
-															"fileName": "src/other/format-money.ts",
-															"line": 2,
-															"character": 66
-														}
-													],
-													"type": {
-														"type": "union",
-														"types": [
-															{
-																"type": "intrinsic",
-																"name": "undefined"
-															},
-															{
-																"type": "intrinsic",
-																"name": "false"
-															},
-															{
-																"type": "intrinsic",
-																"name": "true"
-															}
-														]
-													}
-												}
-											],
-											"groups": [
-												{
-													"title": "Variables",
-													"kind": 32,
-													"children": [
-														292,
-														293
-													]
-												}
-											],
-											"sources": [
-												{
-													"fileName": "src/other/format-money.ts",
-													"line": 2,
-													"character": 50
-												}
-											]
-										}
+										"type": "reference",
+										"id": 287,
+										"name": "formatMoneyOptions"
 									},
 									"defaultValue": "{}"
 								}
@@ -5602,7 +5367,7 @@
 					"sources": [
 						{
 							"fileName": "src/other/format-money.ts",
-							"line": 2,
+							"line": 24,
 							"character": 35
 						}
 					]
@@ -5625,7 +5390,7 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "心跳检测"
+								"shortText": "心跳检测, 按心跳策略执行某个函数, 直至该函数返回 true, 超时则 reject"
 							},
 							"parameters": [
 								{
@@ -5683,8 +5448,8 @@
 								"type": "reference",
 								"typeArguments": [
 									{
-										"type": "intrinsic",
-										"name": "unknown"
+										"type": "reference",
+										"name": "Boolean"
 									}
 								],
 								"name": "Promise"
@@ -5716,6 +5481,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "字符串左侧按需动态填充",
+								"returns": "最终生成的字符串\n"
+							},
 							"parameters": [
 								{
 									"id": 8,
@@ -5724,6 +5493,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "原字符串"
 									},
 									"type": {
 										"type": "union",
@@ -5747,6 +5519,9 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {
+										"text": "期望最终的字符串长度, 如果原字符串>=digit, 则不做任何处理直接返回"
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -5759,6 +5534,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "用来填充的字符, 默认为空格\n"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5776,7 +5554,7 @@
 					"sources": [
 						{
 							"fileName": "src/utils/index.ts",
-							"line": 2,
+							"line": 11,
 							"character": 23
 						}
 					]
@@ -5798,6 +5576,10 @@
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "字符串右侧按需动态填充",
+								"returns": "最终生成的字符串\n"
+							},
 							"parameters": [
 								{
 									"id": 13,
@@ -5806,6 +5588,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "原字符串"
 									},
 									"type": {
 										"type": "union",
@@ -5829,6 +5614,9 @@
 									"flags": {
 										"isExported": true
 									},
+									"comment": {
+										"text": "期望最终的字符串长度, 如果原字符串>=digit, 则不做任何处理直接返回"
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
@@ -5841,6 +5629,9 @@
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
+									},
+									"comment": {
+										"text": "用来填充的字符, 默认为空格\n"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -5858,7 +5649,7 @@
 					"sources": [
 						{
 							"fileName": "src/utils/index.ts",
-							"line": 15,
+							"line": 33,
 							"character": 24
 						}
 					]
@@ -5876,17 +5667,17 @@
 					]
 				},
 				{
-					"title": "Type aliases",
-					"kind": 4194304,
+					"title": "Interfaces",
+					"kind": 256,
 					"children": [
-						16
+						287
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						287,
+						290,
 						295,
 						6,
 						11
@@ -5915,26 +5706,26 @@
 			},
 			"children": [
 				{
-					"id": 184,
-					"name": "urlAddParams",
-					"kind": 64,
-					"kindString": "Function",
+					"id": 180,
+					"name": "UrlParamsObject",
+					"kind": 256,
+					"kindString": "Interface",
 					"flags": {
 						"isExported": true
 					},
-					"signatures": [
+					"indexSignature": [
 						{
-							"id": 185,
-							"name": "urlAddParams",
-							"kind": 4096,
-							"kindString": "Call signature",
+							"id": 181,
+							"name": "__index",
+							"kind": 8192,
+							"kindString": "Index signature",
 							"flags": {
 								"isExported": true
 							},
 							"parameters": [
 								{
-									"id": 186,
-									"name": "url",
+									"id": 182,
+									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
@@ -5944,19 +5735,87 @@
 										"type": "intrinsic",
 										"name": "string"
 									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/url.ts",
+							"line": 132,
+							"character": 32
+						}
+					]
+				},
+				{
+					"id": 187,
+					"name": "urlAddParams",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 188,
+							"name": "urlAddParams",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "url 添加参数",
+								"returns": "最终生成的url\n"
+							},
+							"parameters": [
+								{
+									"id": 189,
+									"name": "url",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "要解析的 url 字符串"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
 								},
 								{
-									"id": 187,
+									"id": 190,
 									"name": "param",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true
 									},
+									"comment": {
+										"text": "要添加的参数对象, 可一次添加多个"
+									},
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 188,
+											"id": 191,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -5965,7 +5824,7 @@
 											},
 											"indexSignature": [
 												{
-													"id": 189,
+													"id": 192,
 													"name": "__index",
 													"kind": 8192,
 													"kindString": "Index signature",
@@ -5974,7 +5833,7 @@
 													},
 													"parameters": [
 														{
-															"id": 190,
+															"id": 193,
 															"name": "key",
 															"kind": 32768,
 															"kindString": "Parameter",
@@ -6023,7 +5882,7 @@
 											"sources": [
 												{
 													"fileName": "src/other/url.ts",
-													"line": 47,
+													"line": 75,
 													"character": 48
 												}
 											]
@@ -6041,13 +5900,13 @@
 					"sources": [
 						{
 							"fileName": "src/other/url.ts",
-							"line": 47,
+							"line": 75,
 							"character": 28
 						}
 					]
 				},
 				{
-					"id": 180,
+					"id": 183,
 					"name": "urlGetFileName",
 					"kind": 64,
 					"kindString": "Function",
@@ -6056,7 +5915,7 @@
 					},
 					"signatures": [
 						{
-							"id": 181,
+							"id": 184,
 							"name": "urlGetFileName",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6064,11 +5923,12 @@
 								"isExported": true
 							},
 							"comment": {
-								"shortText": "获取最终文件名"
+								"shortText": "获取最终文件名, 支持变量替换",
+								"returns": "文件名\n\n```javascript\n// 返回 c.txt\nurlGetFileName('http://a/b/c.txt')\n\n// 返回 new.jpe\nurlGetFileName('http://a/b/c.txt', 'new.jpe')\n\n// 返回 c.txt\nurlGetFileName('http://a/b/c', '#{name}.txt')\n\n// 返回 c-1.txt-new\nurlGetFileName('http://a/b/c.txt', '#{name}-1.#{ext}-new')\n\n// 返回 c-1.txt\n// #{ext:pdf}: 代表, 如果 url 中已有后缀则使用url中的, 没有的时候使用 pdf\nurlGetFileName('http://a/b/c.txt', '#{name}-1.#{ext:pdf}')\n\n// 返回 c-1.pdf\nurlGetFileName('http://a/b/c', '#{name}-1.#{ext:pdf}')\n```\n"
 							},
 							"parameters": [
 								{
-									"id": 182,
+									"id": 185,
 									"name": "urlOrFileName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6081,7 +5941,7 @@
 									}
 								},
 								{
-									"id": 183,
+									"id": 186,
 									"name": "name",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6090,7 +5950,7 @@
 										"isOptional": true
 									},
 									"comment": {
-										"text": "指定文件名(可选)\n\n"
+										"text": "指定文件名(可选), 支持内置变量语法 `#{name}`、`#{ext}`、`#{ext:xxx}`, 具体用法参考下面的示例"
 									},
 									"type": {
 										"type": "union",
@@ -6116,13 +5976,13 @@
 					"sources": [
 						{
 							"fileName": "src/other/url.ts",
-							"line": 15,
+							"line": 36,
 							"character": 30
 						}
 					]
 				},
 				{
-					"id": 191,
+					"id": 194,
 					"name": "urlGetParams",
 					"kind": 64,
 					"kindString": "Function",
@@ -6131,22 +5991,29 @@
 					},
 					"signatures": [
 						{
-							"id": 192,
+							"id": 195,
 							"name": "urlGetParams",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {
 								"isExported": true
 							},
+							"comment": {
+								"shortText": "获取 url 中的参数, 以对象的形式返回",
+								"returns": "参数对象\n"
+							},
 							"parameters": [
 								{
-									"id": 193,
+									"id": 196,
 									"name": "url",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
 										"isExported": true,
 										"isOptional": true
+									},
+									"comment": {
+										"text": "可选, 默认为`location.href`的值"
 									},
 									"type": {
 										"type": "union",
@@ -6164,65 +6031,16 @@
 								}
 							],
 							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 194,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {
-										"isExported": true
-									},
-									"indexSignature": [
-										{
-											"id": 195,
-											"name": "__index",
-											"kind": 8192,
-											"kindString": "Index signature",
-											"flags": {
-												"isExported": true
-											},
-											"parameters": [
-												{
-													"id": 196,
-													"name": "key",
-													"kind": 32768,
-													"kindString": "Parameter",
-													"flags": {
-														"isExported": true
-													},
-													"type": {
-														"type": "intrinsic",
-														"name": "string"
-													}
-												}
-											],
-											"type": {
-												"type": "union",
-												"types": [
-													{
-														"type": "intrinsic",
-														"name": "string"
-													},
-													{
-														"type": "array",
-														"elementType": {
-															"type": "intrinsic",
-															"name": "string"
-														}
-													}
-												]
-											}
-										}
-									]
-								}
+								"type": "reference",
+								"id": 180,
+								"name": "UrlParamsObject"
 							}
 						}
 					],
 					"sources": [
 						{
 							"fileName": "src/other/url.ts",
-							"line": 73,
+							"line": 107,
 							"character": 28
 						}
 					]
@@ -6230,12 +6048,19 @@
 			],
 			"groups": [
 				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						180
+					]
+				},
+				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						184,
-						180,
-						191
+						187,
+						183,
+						194
 					]
 				}
 			],

@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>fileDownload 函数的参数格式</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -106,9 +113,14 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="../modules/file.html#filedownloadparamsdata" class="tsd-signature-type">FileDownloadParamsData</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L34">src/other/file-download.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L84">src/other/file-download.ts:84</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>请求 body 体的数据</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="errorcb" class="tsd-anchor"></a>
@@ -116,9 +128,14 @@
 					<div class="tsd-signature tsd-kind-icon">error<wbr>Cb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><a href="../classes/others.ajaxerror.html" class="tsd-signature-type">AjaxError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L30">src/other/file-download.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L71">src/other/file-download.ts:71</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>下载失败后的回调</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="filename" class="tsd-anchor"></a>
@@ -126,9 +143,15 @@
 					<div class="tsd-signature tsd-kind-icon">file<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L25">src/other/file-download.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L54">src/other/file-download.ts:54</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>下载后的文件名</p>
+						</div>
+						<p>支持内置动态变量用法 <code>#{name}</code>、<code>#{ext}</code>、 <code>#{ext:xxx}</code>, 具体用法可参考 <a href="../modules/url.html#urlgetfilename">urlGetFileName</a></p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="finalcb" class="tsd-anchor"></a>
@@ -136,9 +159,14 @@
 					<div class="tsd-signature tsd-kind-icon">final<wbr>Cb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">?: </span><a href="../classes/others.ajaxerror.html" class="tsd-signature-type">AjaxError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L31">src/other/file-download.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L75">src/other/file-download.ts:75</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>下载成功及失败后的回调</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="headers" class="tsd-anchor"></a>
@@ -146,9 +174,14 @@
 					<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <a href="../modules/file.html#filedownloadparamsheaders" class="tsd-signature-type">FileDownloadParamsHeaders</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L27">src/other/file-download.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L62">src/other/file-download.ts:62</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>请求额外的 headers 配置</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="isformdata" class="tsd-anchor"></a>
@@ -156,9 +189,14 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Form<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L35">src/other/file-download.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L88">src/other/file-download.ts:88</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>是否为 formdata 格式, 仅 <code>method为POST</code> 时有效</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="method" class="tsd-anchor"></a>
@@ -166,9 +204,14 @@
 					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"GET"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"POST"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L33">src/other/file-download.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L80">src/other/file-download.ts:80</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>请求方法, <code>GET</code>, <code>POST</code>, post 默认为 <code>json</code> 格式, 可通过 <code>isFormData</code> 来设置为 <code>formdata</code> 格式</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="params" class="tsd-anchor"></a>
@@ -176,9 +219,14 @@
 					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <a href="file.urlqueryparams.html" class="tsd-signature-type">UrlQueryParams</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L24">src/other/file-download.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L48">src/other/file-download.ts:48</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>url 参数, 会自动拼接到 url 中的 <code>?...</code> 部分</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="successcb" class="tsd-anchor"></a>
@@ -186,9 +234,14 @@
 					<div class="tsd-signature tsd-kind-icon">success<wbr>Cb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L29">src/other/file-download.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L67">src/other/file-download.ts:67</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>下载成功后的回调</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="url" class="tsd-anchor"></a>
@@ -196,9 +249,14 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L23">src/other/file-download.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L44">src/other/file-download.ts:44</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>下载链接</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="withcredentials" class="tsd-anchor"></a>
@@ -206,9 +264,14 @@
 					<div class="tsd-signature tsd-kind-icon">with<wbr>Credentials<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><a href="../modules/file.html#withcredentialsfunction" class="tsd-signature-type">WithCredentialsFunction</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/6e327a9/src/other/file-download.ts#L26">src/other/file-download.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/b4b5f76/src/other/file-download.ts#L58">src/other/file-download.ts:58</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>请求是否携带 cookie, 支持通过函数动态判断</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -303,9 +366,6 @@
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="../modules/file.html#filedownload" class="tsd-kind-icon">file<wbr>Download</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/file.html#getsuggestfilename" class="tsd-kind-icon">get<wbr>Suggest<wbr>File<wbr>Name</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -319,7 +379,6 @@
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
