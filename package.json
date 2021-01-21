@@ -26,7 +26,7 @@
     "url": "https://github.com/borenXue/front-packages/issues"
   },
   "scripts": {
-    "deploy:docs": "typedoc && gh-pages -d lib/_docs",
+    "deploy:docs": "typedoc && cat typedoc-custom.css >> lib/_docs/assets/css/main.css && gh-pages -d lib/_docs",
     "start": "npm run check -- --watch",
     "build": "rm -rf lib && rollup -c && npm run types:cjs && npm run types:es",
     "types:cjs": "tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib",

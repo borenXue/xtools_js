@@ -9,32 +9,94 @@ import FileSaver from 'file-saver';
 import { urlGetFileName, urlAddParams } from "./url";
 import { AbortError, TimeOutError, NotSuccessError, AjaxError } from "../utils/errors";
 
+/**
+ * url 请求参数对象中的 值 的格式
+ */
 export type UrlQueryParamValueType = string | number | boolean | string[] | number[];
 
+/**
+ * url 请求参数对象
+ */
 export interface UrlQueryParams {
   [key: string]: UrlQueryParamValueType;
 }
 
+/**
+ * 请求 body 体的数据格式
+ */
 export type FileDownloadParamsData = Array<any> | { [key: string]: any };
+/**
+ * 请求头对象
+ */
 export type FileDownloadParamsHeaders = { [key: string]: string };
+/**
+ * 动态判断是否需要携带cookie
+ */
 export type WithCredentialsFunction = (url: string, method: 'GET' | 'POST', isFormData: boolean) => boolean;
 
+/**
+ * fileDownload 函数的参数格式
+ */
 export interface FileDownloadParams {
+  /**
+   * 下载链接
+   */
   url: string;
+  /**
+   * url 参数, 会自动拼接到 url 中的 `?...` 部分
+   */
   params?: UrlQueryParams;
+  /**
+   * 下载后的文件名
+   * 
+   * 支持内置动态变量用法 `#{name}`、`#{ext}`、 `#{ext:xxx}`, 具体用法可参考 {@link urlGetFileName}
+   */
   fileName?: string,
+  /**
+   * 请求是否携带 cookie, 支持通过函数动态判断
+   */
   withCredentials?: boolean | WithCredentialsFunction;
+  /**
+   * 请求额外的 headers 配置
+   */
   headers?: FileDownloadParamsHeaders,
 
+  /**
+   * 下载成功后的回调
+   */
   successCb?: Function;
+  /**
+   * 下载失败后的回调
+   */
   errorCb?: (err: AjaxError) => void;
+  /**
+   * 下载成功及失败后的回调
+   */
   finalCb?: (err?: AjaxError) => void;
 
+  /**
+   * 请求方法, `GET`, `POST`, post 默认为 `json` 格式, 可通过 `isFormData` 来设置为 `formdata` 格式
+   */
   method?: 'GET' | 'POST';
+  /**
+   * 请求 body 体的数据
+   */
   data?: FileDownloadParamsData;
+  /**
+   * 是否为 formdata 格式, 仅 `method为POST` 时有效
+   */
   isFormData?: boolean;
 }
 
+/**
+ * 文件下载
+ * 
+ * 文件名规则判断优先级: `fileName` 参数 > 接口response header中指定 > url 中提取
+ * 
+ * 
+ * 
+ * @param downloadParams 下载选项配置
+ */
 export function fileDownload(downloadParams: FileDownloadParams) {
   let { url, params, headers, method, isFormData } = downloadParams;
 
@@ -76,6 +138,7 @@ export function fileDownload(downloadParams: FileDownloadParams) {
   })
 }
 
+/** @ignore */
 export function getSuggestFileName(req: XMLHttpRequest) {
   try {
     const headers = req.getAllResponseHeaders();

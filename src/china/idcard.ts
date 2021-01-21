@@ -43,6 +43,7 @@ const checkCodes: string[] = [
  *  - 注意: 合规并不代表身份证号真实存在
  * 
  * @param idcard 身份证号
+ * @returns 是否合法
  */
 export function validIdCard(idcard: string): boolean {
   let str = String(idcard);

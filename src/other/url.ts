@@ -6,11 +6,32 @@
  */
 
 /**
- * 获取最终文件名
- *
- * @param url 文件的 url 地址
- * @param name 指定文件名(可选)
- *
+ * 获取最终文件名, 支持变量替换
+ * 
+ * @param url 文件的 url 地址 或 url中的 path 部分
+ * @param name 指定文件名(可选), 支持内置变量语法 `#{name}`、`#{ext}`、`#{ext:xxx}`, 具体用法参考下面的示例
+ * @returns 文件名
+ * 
+ * ```javascript
+ * // 返回 c.txt
+ * urlGetFileName('http://a/b/c.txt')
+ * 
+ * // 返回 new.jpe
+ * urlGetFileName('http://a/b/c.txt', 'new.jpe')
+ * 
+ * // 返回 c.txt
+ * urlGetFileName('http://a/b/c', '#{name}.txt')
+ * 
+ * // 返回 c-1.txt-new
+ * urlGetFileName('http://a/b/c.txt', '#{name}-1.#{ext}-new')
+ * 
+ * // 返回 c-1.txt
+ * // #{ext:pdf}: 代表, 如果 url 中已有后缀则使用url中的, 没有的时候使用 pdf
+ * urlGetFileName('http://a/b/c.txt', '#{name}-1.#{ext:pdf}')
+ * 
+ * // 返回 c-1.pdf
+ * urlGetFileName('http://a/b/c', '#{name}-1.#{ext:pdf}')
+ * ```
  */
 export function urlGetFileName(urlOrFileName: string, name?: string) {
   let pathname = '';
@@ -44,6 +65,13 @@ export function urlGetFileName(urlOrFileName: string, name?: string) {
   return `${decodeURI(namePureName)}${nameExt ? '.' : ''}${nameExt}`;
 }
 
+/**
+ * url 添加参数
+ *
+ * @param url 要解析的 url 字符串
+ * @param param 要添加的参数对象, 可一次添加多个
+ * @return 最终生成的url
+ */
 export function urlAddParams(url: string, param: {
   [key: string]: string | number | boolean | string[] | number[]
 } = {}) {
@@ -70,7 +98,13 @@ export function urlAddParams(url: string, param: {
   return `${safeUrl}${search ? '?' : ''}${search}`;
 }
 
-export function urlGetParams(url?: string) {
+/**
+ * 获取 url 中的参数, 以对象的形式返回
+ *
+ * @param url 可选, 默认为`location.href`的值
+ * @returns 参数对象
+ */
+export function urlGetParams(url?: string): UrlParamsObject {
   const nUrl = url || window.location.href;
 
   const questionMarkIdx = nUrl.indexOf('?');
@@ -93,4 +127,8 @@ export function urlGetParams(url?: string) {
   }
 
   return result;
+}
+
+export interface UrlParamsObject {
+  [key: string]: string | string[]
 }

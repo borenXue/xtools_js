@@ -17,6 +17,8 @@ import { padRight } from '../utils/index'
 
 /**
  * 加法函数
+ * 
+ * @returns 计算结果
  */
 export function accAdd(num1: number = 0, num2: number = 0, ...rest: number[]): number {
   const r1Positive = num1.toString().split('.')[0] || '0';
@@ -44,6 +46,8 @@ export function accAdd(num1: number = 0, num2: number = 0, ...rest: number[]): n
 
 /**
  * 减法函数
+ * 
+ * @returns 计算结果
  */
 export function accSub(num1: number = 0, num2: number = 0, ...rest: number[]): number {
   const r1Positive = num1.toString().split('.')[0] || '0';
@@ -71,6 +75,8 @@ export function accSub(num1: number = 0, num2: number = 0, ...rest: number[]): n
 
 /**
  * 乘法函数
+ * 
+ * @returns 计算结果
  */
 export function accMulti(num1: number = 0, num2: number = 1, ...rest: number[]): number {
   let m = (num1.toString().split('.')[1] || '').length;
@@ -91,6 +97,8 @@ export function accMulti(num1: number = 0, num2: number = 1, ...rest: number[]):
 
 /**
  * 除法函数
+ * 
+ * @returns 计算结果
  */
 export function accDiv(num1: number, num2: number = 1, ...rest: number[]): number {
   const r1Positive = num1.toString().split('.')[0] || '0';

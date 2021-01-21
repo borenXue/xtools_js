@@ -1,0 +1,27 @@
+/* 函数返回值 - 描述 - 由单起一行改为 inline 模式 */
+.tsd-description .tsd-returns-title {
+  display: inline;
+}
+.tsd-description > p {
+  display: inline;
+  margin-left: 30px;
+}
+.tsd-sources {
+  text-align: right;
+}
+
+/* 函数 - 参数 的 描述, 由单起一行改为 inline 模式 */
+/* .tsd-description ul.tsd-parameters li h5 {
+  display: inline;
+}
+.tsd-description ul.tsd-parameters li .tsd-comment {
+  display: inline;
+}
+.tsd-description ul.tsd-parameters li .tsd-comment p {
+  display: inline;
+  margin-left: 30px;
+} */
+/* 设置纵向间距 */
+.tsd-description ul.tsd-parameters li {
+  margin-bottom: 5px;
+}

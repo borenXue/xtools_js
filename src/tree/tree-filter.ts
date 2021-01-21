@@ -1,5 +1,6 @@
 import { TreeItemLike } from "./types";
 
+/** @ignore */
 export interface TreeFilterCallback<TreeItem> {
   (
     currentItem: TreeItem,
@@ -12,6 +13,7 @@ export interface TreeFilterCallback<TreeItem> {
   ): boolean
 }
 
+/** @ignore */
 export default function treeFilter<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeFilterCallback<TreeItem>,

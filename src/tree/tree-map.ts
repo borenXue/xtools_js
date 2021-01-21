@@ -33,6 +33,14 @@ export interface TreeMapCallback<TreeItem> {
   ): TreeItem | undefined | any
 }
 
+/**
+ * 类似 Array.property.map 的功能
+ *
+ * @param tree 
+ * @param fn 
+ * @param deleteUndefined 
+ * @param childrenKey 
+ */
 export default function treeMap<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeMapCallback<TreeItem>,

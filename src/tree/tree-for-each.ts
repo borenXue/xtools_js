@@ -1,11 +1,29 @@
 import { TreeItemLike } from "./types";
 
+/**
+ * {@link treeForEach} 的回调函数
+ */
 export interface TreeForEachCallback<TreeItem extends TreeItemLike> {
   (
+    /**
+     * 当前遍历到的项
+     */
     currentItem: TreeItem,
+    /**
+     * 当前遍历到的项, 在其父节点的 children 数组中的序号
+     */
     index: number,
+    /**
+     * 当前遍历到的项, 所在的层级
+     */
     level: number,
+    /**
+     * 当前遍历到的项, 在整个树中的序号 (深度优先)
+     */
     globalIndex: number,
+    /**
+     * 当前遍历到的项, 的父节点
+     */
     parent?: TreeItem,
   ): void
 }

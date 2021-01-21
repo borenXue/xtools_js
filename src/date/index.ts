@@ -30,11 +30,23 @@ export function timeBetweenMonth(
   ];
 }
 
+/**
+ * 该月第一毫秒
+ *
+ * @param time 任意时间
+ * @returns 该月第一毫秒的时间戳
+ */
 export function timeMonthStart(time: number | Date | string) {
   let start = new Date(time);
   return new Date(`${start.getFullYear()}/${start.getMonth() + 1}/01 00:00:00`).getTime();
 }
 
+/**
+ * 该月最后一毫秒
+ *
+ * @param time 任意时间
+ * @returns 该月最后一毫秒的时间戳
+ */
 export function timeMonthEnd(time: number | Date | string) {
   let end = new Date(time)
   end = end.getMonth() === 11
@@ -68,12 +80,23 @@ export function timeBetweenDay(
   ];
 }
 
-
+/**
+ * 返回当前天的第一毫秒
+ * 
+ * @param day 任意日期
+ * @returns 对应天第一毫秒的时间戳
+ */
 export function timeDayStart(day: number | Date | string,) {
   return new Date(formatDate(day, 'YYYY/MM/DD 00:00:00')).getTime();
 }
 
-export function timeDayEnd(day: number | Date | string,) {
+/**
+ * 返回当前天的最后一毫秒
+ * 
+ * @param day 任意日期
+ * @returns 对应天最后一毫秒的时间戳
+ */
+export function timeDayEnd(day: number | Date | string) {
   const todayZero = new Date(formatDate(day, 'YYYY/MM/DD 00:00:00'));
   const tomorrowZero = todayZero.getTime() + 24 * 60 * 60 * 1000;
   return tomorrowZero - 1;
@@ -81,7 +104,8 @@ export function timeDayEnd(day: number | Date | string,) {
 
 /**
  * 获取指定时间或当前时间的上个月同一时间
- * @param start Date 对象
+ * @param start 任意日期
+ * @returns 上个月同一时刻
  */
 export function timeLastMonth(start: number | Date | string = new Date()) {
   const startDate = start ? new Date(start) : new Date();
@@ -97,6 +121,9 @@ export function timeLastMonth(start: number | Date | string = new Date()) {
 
 /**
  * 两个时间是否超过1个月
+ * @param time1 时间1
+ * @param time2 时间2
+ * @returns 是否超过
  */
 export function timeIsBetweenMonth(time1: number | Date | string, time2: number | Date | string) {
   if (!time1 || !time2) throw new Error('参数错误, 两个时间都必传');

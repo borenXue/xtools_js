@@ -38,7 +38,7 @@ const defaultOptions: ArrayToTreeOptions<TreeItemLike> = {
  * 将数组转化为树形结构
  *
  * @param array 源数据, 对象格式的数组
- * @param options 自定义配置对象
+ * @param options 自定义配置对象, 默认配置值请参考 {@link ArrayToTreeOptions}
  * 
  */
 export default function arrayToTree<

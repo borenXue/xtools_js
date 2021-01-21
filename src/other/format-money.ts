@@ -1,8 +1,29 @@
 
-export default function formatMoney(money: number, { decimal, trim }: {
+/**
+ * 金额格式化函数 {@link formatMoney} 的选项对象
+ */
+export interface formatMoneyOptions {
+  /**
+   * 小数位个数, 默认为2
+   */
   decimal?: number,
+  /**
+   * 是否删除小数位最后无意义的 0, 默认 false 即不删除
+   */
   trim?: boolean
-} = {}) {
+}
+
+/**
+ * 金额格式化
+ *
+ * @param money 金额值
+ * @param options 选项对象, 默认值: {decimal: 2, trim: false}
+ * 
+ * @returns 格式化后的金额, 字符串类型
+ */
+export default function formatMoney(money: number, options: formatMoneyOptions = {}) {
+  const { decimal, trim } = options;
+
   // 确定要保留的小数位数
   let decimalFinal = typeof decimal === 'number' ? Math.max(0, decimal) : 2;
   decimalFinal = Math.round(decimalFinal);

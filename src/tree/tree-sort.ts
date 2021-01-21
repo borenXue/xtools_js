@@ -1,5 +1,13 @@
 import { TreeItemLike, SortFunction } from "./types"
 
+/**
+ * 类似 Array.property.sort 的功能
+ *
+ * @param tree 
+ * @param fn 
+ * @param deleteUndefined 
+ * @param childrenKey 
+ */
 export default function treeSort<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   sortBy: SortFunction<TreeItem> | string = 'id',
