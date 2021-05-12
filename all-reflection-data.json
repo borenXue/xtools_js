@@ -1,6 +1,6 @@
 {
 	"id": 0,
-	"name": "xtools_js - v2.0.1",
+	"name": "xtools_js - v2.1.1",
 	"kind": 0,
 	"flags": {},
 	"originalName": "",
@@ -5201,6 +5201,121 @@
 					]
 				},
 				{
+					"id": 312,
+					"name": "DeleteRecursionConfig",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 314,
+							"name": "array",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "如何处理数组, 默认为 undefined"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/delete-param.ts",
+									"line": 24,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 320,
+								"name": "DeleteRule"
+							}
+						},
+						{
+							"id": 313,
+							"name": "delete",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "是否删除某个属性的判断规则",
+								"text": "默认值: [undefined, null]\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/delete-param.ts",
+									"line": 19,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 320,
+								"name": "DeleteRule"
+							}
+						},
+						{
+							"id": 315,
+							"name": "objectInArray",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "如何处理数组内的对象, 默认为 true",
+								"text": "true: 代表使用 delete 选项配置的删除规则\nfalse: 不处理\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/delete-param.ts",
+									"line": 32,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									{
+										"type": "reference",
+										"id": 320,
+										"name": "DeleteRule"
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								314,
+								313,
+								315
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/delete-param.ts",
+							"line": 13,
+							"character": 38
+						}
+					]
+				},
+				{
 					"id": 287,
 					"name": "formatMoneyOptions",
 					"kind": 256,
@@ -5298,6 +5413,282 @@
 							"fileName": "src/other/format-money.ts",
 							"line": 5,
 							"character": 35
+						}
+					]
+				},
+				{
+					"id": 321,
+					"name": "AnyPlainObject",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/delete-param.ts",
+							"line": 11,
+							"character": 26
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 322,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"indexSignature": [
+								{
+									"id": 323,
+									"name": "__index",
+									"kind": 8192,
+									"kindString": "Index signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 324,
+											"name": "k",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/other/delete-param.ts",
+									"line": 11,
+									"character": 28
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 320,
+					"name": "DeleteRule",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/other/delete-param.ts",
+							"line": 10,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Array"
+							},
+							{
+								"type": "reference",
+								"id": 316,
+								"name": "DeleteRuleFunction"
+							}
+						]
+					}
+				},
+				{
+					"id": 316,
+					"name": "DeleteRuleFunction",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "删除规则",
+						"text": "Array:   进行删除处理, 删除规则使用该数组 (===判断)\n函数:     进行删除处理, 删除规则使用该函数 (返回 true/false)\n"
+					},
+					"sources": [
+						{
+							"fileName": "src/other/delete-param.ts",
+							"line": 9,
+							"character": 30
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 317,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 318,
+									"name": "__call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {
+										"isExported": true
+									},
+									"parameters": [
+										{
+											"id": 319,
+											"name": "propValue",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isExported": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "src/other/delete-param.ts",
+									"line": 9,
+									"character": 32
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 325,
+					"name": "deleteParamsRecursion",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 326,
+							"name": "deleteParamsRecursion",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "递归删除特定属性"
+							},
+							"parameters": [
+								{
+									"id": 327,
+									"name": "params",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "object\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"id": 321,
+												"name": "AnyPlainObject"
+											},
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												],
+												"name": "Array"
+											}
+										]
+									}
+								},
+								{
+									"id": 328,
+									"name": "configOrDelete",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true,
+										"isOptional": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"id": 320,
+												"name": "DeleteRule"
+											},
+											{
+												"type": "reference",
+												"id": 312,
+												"name": "DeleteRecursionConfig"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "any"
+										}
+									},
+									{
+										"type": "reference",
+										"id": 321,
+										"name": "AnyPlainObject"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/delete-param.ts",
+							"line": 47,
+							"character": 45
 						}
 					]
 				},
@@ -5461,6 +5852,165 @@
 							"fileName": "src/other/heart-check.ts",
 							"line": 8,
 							"character": 33
+						}
+					]
+				},
+				{
+					"id": 305,
+					"name": "isArray",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 306,
+							"name": "isArray",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 307,
+									"name": "arr",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "arr",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "any"
+										}
+									],
+									"name": "Array"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/others.ts",
+							"line": 7,
+							"character": 23
+						}
+					]
+				},
+				{
+					"id": 308,
+					"name": "isFunction",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 309,
+							"name": "isFunction",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 310,
+									"name": "func",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "func",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"name": "Function"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/others.ts",
+							"line": 11,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 302,
+					"name": "isObject",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 303,
+							"name": "isObject",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 304,
+									"name": "obj",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "obj",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"name": "Object"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/utils/others.ts",
+							"line": 3,
+							"character": 24
 						}
 					]
 				},
@@ -5670,15 +6220,29 @@
 					"title": "Interfaces",
 					"kind": 256,
 					"children": [
+						312,
 						287
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						321,
+						320,
+						316
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
+						325,
 						290,
 						295,
+						305,
+						308,
+						302,
 						6,
 						11
 					]

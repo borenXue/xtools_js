@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>formatMoneyOptions | xtools_js - v2.1.1</title>
+	<title>DeleteRecursionConfig | xtools_js - v2.1.1</title>
 	<meta name="description" content="Documentation for xtools_js - v2.1.1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,28 +57,21 @@
 					<a href="../modules/others.html">Others</a>
 				</li>
 				<li>
-					<a href="others.formatmoneyoptions.html">formatMoneyOptions</a>
+					<a href="others.deleterecursionconfig.html">DeleteRecursionConfig</a>
 				</li>
 			</ul>
-			<h1>Interface formatMoneyOptions</h1>
+			<h1>Interface DeleteRecursionConfig</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>金额格式化函数 <a href="../modules/others.html#formatmoney">formatMoney</a> 的选项对象</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">formatMoneyOptions</span>
+						<span class="target">DeleteRecursionConfig</span>
 					</li>
 				</ul>
 			</section>
@@ -89,8 +82,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.deleterecursionconfig.html#array" class="tsd-kind-icon">array</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.deleterecursionconfig.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="others.deleterecursionconfig.html#objectinarray" class="tsd-kind-icon">object<wbr>InArray</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,33 +93,51 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="decimal" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decimal</h3>
-					<div class="tsd-signature tsd-kind-icon">decimal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<a name="array" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> array</h3>
+					<div class="tsd-signature tsd-kind-icon">array<span class="tsd-signature-symbol">:</span> <a href="../modules/others.html#deleterule" class="tsd-signature-type">DeleteRule</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/3ac5a23/src/other/format-money.ts#L9">src/other/format-money.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/3ac5a23/src/other/delete-param.ts#L24">src/other/delete-param.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>小数位个数, 默认为2</p>
+							<p>如何处理数组, 默认为 undefined</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="trim" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> trim</h3>
-					<div class="tsd-signature tsd-kind-icon">trim<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="delete" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> delete</h3>
+					<div class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">:</span> <a href="../modules/others.html#deleterule" class="tsd-signature-type">DeleteRule</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/3ac5a23/src/other/format-money.ts#L13">src/other/format-money.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/3ac5a23/src/other/delete-param.ts#L19">src/other/delete-param.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>是否删除小数位最后无意义的 0, 默认 false 即不删除</p>
+							<p>是否删除某个属性的判断规则</p>
 						</div>
+						<p>默认值: [undefined, null]</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="objectinarray" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> object<wbr>InArray</h3>
+					<div class="tsd-signature tsd-kind-icon">object<wbr>InArray<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><a href="../modules/others.html#deleterule" class="tsd-signature-type">DeleteRule</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/3ac5a23/src/other/delete-param.ts#L32">src/other/delete-param.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>如何处理数组内的对象, 默认为 true</p>
+						</div>
+						<p>true: 代表使用 delete 选项配置的删除规则
+						false: 不处理</p>
 					</div>
 				</section>
 			</section>
@@ -173,24 +185,27 @@
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/others.timeouterror.html" class="tsd-kind-icon">Time<wbr>Out<wbr>Error</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="others.deleterecursionconfig.html" class="tsd-kind-icon">Delete<wbr>Recursion<wbr>Config</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="others.formatmoneyoptions.html" class="tsd-kind-icon">format<wbr>Money<wbr>Options</a>
+						<a href="others.deleterecursionconfig.html" class="tsd-kind-icon">Delete<wbr>Recursion<wbr>Config</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="others.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a>
+								<a href="others.deleterecursionconfig.html#array" class="tsd-kind-icon">array</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="others.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a>
+								<a href="others.deleterecursionconfig.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="others.deleterecursionconfig.html#objectinarray" class="tsd-kind-icon">object<wbr>InArray</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="others.formatmoneyoptions.html" class="tsd-kind-icon">format<wbr>Money<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="../modules/others.html#anyplainobject" class="tsd-kind-icon">Any<wbr>Plain<wbr>Object</a>
 					</li>
