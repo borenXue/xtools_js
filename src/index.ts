@@ -35,6 +35,9 @@ import heartCheck from './other/heart-check'
 import { urlAddParams, urlGetFileName, urlGetParams  } from './other/url';
 import { padLeft } from './utils/index';
 
+// http 模块
+import http, { createHttpInstance, globalConfig } from './http';
+
 export {
   // tree
   arrayToTree,
@@ -52,6 +55,8 @@ export {
   timeMonthStart, timeMonthEnd,
   timeDayStart, timeDayEnd,
   timeLastMonth, timeIsBetweenMonth,
+  // http 模块
+  http, createHttpInstance, globalConfig,
   // other
   fileDownload,
   urlAddParams, urlGetFileName, urlGetParams,

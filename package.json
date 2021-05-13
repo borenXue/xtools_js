@@ -36,12 +36,14 @@
     "prepublish": "npm run test && npm run build",
     "postpublish": "npm run deploy:docs",
     "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
-    "test": "ts-mocha src/*/*.spec.ts -R spec --bail"
+    "test": "ts-mocha src/*/*.spec.ts"
   },
   "dependencies": {
+    "axios": "0.21.1",
     "core-js": "^3.8.2",
     "file-saver": "^2.0.2",
-    "nested-property": "^2.0.0"
+    "nested-property": "^2.0.0",
+    "qs": "^6.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
