@@ -4,6 +4,8 @@ const glob = require('glob');
 const { babel } = require('@rollup/plugin-babel');
 const { terser } = require('rollup-plugin-terser');
 
+const json = require('@rollup/plugin-json');
+
 // 查找和打包node_modules中的第三方模块
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 
@@ -33,6 +35,7 @@ const configBrowserUmd = {
     { file: resolve(pkg.browser), format: 'umd', name: 'xtools', plugins: [terser()] }
   ],
   plugins: [
+    json(),
     nodeResolve({ extensions }),
     commonjs(), // 将第三方依赖打包进 dist/index.js 文件内
     babel({ exclude: ['node_modules/**'], extensions }),
@@ -59,6 +62,7 @@ for (const file of entries) {
       { file: resolve(outputModuleEs), format: 'es' }
     ],
     plugins: [
+      json(),
       nodeResolve({ extensions, modulesOnly: true }),
       babel({ exclude: ['node_modules/**'], extensions }),
     ]

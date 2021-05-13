@@ -1,15 +1,14 @@
 import axios, { AxiosResponse } from "axios";
-import { deleteRequestEmptyParams } from "./helper";
 import { ExtraAxiosRequestConfig, LoadingType } from "./types";
 import { showLoading, closeLoading } from './helper';
 import deleteParam, { defaultConfig } from '../other/delete-param';
 
 export function requestInterceptorFulfilled(config: ExtraAxiosRequestConfig) {
-  const extra = config.extraConfig;
+  const extra = config.extraConfig || {};
 
   extra.$startTime = new Date().getTime();
 
-  if ([LoadingType.All, LoadingType.Request].includes(extra.loading)) {
+  if (extra.loading && [LoadingType.All, LoadingType.Request].includes(extra.loading)) {
     showLoading(extra.showLoading);
   }
 
@@ -26,10 +25,10 @@ export function requestInterceptorRejected(error: any) { return error; }
 
 export function responseInterceptorFulfilled(response: AxiosResponse<any>) {
   const config = response.config as ExtraAxiosRequestConfig;
-  const extra = config.extraConfig;
+  const extra = config.extraConfig || {};
 
   function handleLoadingAndReturn() {
-    if ([LoadingType.All, LoadingType.Response].includes(config.extraConfig.loading)) {
+    if (extra.loading && [LoadingType.All, LoadingType.Response].includes(extra.loading)) {
       closeLoading(extra.closeLoading);
     }
 
@@ -37,18 +36,22 @@ export function responseInterceptorFulfilled(response: AxiosResponse<any>) {
   }
 
   // 处理 minTime 参数
-  const costTime = new Date().getTime() - extra.$startTime;
-  if (costTime >= extra.minTime || 0) {
-    handleLoadingAndReturn();
+  if (extra.minTime && extra.minTime > 0) {
+    const minTime = extra.minTime || 0;
+    const $startTime = extra.$startTime || 0;
+    const costTime = new Date().getTime() - $startTime;
+    if (costTime >= minTime) {
+      handleLoadingAndReturn();
+    }
+    // 实际用时小于 minTime 的处理
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          resolve(handleLoadingAndReturn());
+        } catch (err) { reject(err); }
+      }, minTime - costTime);
+    }); 
   }
-  // 实际用时小于 minTime 的处理
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      try {
-        resolve(handleLoadingAndReturn());
-      } catch (err) { reject(err); }
-    }, extra.minTime - costTime);
-  });
 }
 
 export function responseInterceptorRejected(error: any) {
@@ -64,26 +67,30 @@ export function responseInterceptorRejected(error: any) {
   }
 
   const config = error.config as ExtraAxiosRequestConfig;
-  const extra = config.extraConfig;
+  const extra = config.extraConfig || {};
 
   function handleLoadingAndReturn() {
-    if ([LoadingType.All, LoadingType.Response].includes(extra.loading)) {
+    if (extra.loading && [LoadingType.All, LoadingType.Response].includes(extra.loading)) {
       closeLoading(extra.closeLoading)
     }
     throw error;
   }
 
   // 处理 minTime 参数
-  const costTime = new Date().getTime() - extra.$startTime;
-  if (costTime >= extra.minTime || 0) {
-    handleLoadingAndReturn();
+  if (extra.minTime && extra.minTime > 0) {
+    const minTime = extra.minTime || 0;
+    const $startTime = extra.$startTime || 0;
+    const costTime = new Date().getTime() - $startTime;
+    if (costTime >= minTime) {
+      handleLoadingAndReturn();
+    }
+    // 实际用时小于 minTime 的处理
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          resolve(handleLoadingAndReturn());
+        } catch (err) { reject(err); }
+      }, minTime - costTime);
+    });
   }
-  // 实际用时小于 minTime 的处理
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      try {
-        resolve(handleLoadingAndReturn());
-      } catch (err) { reject(err); }
-    }, extra.minTime - costTime);
-  });
 }

@@ -7,19 +7,19 @@ export type ExtraConfig = {
   /**
    * 展示 loading
    */
-  showLoading: () => {},
+  showLoading: () => void,
   /**
    * 关闭 loading
    */
-  closeLoading: () => {},
+  closeLoading: () => void,
   /**
    * 接口 401 的处理器
    */
-  handler401: () => {},
+  handler401: () => void,
   /**
    * 提示函数
    */
-  handlerTip: (err: any) => {},
+  handlerTip: (err: Error) => void,
 
 
   /**
@@ -28,7 +28,9 @@ export type ExtraConfig = {
   loading: LoadingType;
 
   /**
-   * 请求最少要耗时 minTime ms 后才可以返回
+   * 请求最少要耗时 minTime ms 后才可以返回, 默认 undefined
+   * 
+   * 小于等于 0: 代表不设置
    */
   minTime: number;
 
@@ -44,5 +46,5 @@ export type ExtraConfig = {
 }
 
 export interface ExtraAxiosRequestConfig extends AxiosRequestConfig {
-  extraConfig: ExtraConfig;
+  extraConfig?: Partial<ExtraConfig>;
 }

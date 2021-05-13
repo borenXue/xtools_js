@@ -8,6 +8,7 @@
  * 3、提供 httpFormData、httpPost 等快捷入口, 相关的 data 格式转换由内部处理
  * 4、全局 loading 管理器
  * 5、错误提示
+ * 6、$startTime 不要在文档中出现
  *
  */
 import qs from 'qs';
@@ -25,9 +26,9 @@ function innerMergeConfig(cfg1: ExtraAxiosRequestConfig, cfg2?:ExtraAxiosRequest
   return cfg;
 }
 
-function getTimeoutErrorMessage(timeout, message) {
+function getTimeoutErrorMessage(timeout?: number, message?: string) {
   let timeoutErrorMessage = undefined;
-  if (timeout > 0 && !message) {
+  if (timeout && timeout > 0 && !message) {
     const sec = Math.round((timeout / 1000) * 100) / 100;
     if (sec < 1) {
       timeoutErrorMessage = `请求已超时 (${timeout}毫秒)`
@@ -54,7 +55,7 @@ let globalConfigDefault: ExtraAxiosRequestConfig = {
   },
 };
 
-const instanceList = [];
+const instanceList: HttpAxios[] = [];
 
 export function globalConfig(config: ExtraAxiosRequestConfig) {
   globalConfigDefault = config || {};
@@ -70,7 +71,7 @@ class HttpAxios {
 
   constructor(config: ExtraAxiosRequestConfig) {
     this.constructorConfig = config;
-    this.globalConfigChanged();
+    this.axiosInstance = this.globalConfigChanged();
     instanceList.push(this);
   }
 
@@ -79,8 +80,10 @@ class HttpAxios {
     cfg.extraConfig = cfg.extraConfig || {};
 
     this.axiosInstance = axios.create(cfg);
-    this.axiosInstance.interceptors.request.use(requestInterceptorFulfilled, requestInterceptorRejected);
-    this.axiosInstance.interceptors.response.use(responseInterceptorFulfilled, responseInterceptorRejected);
+    this.axiosInstance.interceptors.request.use(requestInterceptorFulfilled as any, requestInterceptorRejected);
+    this.axiosInstance.interceptors.response.use(responseInterceptorFulfilled as any, responseInterceptorRejected);
+
+    return this.axiosInstance;
   }
 
   request(url: string, cfg?: ExtraAxiosRequestConfig) {
@@ -130,7 +133,7 @@ class HttpAxios {
   }
 }
 
-export function createHttpInstance(config: ExtraAxiosRequestConfig) {
+export function createHttpInstance(config?: ExtraAxiosRequestConfig) {
   return new HttpAxios(config || {});
 };
 
