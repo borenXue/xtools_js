@@ -32,7 +32,7 @@ export interface DeleteRecursionConfig {
   objectInArray?: boolean | DeleteRule;
 }
 
-const defaultConfig: DeleteRecursionConfig = {
+export const defaultConfig: DeleteRecursionConfig = {
   delete: [undefined, null],
   array: undefined,
   objectInArray: true,
