@@ -5,6 +5,7 @@ const { babel } = require('@rollup/plugin-babel');
 const { terser } = require('rollup-plugin-terser');
 
 const json = require('@rollup/plugin-json');
+const alias = require('@rollup/plugin-alias');
 
 // 查找和打包node_modules中的第三方模块
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
@@ -26,7 +27,7 @@ const resolve = function(...args) {
 
 
 /**
- * 浏览器环境专用
+ * 浏览器环境专用 - UMD
  */
 const configBrowserUmd = {
   input: resolve('./src/index.ts'),
@@ -35,6 +36,9 @@ const configBrowserUmd = {
     { file: resolve(pkg.browser), format: 'umd', name: 'xtools', plugins: [terser()] }
   ],
   plugins: [
+    alias({
+      entries: [{ find: /^axios$/, replacement: 'axios/dist/axios.js' }]
+    }),
     json(),
     nodeResolve({ extensions }),
     commonjs(), // 将第三方依赖打包进 dist/index.js 文件内

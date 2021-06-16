@@ -17,7 +17,7 @@ import mergeConfig from 'axios/lib/core/mergeConfig.js'
 import { ExtraAxiosRequestConfig, LoadingType } from "./types";
 import { requestInterceptorFulfilled, requestInterceptorRejected, responseInterceptorFulfilled, responseInterceptorRejected } from './interceptor';
 
-function innerMergeConfig(cfg1: ExtraAxiosRequestConfig, cfg2?:ExtraAxiosRequestConfig): ExtraAxiosRequestConfig {
+function innerMergeConfig(cfg1: ExtraAxiosRequestConfig, cfg2?: ExtraAxiosRequestConfig): ExtraAxiosRequestConfig {
   const { url, method, data } = { ...cfg1, ...cfg2 };
   const cfg = mergeConfig(cfg1, cfg2);
   if (url) cfg.url = url;
@@ -100,7 +100,7 @@ class HttpAxios {
     }, cfg || {}));
   }
 
-  postJson(url: string, data?: object, params?:object, cfg?: ExtraAxiosRequestConfig) {
+  postJson(url: string, data?: object, params?: object, cfg?: ExtraAxiosRequestConfig) {
     return this.request(url, innerMergeConfig({
       method: 'post', params, data,
     }, cfg || {}));
