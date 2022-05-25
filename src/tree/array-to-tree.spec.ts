@@ -1,6 +1,8 @@
-import { expect } from 'chai'
-
 import arrayToTree from './array-to-tree'
+
+beforeAll(() => {
+    console.warn = () => {}
+})
 
 describe('arrayToTree 基本用法 - 默认参数 (不含排序与孤儿的处理)', () => {
     it(`使用默认参数:(不设置任何参数)`, () => {
@@ -11,7 +13,7 @@ describe('arrayToTree 基本用法 - 默认参数 (不含排序与孤儿的处�
             { id: 100, parentId: null, value: 'item-100' },
             { id: 200, parentId: 100, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ])).to.deep.equal([
+        ])).toEqual([
             { id: 400, parentId: undefined, value: 'item-400', children: [] },
             { id: 500, parentId: '', value: 'item-500', children: [] },
             {
@@ -45,7 +47,7 @@ describe('arrayToTree 基本用法 - 默认参数 (不含排序与孤儿的处�
             childrenKey: 'children',
             rootIdValue: undefined,
             dataFieldKey: null,
-        })).to.deep.equal([
+        })).toEqual([
             { id: 400, parentId: undefined, value: 'item-400', children: [] },
             { id: 500, parentId: '', value: 'item-500', children: [] },
             {
@@ -68,7 +70,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { newId: 100, parentId: null, value: 'item-100' },
             { newId: 200, parentId: 100, value: 'item-200' },
             { newId: 300, parentId: 100, value: 'item-300' },
-        ], { idKey: 'newId' })).to.deep.equal([
+        ], { idKey: 'newId' })).toEqual([
             {
                 newId: 100, parentId: null, value: 'item-100',
                 children: [
@@ -86,7 +88,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { id: 100, newParentId: null, value: 'item-100' },
             { id: 200, newParentId: 100, value: 'item-200' },
             { id: 300, newParentId: 100, value: 'item-300' },
-        ], { parentIdKey: 'newParentId' })).to.deep.equal([
+        ], { parentIdKey: 'newParentId' })).toEqual([
             {
                 id: 100, newParentId: null, value: 'item-100',
                 children: [
@@ -104,7 +106,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { id: 100, parent: {}, value: 'item-100' },
             { id: 200, parent: {id: 100}, value: 'item-200' },
             { id: 300, parent: {id: 100}, value: 'item-300' },
-        ], { parentIdKey: 'parent.id' })).to.deep.equal([
+        ], { parentIdKey: 'parent.id' })).toEqual([
             {
                 id: 100, parent: {}, value: 'item-100',
                 children: [
@@ -122,7 +124,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { id: 100, parentId: null, value: 'item-100' },
             { id: 200, parentId: 100, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { childrenKey: 'subLevel' })).to.deep.equal([
+        ], { childrenKey: 'subLevel' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 subLevel: [
@@ -140,7 +142,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { id: 100, parentId: null, value: 'item-100' },
             { id: 200, parentId: 100, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { childrenKey: 'subLevel' })).to.deep.equal([
+        ], { childrenKey: 'subLevel' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 subLevel: [
@@ -159,7 +161,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             { id: 100, parentId: null, value: 'item-100' },
             { id: 200, parentId: 100, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { dataFieldKey: 'originData' })).to.deep.equal([
+        ], { dataFieldKey: 'originData' })).toEqual([
             { id: 400, originData: {id: 400, parentId: undefined, value: 'item-400'}, children: [] },
             {
                 id: 100,
@@ -198,7 +200,7 @@ describe('arrayToTree 基本用法 - 自定义参数值 (不含排序与孤儿�
             childrenKey: 'newChilds',
             rootIdValue: 1000,
             dataFieldKey: 'newDataField',
-        })).to.deep.equal([
+        })).toEqual([
             { newId: 400,newDataField: { newId: 400, value: 'item-400' }, newChilds: [] },
             { newId: 500, newDataField: { newId: 500, parent: {}, value: 'item-500' }, newChilds: [] },
             { newId: 600, newDataField: { newId: 600, parent: { info: {} }, value: 'item-600' }, newChilds: [] },
@@ -228,7 +230,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 默认参数', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ])).to.deep.equal([
+        ])).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -260,7 +262,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 默认参数', () => {
             orphansFlagKey: '__is_orphans',
             orphansParent: 'ignore',
             orphansPosition: 'tail',
-        })).to.deep.equal([
+        })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -286,7 +288,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
                 { id: 200, parentId: 123456, value: 'item-200' },
                 { id: 300, parentId: 100, value: 'item-300' },
             ], { orphansHandleType: 'error' })
-        }).to.throw(Error, '孤儿元素 (共3个):\n\t孤儿项: 400,200 - 对应的父节点不存在: 123456\t孤儿项: 500 - 对应的父节点不存在: 1234567')
+        }).toThrow('孤儿元素 (共3个):\n\t孤儿项: 400,200 - 对应的父节点不存在: 123456\t孤儿项: 500 - 对应的父节点不存在: 1234567')
     })
     it(`自定义参数值: {orphansHandleType: 'ignore'}`, () => {
         expect(arrayToTree([
@@ -296,7 +298,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansHandleType: 'ignore' })).to.deep.equal([
+        ], { orphansHandleType: 'ignore' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -314,7 +316,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansHandleType: 'ignore' })).to.deep.equal([
+        ], { orphansHandleType: 'ignore' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -332,7 +334,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansHandleType: 'root' })).to.deep.equal([
+        ], { orphansHandleType: 'root' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -355,7 +357,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansFlagKey: '$orphansFlag' })).to.deep.equal([
+        ], { orphansFlagKey: '$orphansFlag' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -376,7 +378,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansFlagKey: '' })).to.deep.equal([
+        ], { orphansFlagKey: '' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -397,7 +399,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansFlagKey: undefined })).to.deep.equal([
+        ], { orphansFlagKey: undefined })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -418,7 +420,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansFlagKey: null })).to.deep.equal([
+        ], { orphansFlagKey: null })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -441,7 +443,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansParent: 'create' })).to.deep.equal([
+        ], { orphansParent: 'create' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100',
                 children: [
@@ -471,7 +473,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             { id: 500, parentId: 1234567, value: 'item-500' },
             { id: 200, parentId: 123456, value: 'item-200' },
             { id: 300, parentId: 100, value: 'item-300' },
-        ], { orphansPosition: 'head' })).to.deep.equal([
+        ], { orphansPosition: 'head' })).toEqual([
             { id: 500, parentId: 1234567, value: 'item-500', children: [], __is_orphans: true },
             { id: 200, parentId: 123456, value: 'item-200', children: [], __is_orphans: true },
             { id: 400, parentId: 123456, value: 'item-400', children: [], __is_orphans: true },
@@ -504,7 +506,7 @@ describe('arrayToTree 高级用法-孤儿处理 - 自定义参数值', () => {
             orphansHandleType: 'root',
             orphansFlagKey: '$orphans',
             orphansParent: 'create',
-        })).to.deep.equal([
+        })).toEqual([
             {
                 id: 1234567, $orphans: true, children: [{ id: 500, parentId: 1234567, value: 'item-500', children: [], $orphans: true }]
             },
@@ -536,7 +538,7 @@ describe('arrayToTree 高级用法-排序用法 - 默认参数', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ])).to.deep.equal([
+        ])).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -562,7 +564,7 @@ describe('arrayToTree 高级用法-排序用法 - 默认参数', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ])).to.deep.equal([
+        ])).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -590,7 +592,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: '' })).to.deep.equal([
+        ], { sort: '' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -615,7 +617,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: '' })).to.deep.equal([
+        ], { sort: '' })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -641,7 +643,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: 'seq' })).to.deep.equal([
+        ], { sort: 'seq' })).toEqual([
             {
                 id: 200, parentId: '', value: 'item-200', seq: 1,
                 children: [
@@ -666,7 +668,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: ['seq'] })).to.deep.equal([
+        ], { sort: ['seq'] })).toEqual([
             {
                 id: 200, parentId: '', value: 'item-200', seq: 1,
                 children: [
@@ -691,7 +693,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: ['seq', 'asc'] })).to.deep.equal([
+        ], { sort: ['seq', 'asc'] })).toEqual([
             {
                 id: 200, parentId: '', value: 'item-200', seq: 1,
                 children: [
@@ -717,7 +719,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             { id: 500, parentId: 200, value: 'item-500', seq: 2 },
             { id: 200, parentId: '', value: 'item-200', seq: 1 },
             { id: 300, parentId: 100, value: 'item-300', seq: 1 },
-        ], { sort: ['seq', 'desc'] })).to.deep.equal([
+        ], { sort: ['seq', 'desc'] })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -753,7 +755,7 @@ describe('arrayToTree 高级用法-排序用法 - 自定义参数值', () => {
             if (a.id === 500) return -1
             if (a.id === 400) return 1
             return 0
-        } })).to.deep.equal([
+        } })).toEqual([
             {
                 id: 100, parentId: null, value: 'item-100', seq: 2,
                 children: [
@@ -809,7 +811,7 @@ describe('arrayToTree 综合使用所有参数', () => {
             orphansParent: 'create',
             // 排序
             sort: ['newId', 'asc'],
-        })).to.deep.equal([
+        })).toEqual([
             {
                 newId: 1234567,
                 $orphans: true,
@@ -879,7 +881,7 @@ describe('arrayToTree 综合使用所有参数', () => {
             orphansParent: 'ignore',
             // 排序
             sort: ['newId', 'desc'],
-        })).to.deep.equal([
+        })).toEqual([
             {
                 newId: 500,
                 newDataField: {newId: 500, parent: { id: 1234567 }, value: 'item-500'},

@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import treeForEach, {
   TreeForEachCallback,
 } from './tree-for-each'
@@ -33,7 +32,7 @@ describe('treeForEach 测试用例', () => {
     ], (currentItem) => {
       currentItem.newId = (currentItem.id || 0) + 1
       delete currentItem.id
-    })).is.deep.equal([
+    })).toEqual([
       { newId: 101 }, { newId: 201 }, { newId: 301 },
       {
         newId: 401,
@@ -52,7 +51,7 @@ describe('treeForEach 测试用例', () => {
     ], (currentItem) => {
       currentItem.newId = (currentItem.id || 0) + 1
       delete currentItem.id
-    }, 'childs')).is.deep.equal([
+    }, 'childs')).toEqual([
       { newId: 101 }, { newId: 201 }, { newId: 301 },
       {
         newId: 401,
@@ -75,7 +74,7 @@ describe('treeForEach 测试用例', () => {
       currentItem.parentId = parent ? parent.id : '-pid-'
       currentItem.globalIndex = globalIndex
       // delete currentItem.id
-    }, 'childs')).is.deep.equal([
+    }, 'childs')).toEqual([
       {
         id: 100,
         newId: 101,

@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import treeMap from './tree-map'
 
 interface TreeItem {
@@ -14,7 +13,7 @@ describe('treeMap 测试用例', () => {
       { id: 400 , children: [{id: 401}, {id: 402}, {id: 403}]},
     ], (item) => {
       return item.id === 100 ? undefined : { desc: `id=${item.id}` }
-    })).is.deep.equal([
+    })).toEqual([
       { desc: 'id=200' }, { desc: 'id=300' },
       {
         desc: 'id=400',
@@ -29,7 +28,7 @@ describe('treeMap 测试用例', () => {
       { id: 400 , children: [{id: 401}, {id: 402}, {id: 403}]},
     ], (item) => {
       return item.id === 402 || item.id === 100 ? undefined : { desc: `id=${item.id}` }
-    }, true)).is.deep.equal([
+    }, true)).toEqual([
       { desc: 'id=200' }, { desc: 'id=300' },
       {
         desc: 'id=400',
@@ -44,7 +43,7 @@ describe('treeMap 测试用例', () => {
       { id: 400 , children: [{id: 401}, {id: 402}, {id: 403}]},
     ], (item) => {
       return item.id === 402 || item.id === 100 ? undefined : { desc: `id=${item.id}` }
-    }, false)).is.deep.equal([
+    }, false)).toEqual([
       undefined, { desc: 'id=200' }, { desc: 'id=300' },
       {
         desc: 'id=400',
@@ -59,7 +58,7 @@ describe('treeMap 测试用例', () => {
       { id: 400 , childList: [{id: 401}, {id: 402}, {id: 403}]},
     ], (item) => {
       return item.id === 402 || item.id === 100 ? undefined : { desc: `id=${item.id}` }
-    }, true, 'childList')).is.deep.equal([
+    }, true, 'childList')).toEqual([
       { desc: 'id=200' }, { desc: 'id=300' },
       {
         desc: 'id=400',
@@ -94,7 +93,7 @@ describe('treeMap 测试用例', () => {
         previousItemId: extra.previousItem ? extra.previousItem.id : '-previousId-',
         originTreeIdList: extra.originTree.map(item => item.id)
       }
-    }, true, 'childList')).is.deep.equal([
+    }, true, 'childList')).toEqual([
       {
         desc: 'id=200',
         index: 1,

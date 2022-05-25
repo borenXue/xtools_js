@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import treeSort from './tree-sort'
 
 describe('treeSort 测试用例', () => {
@@ -31,7 +30,7 @@ describe('treeSort 测试用例', () => {
           ],
         },
         { id: 300, name: 'item-300' },
-      ])).to.deep.equal([
+      ])).toEqual([
         {
           id: 100, name: 'item-100',
           children: [
@@ -91,7 +90,7 @@ describe('treeSort 测试用例', () => {
         ],
       },
       { newId: 300, name: 'item-300' },
-    ], 'newId', 'desc', 'childs')).to.deep.equal([
+    ], 'newId', 'desc', 'childs')).toEqual([
       {
         newId: 400, name: 'item-400',
         childs: [

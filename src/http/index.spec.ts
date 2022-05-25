@@ -5,7 +5,6 @@
  *  3、测试 loading、tip 等, 基于事件的方式来测试
  */
 
-import { expect } from 'chai';
 import http, { globalConfig, createHttpInstance } from './index';
 
 const urlPrefix = 'https://www.fastmock.site/mock/28fe77d6a36e84c6b77de22754abfb47/xtools_js'
@@ -16,38 +15,44 @@ const http2 = createHttpInstance({ baseURL: urlPrefix });
 const postData2 = { age: 18, name: 'xtools_js', key1: undefined, key2: null, key3: ''};
 
 describe('HttpAxios 测试', () => {
+
+  beforeAll(() => {
+    console.warn = console.log;
+    console.warn = () => {};
+  });
+
   describe('默认 HttpAxios 实例 - 常规请求', () => {
 
     it('默认 HttpAxios 实例 - get 请求', () => {
       http.get(`${urlPrefix}/get`, params).then(({ data: res }) => {
         const { data } = res;
-        expect(data.method).equal('GET');
-        expect(data.params).deep.equal({ ...params, abc: '123' });
-        expect(data.path).match(/xtools_js\/get$/);
-        expect(data.headers.accept).equal('application/json, text/plain, */*');
-        expect(data.headers['content-type']).equal('application/json');
+        expect(data.method).toEqual('GET');
+        expect(data.params).toEqual({ ...params, abc: '123' });
+        expect(data.path).toMatch(/xtools_js\/get$/);
+        expect(data.headers.accept).toEqual('application/json, text/plain, */*');
+        expect(data.headers['content-type']).toEqual('application/json');
       })
     });
   
     it('默认 HttpAxios 实例 - post 请求 - json 格式', () => {
       http.postJson(`${urlPrefix}/post`, postData, params).then(({ data: res }) => {
         const { data } = res;
-        expect(data.method).equal('POST');
-        expect(data.params).deep.equal({ ...params, abc: '123' });
-        expect(data.headers.accept).equal('application/json, text/plain, */*');
-        expect(data.headers['content-type']).equal('application/json');
-        expect(data.body).deep.equal(postData);
+        expect(data.method).toEqual('POST');
+        expect(data.params).toEqual({ ...params, abc: '123' });
+        expect(data.headers.accept).toEqual('application/json, text/plain, */*');
+        expect(data.headers['content-type']).toEqual('application/json');
+        expect(data.body).toEqual(postData);
       })
     });
   
     it('默认 HttpAxios 实例 - post 请求 - formdata 格式', () => {
       http.postFormData(`${urlPrefix}/post`, postData, params).then(({ data: res }) => {
         const { data } = res;
-        expect(data.method).equal('POST');
-        expect(data.params).deep.equal({ ...params, abc: '123' });
-        expect(data.headers.accept).equal('application/json, text/plain, */*');
-        expect(data.headers['content-type']).equal('application/x-www-form-urlencoded');
-        expect(data.body).deep.equal({ ...postData, age: '18' });
+        expect(data.method).toEqual('POST');
+        expect(data.params).toEqual({ ...params, abc: '123' });
+        expect(data.headers.accept).toEqual('application/json, text/plain, */*');
+        expect(data.headers['content-type']).toEqual('application/x-www-form-urlencoded');
+        expect(data.body).toEqual({ ...postData, age: '18' });
       })
     });
   
@@ -57,7 +62,7 @@ describe('HttpAxios 测试', () => {
     it('默认 HttpAxios 实例 - get 请求 - params 选项', () => {
       http.get(`${urlPrefix}/get`, { abc: '123', def: '4', c: '', d: ['1', '2'] }).then(({ data: res }) => {
         const { data } = res;
-        expect(data.params).deep.equal({ abc: '123', def: '4', c: '', d: ['1', '2'] });
+        expect(data.params).toEqual({ abc: '123', def: '4', c: '', d: ['1', '2'] });
       })
     })
   
@@ -70,8 +75,8 @@ describe('HttpAxios 测试', () => {
         withCredentials: true,
       }).then(({ data: res }) => {
         const { data } = res;
-        expect(data.headers.abc).equal('1');
-        expect(data.cookies).deep.equal({ cookie1: 'value1', cookie2: 'value2' });
+        expect(data.headers.abc).toEqual('1');
+        expect(data.cookies).toEqual({ cookie1: 'value1', cookie2: 'value2' });
       })
     })
   });
@@ -81,7 +86,7 @@ describe('HttpAxios 测试', () => {
       http2.postJson('/post', { age: 18, key2: null, key3: ''}, undefined, {
         extraConfig: { deleteParams: true }
       }).then(({ data: res }) => {
-        expect(res.data.body).deep.equal({ age: 18, key3: ''});
+        expect(res.data.body).toEqual({ age: 18, key3: ''});
       })
     });
   
@@ -89,7 +94,7 @@ describe('HttpAxios 测试', () => {
       http2.postJson('/post', { age: 18, key2: null, key3: ''}, undefined, {
         extraConfig: { deleteParams: [null, ''] }
       }).then(({ data: res }) => {
-        expect(res.data.body).deep.equal({ age: 18 });
+        expect(res.data.body).toEqual({ age: 18 });
       })
     });
   });
@@ -100,7 +105,7 @@ describe('HttpAxios 测试', () => {
       http3.get('/get').catch(err => {
         // TODO: timeoutErrorMessage 在 nodejs 环境下不生效: https://github.com/axios/axios/issues/3580
         // expect(function () { throw err }).to.throw(Error, '请求已超时 (100毫秒)');
-        expect(function () { throw err }).to.throw(Error, 'timeout of 100ms exceeded');
+        expect(function () { throw err }).toThrow('timeout of 100ms exceeded');
       })
     });
   });
@@ -112,7 +117,7 @@ describe('HttpAxios 测试', () => {
       http.get(`${urlPrefix}/get?abc=123`)
         .catch(err => {
           expect(function () { throw err })
-            .to.throw(Error, 'timeout of 4ms exceeded');
+            .toThrow('timeout of 4ms exceeded');
         })
     });
   

@@ -129,8 +129,8 @@ export function fileDownload(downloadParams: FileDownloadParams) {
       if (typeof successCb === 'function') successCb()
       if (typeof finalCb === 'function') finalCb()
     } catch (err) {
-      if (typeof errorCb === 'function') errorCb(err)
-      if (typeof finalCb === 'function') finalCb(err)  
+      if (typeof errorCb === 'function') errorCb(err as AjaxError)
+      if (typeof finalCb === 'function') finalCb(err as AjaxError)  
     }
   }).catch(err => {
     if (typeof errorCb === 'function') errorCb(err)
@@ -211,7 +211,7 @@ function requestFileBlob(params: {
       if (params.isFormData) {
         const fd = new FormData();
         for (const key in (params.data || {})) {
-          fd.append(key, (params.data || {})[key]);
+          fd.append(key, ((params.data || {}) as any)[key]);
         }
         req.send(fd);
       } else {

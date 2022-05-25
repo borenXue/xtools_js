@@ -1,4 +1,3 @@
-import { expect } from 'chai'
 import treeFilter from './tree-filter'
 
 interface TreeItem {
@@ -19,7 +18,7 @@ describe('treeFilter 测试用例', () => {
           { id: 401 }, { id: 402 }, { id: 403 }
         ],
       },
-    ], (currentItem) => (currentItem.id & 1) === 0)).is.deep.equal([
+    ], (currentItem) => (currentItem.id & 1) === 0)).toEqual([
       { id: 100 }, { id: 200 }, { id: 300 },
       {
         id: 400,
@@ -41,7 +40,7 @@ describe('treeFilter 测试用例', () => {
       ],
       (currentItem) => (currentItem.id & 1) === 0,
       'childList',
-    )).is.deep.equal([
+    )).toEqual([
       { id: 100 }, { id: 200 }, { id: 300 },
       {
         id: 400,
@@ -79,7 +78,7 @@ describe('treeFilter 测试用例', () => {
         return true
       },
       'childList',
-    )).is.deep.equal([
+    )).toEqual([
       { id: 100 }, { id: 300 },
       {
         id: 400,

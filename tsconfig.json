@@ -8,9 +8,7 @@
     "lib": ["ESNext", "DOM"],
     "types": [
       "node",
-      "file-saver",
-      "mocha",
-      "chai"
+      "file-saver"
     ]
   },
   "exclude": [

@@ -1,5 +1,8 @@
 ignore-dir
-lib
+cjs
+es
+umd
+_docs
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,visualstudiocode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,visualstudiocode,node
