@@ -1,0 +1,17 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+
+  "entryPoints": ["./src/"],
+  "exclude": ["src/**/*.spec.ts"],
+  "excludePrivate": true,
+  "includes": "docs",
+  "media": "docs/media",
+
+  "out": "_docs/typedoc",
+  "json": "_docs/typedoc/all-reflection-data.json",
+  "theme": "default",
+  "includeVersion": true,
+  "disableSources": false,
+  "categorizeByGroup": false,
+  "hideGenerator": true
+}

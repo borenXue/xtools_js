@@ -20,10 +20,10 @@
   ],
 
   // typedoc 官方文档: http://typedoc.org/guides/options/
-  "typedocOptions": {
+  "XtypedocOptionsX": {
     // Input Options
     "ignoreCompilerErrors": true, // 忽略 typescript 错误, npm run build 后构建文档, 关闭该选项可提速
-    "inputFiles": ["index.d.ts", "./src/"],
+    "entryPoints": ["./src/"],
     "exclude": ["src/**/*.spec.ts"],
     "excludeNotExported": true,
     "excludePrivate": true,
@@ -31,15 +31,15 @@
     "includes": "docs", // md 文件所在目录, [[include:file.md]]
     "media": "docs/media", // TODO: 测试失败
     // Output Options
-    "out": "lib/_docs",
-    "json": "lib/_docs/all-reflection-data.json",
+    "out": "_docs/typedoc",
+    "json": "_docs/typedoc/all-reflection-data.json",
     "theme": "default", // default、minimal、自定义主题文件的路径
     // "name": "临时标题哦",
     "includeVersion": true,
     "disableSources": false,
     "plugins": [
       // "typedoc-plugin-localization", // https://www.npmjs.com/package/typedoc-plugin-localization
-      "typedoc-plugin-external-module-name", // https://www.npmjs.com/package/typedoc-plugin-external-module-name
+      // "typedoc-plugin-external-module-name", // https://www.npmjs.com/package/typedoc-plugin-external-module-name
     ],
     "categorizeByGroup": false,
     "hideGenerator": true,
