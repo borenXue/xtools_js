@@ -8,7 +8,7 @@ import { TreeItemLike, SortFunction } from "./types"
  * @param deleteUndefined 
  * @param childrenKey 
  */
-export default function treeSort<TreeItem extends TreeItemLike>(
+export function treeSort<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   sortBy: SortFunction<TreeItem> | string = 'id',
   sortType: 'desc' | 'asc' = 'asc',

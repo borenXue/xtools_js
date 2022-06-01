@@ -1,4 +1,4 @@
-import formatMoney from './format-money';
+import { formatMoney } from './format-money';
 
 describe('formatMoney 测试用例', () => {
 

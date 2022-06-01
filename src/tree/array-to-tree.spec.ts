@@ -1,4 +1,4 @@
-import arrayToTree from './array-to-tree'
+import { arrayToTree } from './array-to-tree'
 
 beforeAll(() => {
     console.warn = () => {}

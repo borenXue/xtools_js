@@ -41,7 +41,7 @@ export interface TreeMapCallback<TreeItem> {
  * @param deleteUndefined 
  * @param childrenKey 
  */
-export default function treeMap<TreeItem extends TreeItemLike>(
+export function treeMap<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeMapCallback<TreeItem>,
   deleteUndefined: boolean = true,

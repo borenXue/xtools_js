@@ -12,11 +12,11 @@
  */
 
 // tree
-import arrayToTree from './tree/array-to-tree'
-import treeForEach from './tree/tree-for-each'
-import treeMap from './tree/tree-map'
-import treeSort from './tree/tree-sort'
-import treeFilter from './tree/tree-filter'
+import { arrayToTree } from './tree/array-to-tree'
+import { treeForEach } from './tree/tree-for-each'
+import { treeMap } from './tree/tree-map'
+import { treeSort } from './tree/tree-sort'
+import { treeFilter } from './tree/tree-filter'
 
 // number
 import { accAdd, accSub, accMulti, accDiv } from './number/index';
@@ -30,13 +30,15 @@ import { timeBetweenMonth, timeBetweenDay, timeMonthStart, timeMonthEnd, timeDay
 
 // other
 import { fileDownload } from './other/file-download';
-import formatMoney from './other/format-money';
-import heartCheck from './other/heart-check'
+import { formatMoney } from './other/format-money';
+import { heartCheck } from './other/heart-check'
 import { urlAddParams, urlGetFileName, urlGetParams  } from './other/url';
 import { padLeft } from './utils/index';
 
 // http 模块
 import http, { createHttpInstance, globalConfig } from './http';
+
+export * from './dom';
 
 export {
   // tree

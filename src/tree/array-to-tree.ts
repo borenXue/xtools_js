@@ -5,8 +5,8 @@ import {
   sortType,
   TreeItemLike,
 } from './types'
-import treeForEach from './tree-for-each'
-import treeSort from './tree-sort'
+import { treeForEach } from './tree-for-each'
+import { treeSort } from './tree-sort'
 
 export interface ArrayItemLike {
   [key: string]: any
@@ -41,7 +41,7 @@ const defaultOptions: ArrayToTreeOptions<TreeItemLike> = {
  * @param options 自定义配置对象, 默认配置值请参考 {@link ArrayToTreeOptions}
  * 
  */
-export default function arrayToTree<
+export function arrayToTree<
   ArrayItem extends ArrayItemLike,
   TreeItem extends TreeItemLike,
 >(

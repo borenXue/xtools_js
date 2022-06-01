@@ -1,4 +1,4 @@
-import treeSort from './tree-sort'
+import { treeSort } from './tree-sort'
 
 describe('treeSort 测试用例', () => {
   it('使用默认配置参数:', () => {

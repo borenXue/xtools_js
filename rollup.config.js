@@ -47,6 +47,26 @@ const configBrowserUmd = {
 };
 
 /**
+ * 浏览器环境专用 - UMD - src/dom.ts
+ */
+const configBrowserOnlyDomUmd = {
+  input: resolve('./src/dom.ts'),
+  output: [
+    { file: resolve(pkg.browserOnly.replace('.min', '')), format: 'umd', name: 'xtoolsDom' },
+    { file: resolve(pkg.browserOnly), format: 'umd', name: 'xtoolsDom', plugins: [terser()] }
+  ],
+  plugins: [
+    alias({
+      entries: [{ find: /^axios$/, replacement: 'axios/dist/axios.js' }]
+    }),
+    json(),
+    nodeResolve({ extensions }),
+    commonjs(), // 将第三方依赖打包进 dist/index.js 文件内
+    babel({ exclude: ['node_modules/**'], extensions }),
+  ],
+};
+
+/**
  * NodeJS 环境专用: commonjs + es module
  */
 const configMainCjsAndModuleEsList = []
@@ -59,7 +79,14 @@ for (const file of entries) {
 
   console.log(outputModuleEs, outputMainCjs, file);
   configMainCjsAndModuleEsList.push({
-    external: [/\.\//], // 所有项目内相对引用的文件都会被排除
+    external: [
+      /\.\//,
+      'axios',
+      'file-saver',
+      'nested-property',
+      'qs',
+      'core-js',
+    ], // 所有项目内相对引用的文件都会被排除
     input: resolve(file),
     output: [
       { file: resolve(outputMainCjs), format: 'cjs' },
@@ -77,6 +104,7 @@ for (const file of entries) {
 
 module.exports = [
   configBrowserUmd,
+  configBrowserOnlyDomUmd,
 
   ...configMainCjsAndModuleEsList,
 ];

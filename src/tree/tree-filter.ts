@@ -14,7 +14,7 @@ export interface TreeFilterCallback<TreeItem> {
 }
 
 /** @ignore */
-export default function treeFilter<TreeItem extends TreeItemLike>(
+export function treeFilter<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeFilterCallback<TreeItem>,
   childrenKey: keyof TreeItem = 'children',

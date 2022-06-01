@@ -1,4 +1,5 @@
-import treeForEach, {
+import {
+  treeForEach,
   TreeForEachCallback,
 } from './tree-for-each'
 

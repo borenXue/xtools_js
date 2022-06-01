@@ -35,7 +35,7 @@ export interface TreeForEachCallback<TreeItem extends TreeItemLike> {
  * @param fn 回调函数
  * @param childrenKey 子节点集合的属性名, 默认为'children'
  */
-export default function treeForEach<TreeItem extends TreeItemLike>(
+export function treeForEach<TreeItem extends TreeItemLike>(
   tree: TreeItem[],
   fn: TreeForEachCallback<TreeItem>,
   childrenKey: keyof TreeItem = 'children',

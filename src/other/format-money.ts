@@ -21,7 +21,7 @@ export interface formatMoneyOptions {
  * 
  * @returns 格式化后的金额, 字符串类型
  */
-export default function formatMoney(money: number, options: formatMoneyOptions = {}) {
+export function formatMoney(money: number, options: formatMoneyOptions = {}) {
   const { decimal, trim } = options;
 
   // 确定要保留的小数位数

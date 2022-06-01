@@ -1,4 +1,4 @@
-import treeFilter from './tree-filter'
+import { treeFilter } from './tree-filter'
 
 interface TreeItem {
   id: number;

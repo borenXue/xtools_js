@@ -5,7 +5,7 @@
  * @param heartTime 心跳间隔, 单位毫秒 - 默认 500ms
  * @param timeout 超时时间, 单位毫秒 - 默认 30000ms, 即30秒
  */
-export default function hearCheck(checkSyncFn: Function, heartTime = 500, timeout = 30000): Promise<Boolean> {
+export function heartCheck(checkSyncFn: Function, heartTime = 500, timeout = 30000): Promise<Boolean> {
   return new Promise((resolve, reject) => {
     if (checkSyncFn()) {
       resolve(true)

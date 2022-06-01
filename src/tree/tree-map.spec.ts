@@ -1,4 +1,4 @@
-import treeMap from './tree-map'
+import { treeMap } from './tree-map'
 
 interface TreeItem {
   id?: number;
