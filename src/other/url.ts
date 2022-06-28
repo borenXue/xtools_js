@@ -99,6 +99,56 @@ export function urlAddParams(url: string, param: {
 }
 
 /**
+ * url 删除参数
+ *
+ * @param url 要解析的 url 字符串
+ * @param param 要添加的参数对象, 可一次添加多个
+ * @return 最终生成的url
+ */
+ export function urlDeleteParams(url: string, paramKeys: string | string[]) {
+  const questionMarkIdx = url.indexOf('?');
+  const safeUrl = questionMarkIdx > 0 ? url.substring(0, questionMarkIdx) : url;
+  let search = '';
+  if (questionMarkIdx >= 0) {
+    search = url.substring(questionMarkIdx + 1) || '';
+  }
+
+  // 将 url 中的 params 解析为对象
+  // search = search.replace(/&$/g, '').replace(/^\?/g, '');
+  const kvList = search.replace(/&$/g, '').replace(/^\?/g, '').split('&');
+  const paramObj: any = {};
+  for (const paramItemStr of kvList) {
+    if (!paramItemStr) continue;
+    const [key, value] = paramItemStr.split('=');
+    paramObj[key] = value;
+  }
+
+  // 删除
+  if (typeof paramKeys === 'string') {
+    delete paramObj[paramKeys];
+  }
+  if (typeof paramKeys === 'object' && paramKeys instanceof Array) {
+    paramKeys.forEach(it => { delete paramObj[it] });
+  }
+
+  // 重新生成 search 字符串
+  let newSearch = '';
+  if (Object.keys(paramObj).length > 0) {
+    for (let objKey in paramObj) {
+      const objKeyVal = paramObj[objKey];
+      if (objKeyVal === undefined) {
+        newSearch += `${objKey}&`;
+      } else {
+        newSearch += `${objKey}=${objKeyVal}&`
+      }
+    }
+    newSearch = newSearch.replace(/&$/, '');
+  }
+
+  return `${safeUrl}${newSearch ? '?' : ''}${newSearch}`;
+}
+
+/**
  * 获取 url 中的参数, 以对象的形式返回
  *
  * @param url 可选, 默认为`location.href`的值

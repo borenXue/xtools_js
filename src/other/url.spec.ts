@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { urlGetFileName, urlAddParams, urlGetParams } from './url';
+import { urlGetFileName, urlAddParams, urlGetParams, urlDeleteParams } from './url';
 
 
 
@@ -50,6 +50,28 @@ describe('urlAddParams 测试用例', () => {
 
     it(`urlAddParams('http://a/b?d=2', {type:[1,2]}) = http://a/b?d=2&type=1&type=2`, () => {
       expect(urlAddParams('http://a/b?d=2', {type:[1,2]})).eq('http://a/b?d=2&type=1&type=2');
+    });
+  })
+});
+
+
+
+describe('urlDeleteParams 测试用例', () => {
+  describe('基础测试', () => {
+    it(`urlDeleteParams('http://a/b', 'a') = http://a/b`, () => {
+      expect(urlDeleteParams('http://a/b', 'a')).eq('http://a/b');
+    });
+
+    it(`自动删除空问号: urlDeleteParams('http://a/b?', 'a') = http://a/b`, () => {
+      expect(urlDeleteParams('http://a/b?', 'a')).eq('http://a/b');
+    });
+
+    it(`urlDeleteParams('http://a/b?a=1&b=2&c', 'a') = http://a/b`, () => {
+      expect(urlDeleteParams('http://a/b?a=1&b=2&c', 'a')).eq('http://a/b?b=2&c');
+    });
+
+    it(`urlDeleteParams('http://a/b?a=1&b=2&c', ['a', 'b']) = http://a/b`, () => {
+      expect(urlDeleteParams('http://a/b?a=1&b=2&c', ['a', 'b'])).eq('http://a/b?c');
     });
   })
 });
