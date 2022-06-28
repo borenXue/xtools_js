@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Url | xtools_js - v2.2.1</title>
-	<meta name="description" content="Documentation for xtools_js - v2.2.1">
+	<title>Url | xtools_js - v2.2.2</title>
+	<meta name="description" content="Documentation for xtools_js - v2.2.2">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">xtools_js - v2.2.1</a>
+					<a href="../index.html" class="title">xtools_js - v2.2.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -85,6 +85,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="url.html#urladdparams" class="tsd-kind-icon">url<wbr>Add<wbr>Params</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="url.html#urldeleteparams" class="tsd-kind-icon">url<wbr>Delete<wbr>Params</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="url.html#urlgetfilename" class="tsd-kind-icon">url<wbr>Get<wbr>File<wbr>Name</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="url.html#urlgetparams" class="tsd-kind-icon">url<wbr>Get<wbr>Params</a></li>
 							</ul>
@@ -104,7 +105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/bc1c862/src/other/url.ts#L75">src/other/url.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/c5763ab/src/other/url.ts#L75">src/other/url.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -138,6 +139,41 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="urldeleteparams" class="tsd-anchor"></a>
+					<h3>url<wbr>Delete<wbr>Params</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">url<wbr>Delete<wbr>Params<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, paramKeys<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/c5763ab/src/other/url.ts#L108">src/other/url.ts:108</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>url 删除参数</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>要解析的 url 字符串</p>
+									</div>
+								</li>
+								<li>
+									<h5>paramKeys: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>最终生成的url</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="urlgetfilename" class="tsd-anchor"></a>
 					<h3>url<wbr>Get<wbr>File<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -147,7 +183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/bc1c862/src/other/url.ts#L36">src/other/url.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/c5763ab/src/other/url.ts#L36">src/other/url.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -200,7 +236,7 @@ urlGetFileName(<span class="hljs-string">&#x27;http://a/b/c&#x27;</span>, <span 
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/bc1c862/src/other/url.ts#L107">src/other/url.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/c5763ab/src/other/url.ts#L157">src/other/url.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -260,6 +296,9 @@ urlGetFileName(<span class="hljs-string">&#x27;http://a/b/c&#x27;</span>, <span 
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="url.html#urladdparams" class="tsd-kind-icon">url<wbr>Add<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="url.html#urldeleteparams" class="tsd-kind-icon">url<wbr>Delete<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="url.html#urlgetfilename" class="tsd-kind-icon">url<wbr>Get<wbr>File<wbr>Name</a>

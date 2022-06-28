@@ -1,6 +1,6 @@
 {
 	"id": 0,
-	"name": "xtools_js - v2.2.1",
+	"name": "xtools_js - v2.2.2",
 	"kind": 0,
 	"flags": {},
 	"originalName": "",
@@ -13,7 +13,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/tree/types.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/tree/types.ts",
 			"children": [
 				{
 					"id": 234,
@@ -1889,7 +1889,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/date/format-date.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/date/format-date.ts",
 			"children": [
 				{
 					"id": 22,
@@ -2635,20 +2635,20 @@
 			]
 		},
 		{
-			"id": 370,
+			"id": 374,
 			"name": "File",
 			"kind": 1,
 			"kindString": "Module",
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/other/file-download.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/other/file-download.ts",
 			"comment": {
 				"shortText": "文件相关函数: 文件下载、文件上传"
 			},
 			"children": [
 				{
-					"id": 374,
+					"id": 378,
 					"name": "FileDownloadParams",
 					"kind": 256,
 					"kindString": "Interface",
@@ -2660,7 +2660,7 @@
 					},
 					"children": [
 						{
-							"id": 390,
+							"id": 394,
 							"name": "data",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2680,12 +2680,12 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 393,
+								"id": 397,
 								"name": "FileDownloadParamsData"
 							}
 						},
 						{
-							"id": 381,
+							"id": 385,
 							"name": "errorCb",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2700,112 +2700,6 @@
 								{
 									"fileName": "src/other/file-download.ts",
 									"line": 71,
-									"character": 9
-								}
-							],
-							"type": {
-								"type": "union",
-								"types": [
-									{
-										"type": "intrinsic",
-										"name": "undefined"
-									},
-									{
-										"type": "reflection",
-										"declaration": {
-											"id": 382,
-											"name": "__type",
-											"kind": 65536,
-											"kindString": "Type literal",
-											"flags": {
-												"isExported": true
-											},
-											"signatures": [
-												{
-													"id": 383,
-													"name": "__call",
-													"kind": 4096,
-													"kindString": "Call signature",
-													"flags": {
-														"isExported": true
-													},
-													"parameters": [
-														{
-															"id": 384,
-															"name": "err",
-															"kind": 32768,
-															"kindString": "Parameter",
-															"flags": {
-																"isExported": true
-															},
-															"type": {
-																"type": "reference",
-																"id": 325,
-																"name": "AjaxError"
-															}
-														}
-													],
-													"type": {
-														"type": "intrinsic",
-														"name": "void"
-													}
-												}
-											]
-										}
-									}
-								]
-							}
-						},
-						{
-							"id": 377,
-							"name": "fileName",
-							"kind": 1024,
-							"kindString": "Property",
-							"flags": {
-								"isExported": true,
-								"isOptional": true
-							},
-							"comment": {
-								"shortText": "下载后的文件名",
-								"text": "支持内置动态变量用法 `#{name}`、`#{ext}`、 `#{ext:xxx}`, 具体用法可参考 {@link urlGetFileName}\n"
-							},
-							"sources": [
-								{
-									"fileName": "src/other/file-download.ts",
-									"line": 54,
-									"character": 10
-								}
-							],
-							"type": {
-								"type": "union",
-								"types": [
-									{
-										"type": "intrinsic",
-										"name": "undefined"
-									},
-									{
-										"type": "intrinsic",
-										"name": "string"
-									}
-								]
-							}
-						},
-						{
-							"id": 385,
-							"name": "finalCb",
-							"kind": 1024,
-							"kindString": "Property",
-							"flags": {
-								"isExported": true,
-								"isOptional": true
-							},
-							"comment": {
-								"shortText": "下载成功及失败后的回调"
-							},
-							"sources": [
-								{
-									"fileName": "src/other/file-download.ts",
-									"line": 75,
 									"character": 9
 								}
 							],
@@ -2842,12 +2736,11 @@
 															"kind": 32768,
 															"kindString": "Parameter",
 															"flags": {
-																"isExported": true,
-																"isOptional": true
+																"isExported": true
 															},
 															"type": {
 																"type": "reference",
-																"id": 325,
+																"id": 329,
 																"name": "AjaxError"
 															}
 														}
@@ -2864,7 +2757,114 @@
 							}
 						},
 						{
-							"id": 379,
+							"id": 381,
+							"name": "fileName",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "下载后的文件名",
+								"text": "支持内置动态变量用法 `#{name}`、`#{ext}`、 `#{ext:xxx}`, 具体用法可参考 {@link urlGetFileName}\n"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 54,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "intrinsic",
+										"name": "string"
+									}
+								]
+							}
+						},
+						{
+							"id": 389,
+							"name": "finalCb",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"comment": {
+								"shortText": "下载成功及失败后的回调"
+							},
+							"sources": [
+								{
+									"fileName": "src/other/file-download.ts",
+									"line": 75,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 390,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {
+												"isExported": true
+											},
+											"signatures": [
+												{
+													"id": 391,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {
+														"isExported": true
+													},
+													"parameters": [
+														{
+															"id": 392,
+															"name": "err",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {
+																"isExported": true,
+																"isOptional": true
+															},
+															"type": {
+																"type": "reference",
+																"id": 329,
+																"name": "AjaxError"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "void"
+													}
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"id": 383,
 							"name": "headers",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2884,12 +2884,12 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 397,
+								"id": 401,
 								"name": "FileDownloadParamsHeaders"
 							}
 						},
 						{
-							"id": 391,
+							"id": 395,
 							"name": "isFormData",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2926,7 +2926,7 @@
 							}
 						},
 						{
-							"id": 389,
+							"id": 393,
 							"name": "method",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2959,7 +2959,7 @@
 							}
 						},
 						{
-							"id": 376,
+							"id": 380,
 							"name": "params",
 							"kind": 1024,
 							"kindString": "Property",
@@ -2979,12 +2979,12 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 371,
+								"id": 375,
 								"name": "UrlQueryParams"
 							}
 						},
 						{
-							"id": 380,
+							"id": 384,
 							"name": "successCb",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3008,7 +3008,7 @@
 							}
 						},
 						{
-							"id": 375,
+							"id": 379,
 							"name": "url",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3031,7 +3031,7 @@
 							}
 						},
 						{
-							"id": 378,
+							"id": 382,
 							"name": "withCredentials",
 							"kind": 1024,
 							"kindString": "Property",
@@ -3058,7 +3058,7 @@
 									},
 									{
 										"type": "reference",
-										"id": 401,
+										"id": 405,
 										"name": "WithCredentialsFunction"
 									}
 								]
@@ -3070,17 +3070,17 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								390,
-								381,
-								377,
+								394,
 								385,
-								379,
-								391,
+								381,
 								389,
-								376,
+								383,
+								395,
+								393,
 								380,
-								375,
-								378
+								384,
+								379,
+								382
 							]
 						}
 					],
@@ -3093,7 +3093,7 @@
 					]
 				},
 				{
-					"id": 371,
+					"id": 375,
 					"name": "UrlQueryParams",
 					"kind": 256,
 					"kindString": "Interface",
@@ -3105,7 +3105,7 @@
 					},
 					"indexSignature": [
 						{
-							"id": 372,
+							"id": 376,
 							"name": "__index",
 							"kind": 8192,
 							"kindString": "Index signature",
@@ -3117,7 +3117,7 @@
 							},
 							"parameters": [
 								{
-									"id": 373,
+									"id": 377,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -3132,7 +3132,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 392,
+								"id": 396,
 								"name": "UrlQueryParamValueType"
 							}
 						}
@@ -3146,7 +3146,7 @@
 					]
 				},
 				{
-					"id": 393,
+					"id": 397,
 					"name": "FileDownloadParamsData",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -3179,7 +3179,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 394,
+									"id": 398,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -3188,7 +3188,7 @@
 									},
 									"indexSignature": [
 										{
-											"id": 395,
+											"id": 399,
 											"name": "__index",
 											"kind": 8192,
 											"kindString": "Index signature",
@@ -3197,7 +3197,7 @@
 											},
 											"parameters": [
 												{
-													"id": 396,
+													"id": 400,
 													"name": "key",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -3229,7 +3229,7 @@
 					}
 				},
 				{
-					"id": 397,
+					"id": 401,
 					"name": "FileDownloadParamsHeaders",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -3249,7 +3249,7 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 398,
+							"id": 402,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -3258,7 +3258,7 @@
 							},
 							"indexSignature": [
 								{
-									"id": 399,
+									"id": 403,
 									"name": "__index",
 									"kind": 8192,
 									"kindString": "Index signature",
@@ -3267,7 +3267,7 @@
 									},
 									"parameters": [
 										{
-											"id": 400,
+											"id": 404,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3297,7 +3297,7 @@
 					}
 				},
 				{
-					"id": 392,
+					"id": 396,
 					"name": "UrlQueryParamValueType",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -3347,7 +3347,7 @@
 					}
 				},
 				{
-					"id": 401,
+					"id": 405,
 					"name": "WithCredentialsFunction",
 					"kind": 4194304,
 					"kindString": "Type alias",
@@ -3367,7 +3367,7 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 402,
+							"id": 406,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -3376,7 +3376,7 @@
 							},
 							"signatures": [
 								{
-									"id": 403,
+									"id": 407,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -3385,7 +3385,7 @@
 									},
 									"parameters": [
 										{
-											"id": 404,
+											"id": 408,
 											"name": "url",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3398,7 +3398,7 @@
 											}
 										},
 										{
-											"id": 405,
+											"id": 409,
 											"name": "method",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3420,7 +3420,7 @@
 											}
 										},
 										{
-											"id": 406,
+											"id": 410,
 											"name": "isFormData",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3450,7 +3450,7 @@
 					}
 				},
 				{
-					"id": 407,
+					"id": 411,
 					"name": "fileDownload",
 					"kind": 64,
 					"kindString": "Function",
@@ -3459,7 +3459,7 @@
 					},
 					"signatures": [
 						{
-							"id": 408,
+							"id": 412,
 							"name": "fileDownload",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -3472,7 +3472,7 @@
 							},
 							"parameters": [
 								{
-									"id": 409,
+									"id": 413,
 									"name": "downloadParams",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -3484,7 +3484,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 374,
+										"id": 378,
 										"name": "FileDownloadParams"
 									}
 								}
@@ -3509,25 +3509,25 @@
 					"title": "Interfaces",
 					"kind": 256,
 					"children": [
-						374,
-						371
+						378,
+						375
 					]
 				},
 				{
 					"title": "Type aliases",
 					"kind": 4194304,
 					"children": [
-						393,
 						397,
-						392,
-						401
+						401,
+						396,
+						405
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						407
+						411
 					]
 				}
 			],
@@ -3547,7 +3547,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/china/idcard.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/china/idcard.ts",
 			"comment": {
 				"shortText": "身份证相关函数"
 			},
@@ -3631,7 +3631,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/number/index.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/number/index.ts",
 			"children": [
 				{
 					"id": 286,
@@ -3989,7 +3989,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/utils/index.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/utils/index.ts",
 			"children": [
 				{
 					"id": 94,
@@ -4090,7 +4090,7 @@
 					]
 				},
 				{
-					"id": 337,
+					"id": 341,
 					"name": "AbortError",
 					"kind": 128,
 					"kindString": "Class",
@@ -4099,7 +4099,7 @@
 					},
 					"children": [
 						{
-							"id": 339,
+							"id": 343,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
@@ -4108,7 +4108,7 @@
 							},
 							"signatures": [
 								{
-									"id": 340,
+									"id": 344,
 									"name": "new AbortError",
 									"kind": 16384,
 									"kindString": "Constructor signature",
@@ -4117,7 +4117,7 @@
 									},
 									"parameters": [
 										{
-											"id": 341,
+											"id": 345,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4140,7 +4140,7 @@
 											}
 										},
 										{
-											"id": 342,
+											"id": 346,
 											"name": "req",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4154,7 +4154,7 @@
 											}
 										},
 										{
-											"id": 343,
+											"id": 347,
 											"name": "code",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4179,12 +4179,12 @@
 									],
 									"type": {
 										"type": "reference",
-										"id": 337,
+										"id": 341,
 										"name": "AbortError"
 									},
 									"overwrites": {
 										"type": "reference",
-										"id": 328,
+										"id": 332,
 										"name": "AjaxError.__constructor"
 									}
 								}
@@ -4198,12 +4198,12 @@
 							],
 							"overwrites": {
 								"type": "reference",
-								"id": 328,
+								"id": 332,
 								"name": "AjaxError.__constructor"
 							}
 						},
 						{
-							"id": 344,
+							"id": 348,
 							"name": "code",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4233,12 +4233,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 326,
+								"id": 330,
 								"name": "AjaxError.code"
 							}
 						},
 						{
-							"id": 346,
+							"id": 350,
 							"name": "message",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4247,7 +4247,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 974,
 									"character": 11
 								}
@@ -4258,12 +4258,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 334,
+								"id": 338,
 								"name": "Error.message"
 							}
 						},
 						{
-							"id": 338,
+							"id": 342,
 							"name": "name",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4284,12 +4284,12 @@
 							"defaultValue": "\"AbortError\"",
 							"overwrites": {
 								"type": "reference",
-								"id": 333,
+								"id": 337,
 								"name": "Error.name"
 							}
 						},
 						{
-							"id": 345,
+							"id": 349,
 							"name": "req",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4310,12 +4310,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 327,
+								"id": 331,
 								"name": "AjaxError.req"
 							}
 						},
 						{
-							"id": 347,
+							"id": 351,
 							"name": "stack",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4325,7 +4325,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 975,
 									"character": 9
 								}
@@ -4345,7 +4345,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 335,
+								"id": 339,
 								"name": "Error.stack"
 							}
 						}
@@ -4355,18 +4355,18 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								339
+								343
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								344,
-								346,
-								338,
-								345,
-								347
+								348,
+								350,
+								342,
+								349,
+								351
 							]
 						}
 					],
@@ -4380,13 +4380,13 @@
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"id": 325,
+							"id": 329,
 							"name": "AjaxError"
 						}
 					]
 				},
 				{
-					"id": 325,
+					"id": 329,
 					"name": "AjaxError",
 					"kind": 128,
 					"kindString": "Class",
@@ -4395,7 +4395,7 @@
 					},
 					"children": [
 						{
-							"id": 328,
+							"id": 332,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
@@ -4404,7 +4404,7 @@
 							},
 							"signatures": [
 								{
-									"id": 329,
+									"id": 333,
 									"name": "new AjaxError",
 									"kind": 16384,
 									"kindString": "Constructor signature",
@@ -4413,7 +4413,7 @@
 									},
 									"parameters": [
 										{
-											"id": 330,
+											"id": 334,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4436,7 +4436,7 @@
 											}
 										},
 										{
-											"id": 331,
+											"id": 335,
 											"name": "req",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4450,7 +4450,7 @@
 											}
 										},
 										{
-											"id": 332,
+											"id": 336,
 											"name": "code",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4475,7 +4475,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"id": 325,
+										"id": 329,
 										"name": "AjaxError"
 									}
 								}
@@ -4489,7 +4489,7 @@
 							]
 						},
 						{
-							"id": 326,
+							"id": 330,
 							"name": "code",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4519,7 +4519,7 @@
 							}
 						},
 						{
-							"id": 334,
+							"id": 338,
 							"name": "message",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4528,7 +4528,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 974,
 									"character": 11
 								}
@@ -4539,12 +4539,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 334,
+								"id": 338,
 								"name": "Error.message"
 							}
 						},
 						{
-							"id": 333,
+							"id": 337,
 							"name": "name",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4553,7 +4553,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 973,
 									"character": 8
 								}
@@ -4564,12 +4564,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 333,
+								"id": 337,
 								"name": "Error.name"
 							}
 						},
 						{
-							"id": 327,
+							"id": 331,
 							"name": "req",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4590,7 +4590,7 @@
 							}
 						},
 						{
-							"id": 335,
+							"id": 339,
 							"name": "stack",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4600,7 +4600,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 975,
 									"character": 9
 								}
@@ -4620,12 +4620,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 335,
+								"id": 339,
 								"name": "Error.stack"
 							}
 						},
 						{
-							"id": 336,
+							"id": 340,
 							"name": "Error",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4635,7 +4635,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 984,
 									"character": 17
 								}
@@ -4647,7 +4647,7 @@
 							"extendedBy": [
 								{
 									"type": "reference",
-									"id": 325,
+									"id": 329,
 									"name": "AjaxError"
 								}
 							]
@@ -4658,19 +4658,19 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								328
+								332
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								326,
-								334,
-								333,
-								327,
-								335,
-								336
+								330,
+								338,
+								337,
+								331,
+								339,
+								340
 							]
 						}
 					],
@@ -4684,30 +4684,30 @@
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"id": 336,
+							"id": 340,
 							"name": "Error"
 						}
 					],
 					"extendedBy": [
 						{
 							"type": "reference",
-							"id": 337,
+							"id": 341,
 							"name": "AbortError"
 						},
 						{
 							"type": "reference",
-							"id": 348,
+							"id": 352,
 							"name": "TimeOutError"
 						},
 						{
 							"type": "reference",
-							"id": 359,
+							"id": 363,
 							"name": "NotSuccessError"
 						}
 					]
 				},
 				{
-					"id": 359,
+					"id": 363,
 					"name": "NotSuccessError",
 					"kind": 128,
 					"kindString": "Class",
@@ -4716,7 +4716,7 @@
 					},
 					"children": [
 						{
-							"id": 361,
+							"id": 365,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
@@ -4725,7 +4725,7 @@
 							},
 							"signatures": [
 								{
-									"id": 362,
+									"id": 366,
 									"name": "new NotSuccessError",
 									"kind": 16384,
 									"kindString": "Constructor signature",
@@ -4734,7 +4734,7 @@
 									},
 									"parameters": [
 										{
-											"id": 363,
+											"id": 367,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4757,7 +4757,7 @@
 											}
 										},
 										{
-											"id": 364,
+											"id": 368,
 											"name": "req",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4771,7 +4771,7 @@
 											}
 										},
 										{
-											"id": 365,
+											"id": 369,
 											"name": "code",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -4796,12 +4796,12 @@
 									],
 									"type": {
 										"type": "reference",
-										"id": 359,
+										"id": 363,
 										"name": "NotSuccessError"
 									},
 									"overwrites": {
 										"type": "reference",
-										"id": 328,
+										"id": 332,
 										"name": "AjaxError.__constructor"
 									}
 								}
@@ -4815,12 +4815,12 @@
 							],
 							"overwrites": {
 								"type": "reference",
-								"id": 328,
+								"id": 332,
 								"name": "AjaxError.__constructor"
 							}
 						},
 						{
-							"id": 366,
+							"id": 370,
 							"name": "code",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4850,12 +4850,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 326,
+								"id": 330,
 								"name": "AjaxError.code"
 							}
 						},
 						{
-							"id": 368,
+							"id": 372,
 							"name": "message",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4864,7 +4864,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 974,
 									"character": 11
 								}
@@ -4875,12 +4875,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 334,
+								"id": 338,
 								"name": "Error.message"
 							}
 						},
 						{
-							"id": 360,
+							"id": 364,
 							"name": "name",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4901,12 +4901,12 @@
 							"defaultValue": "\"NotSuccessError\"",
 							"overwrites": {
 								"type": "reference",
-								"id": 333,
+								"id": 337,
 								"name": "Error.name"
 							}
 						},
 						{
-							"id": 367,
+							"id": 371,
 							"name": "req",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4927,12 +4927,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 327,
+								"id": 331,
 								"name": "AjaxError.req"
 							}
 						},
 						{
-							"id": 369,
+							"id": 373,
 							"name": "stack",
 							"kind": 1024,
 							"kindString": "Property",
@@ -4942,7 +4942,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 975,
 									"character": 9
 								}
@@ -4962,7 +4962,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 335,
+								"id": 339,
 								"name": "Error.stack"
 							}
 						}
@@ -4972,18 +4972,18 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								361
+								365
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								366,
-								368,
-								360,
-								367,
-								369
+								370,
+								372,
+								364,
+								371,
+								373
 							]
 						}
 					],
@@ -4997,13 +4997,13 @@
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"id": 325,
+							"id": 329,
 							"name": "AjaxError"
 						}
 					]
 				},
 				{
-					"id": 348,
+					"id": 352,
 					"name": "TimeOutError",
 					"kind": 128,
 					"kindString": "Class",
@@ -5012,7 +5012,7 @@
 					},
 					"children": [
 						{
-							"id": 350,
+							"id": 354,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
@@ -5021,7 +5021,7 @@
 							},
 							"signatures": [
 								{
-									"id": 351,
+									"id": 355,
 									"name": "new TimeOutError",
 									"kind": 16384,
 									"kindString": "Constructor signature",
@@ -5030,7 +5030,7 @@
 									},
 									"parameters": [
 										{
-											"id": 352,
+											"id": 356,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5053,7 +5053,7 @@
 											}
 										},
 										{
-											"id": 353,
+											"id": 357,
 											"name": "req",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5067,7 +5067,7 @@
 											}
 										},
 										{
-											"id": 354,
+											"id": 358,
 											"name": "code",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5092,12 +5092,12 @@
 									],
 									"type": {
 										"type": "reference",
-										"id": 348,
+										"id": 352,
 										"name": "TimeOutError"
 									},
 									"overwrites": {
 										"type": "reference",
-										"id": 328,
+										"id": 332,
 										"name": "AjaxError.__constructor"
 									}
 								}
@@ -5111,12 +5111,12 @@
 							],
 							"overwrites": {
 								"type": "reference",
-								"id": 328,
+								"id": 332,
 								"name": "AjaxError.__constructor"
 							}
 						},
 						{
-							"id": 355,
+							"id": 359,
 							"name": "code",
 							"kind": 1024,
 							"kindString": "Property",
@@ -5146,12 +5146,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 326,
+								"id": 330,
 								"name": "AjaxError.code"
 							}
 						},
 						{
-							"id": 357,
+							"id": 361,
 							"name": "message",
 							"kind": 1024,
 							"kindString": "Property",
@@ -5160,7 +5160,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 974,
 									"character": 11
 								}
@@ -5171,12 +5171,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 334,
+								"id": 338,
 								"name": "Error.message"
 							}
 						},
 						{
-							"id": 349,
+							"id": 353,
 							"name": "name",
 							"kind": 1024,
 							"kindString": "Property",
@@ -5197,12 +5197,12 @@
 							"defaultValue": "\"TimeOutError\"",
 							"overwrites": {
 								"type": "reference",
-								"id": 333,
+								"id": 337,
 								"name": "Error.name"
 							}
 						},
 						{
-							"id": 356,
+							"id": 360,
 							"name": "req",
 							"kind": 1024,
 							"kindString": "Property",
@@ -5223,12 +5223,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 327,
+								"id": 331,
 								"name": "AjaxError.req"
 							}
 						},
 						{
-							"id": 358,
+							"id": 362,
 							"name": "stack",
 							"kind": 1024,
 							"kindString": "Property",
@@ -5238,7 +5238,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"fileName": "node_modules/.pnpm/typescript@4.0.5/node_modules/typescript/lib/lib.es5.d.ts",
 									"line": 975,
 									"character": 9
 								}
@@ -5258,7 +5258,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 335,
+								"id": 339,
 								"name": "Error.stack"
 							}
 						}
@@ -5268,18 +5268,18 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								350
+								354
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								355,
-								357,
-								349,
-								356,
-								358
+								359,
+								361,
+								353,
+								360,
+								362
 							]
 						}
 					],
@@ -5293,7 +5293,7 @@
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"id": 325,
+							"id": 329,
 							"name": "AjaxError"
 						}
 					]
@@ -5433,7 +5433,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 57,
 									"character": 9
 								}
@@ -5459,7 +5459,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 58,
 									"character": 6
 								}
@@ -5485,7 +5485,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 47,
 									"character": 9
 								}
@@ -5520,7 +5520,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 72,
 									"character": 13
 								}
@@ -5546,7 +5546,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 53,
 									"character": 6
 								}
@@ -5572,7 +5572,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 73,
 									"character": 12
 								}
@@ -5639,7 +5639,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 50,
 									"character": 9
 								}
@@ -5665,7 +5665,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 69,
 									"character": 11
 								}
@@ -5691,7 +5691,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 70,
 									"character": 12
 								}
@@ -5717,7 +5717,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 66,
 									"character": 15
 								}
@@ -5752,7 +5752,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 64,
 									"character": 18
 								}
@@ -5787,7 +5787,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 67,
 									"character": 14
 								}
@@ -5822,7 +5822,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 46,
 									"character": 8
 								}
@@ -5848,7 +5848,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 63,
 									"character": 20
 								}
@@ -5921,7 +5921,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 62,
 									"character": 18
 								}
@@ -5994,7 +5994,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 51,
 									"character": 8
 								}
@@ -6020,7 +6020,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 52,
 									"character": 18
 								}
@@ -6093,7 +6093,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 71,
 									"character": 7
 								}
@@ -6128,7 +6128,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 59,
 									"character": 14
 								}
@@ -6154,7 +6154,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 68,
 									"character": 12
 								}
@@ -6189,7 +6189,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 54,
 									"character": 9
 								}
@@ -6224,7 +6224,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 55,
 									"character": 21
 								}
@@ -6259,7 +6259,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 48,
 									"character": 18
 								}
@@ -6297,7 +6297,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 49,
 									"character": 19
 								}
@@ -6335,7 +6335,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 45,
 									"character": 5
 								}
@@ -6370,7 +6370,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 65,
 									"character": 16
 								}
@@ -6420,7 +6420,7 @@
 											],
 											"sources": [
 												{
-													"fileName": "node_modules/axios/index.d.ts",
+													"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 													"line": 65,
 													"character": 20
 												}
@@ -6450,7 +6450,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 56,
 									"character": 17
 								}
@@ -6489,7 +6489,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 60,
 									"character": 16
 								}
@@ -6524,7 +6524,7 @@
 							},
 							"sources": [
 								{
-									"fileName": "node_modules/axios/index.d.ts",
+									"fileName": "node_modules/.pnpm/axios@0.21.1/node_modules/axios/index.d.ts",
 									"line": 61,
 									"character": 16
 								}
@@ -6602,7 +6602,7 @@
 					]
 				},
 				{
-					"id": 414,
+					"id": 418,
 					"name": "formatMoneyOptions",
 					"kind": 256,
 					"kindString": "Interface",
@@ -6614,7 +6614,7 @@
 					},
 					"children": [
 						{
-							"id": 415,
+							"id": 419,
 							"name": "decimal",
 							"kind": 1024,
 							"kindString": "Property",
@@ -6647,7 +6647,7 @@
 							}
 						},
 						{
-							"id": 416,
+							"id": 420,
 							"name": "trim",
 							"kind": 1024,
 							"kindString": "Property",
@@ -6689,8 +6689,8 @@
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								415,
-								416
+								419,
+								420
 							]
 						}
 					],
@@ -7113,7 +7113,7 @@
 															},
 															"type": {
 																"type": "reference",
-																"id": 336,
+																"id": 340,
 																"name": "Error"
 															}
 														}
@@ -7464,7 +7464,7 @@
 					]
 				},
 				{
-					"id": 417,
+					"id": 421,
 					"name": "formatMoney",
 					"kind": 64,
 					"kindString": "Function",
@@ -7473,7 +7473,7 @@
 					},
 					"signatures": [
 						{
-							"id": 418,
+							"id": 422,
 							"name": "formatMoney",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7486,7 +7486,7 @@
 							},
 							"parameters": [
 								{
-									"id": 419,
+									"id": 423,
 									"name": "money",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7502,7 +7502,7 @@
 									}
 								},
 								{
-									"id": 420,
+									"id": 424,
 									"name": "options",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7514,7 +7514,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 414,
+										"id": 418,
 										"name": "formatMoneyOptions"
 									},
 									"defaultValue": "{}"
@@ -7582,7 +7582,7 @@
 					]
 				},
 				{
-					"id": 422,
+					"id": 426,
 					"name": "hearCheck",
 					"kind": 64,
 					"kindString": "Function",
@@ -7591,7 +7591,7 @@
 					},
 					"signatures": [
 						{
-							"id": 423,
+							"id": 427,
 							"name": "hearCheck",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7603,7 +7603,7 @@
 							},
 							"parameters": [
 								{
-									"id": 424,
+									"id": 428,
 									"name": "checkSyncFn",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7619,7 +7619,7 @@
 									}
 								},
 								{
-									"id": 425,
+									"id": 429,
 									"name": "heartTime",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7636,7 +7636,7 @@
 									"defaultValue": "500"
 								},
 								{
-									"id": 426,
+									"id": 430,
 									"name": "timeout",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8413,10 +8413,10 @@
 					"title": "Classes",
 					"kind": 128,
 					"children": [
-						337,
-						325,
-						359,
-						348
+						341,
+						329,
+						363,
+						352
 					]
 				},
 				{
@@ -8425,7 +8425,7 @@
 					"children": [
 						72,
 						99,
-						414
+						418
 					]
 				},
 				{
@@ -8445,9 +8445,9 @@
 						58,
 						178,
 						89,
-						417,
+						421,
 						175,
-						422,
+						426,
 						65,
 						68,
 						62,
@@ -8484,7 +8484,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/xbr/root-all-projects/packages-npm/xtools_js/src/other/url.ts",
+			"originalName": "/Users/xueboren/Documents/github/xtools_js/src/other/url.ts",
 			"comment": {
 				"shortText": "url 辅助工具"
 			},
@@ -8542,7 +8542,7 @@
 					"sources": [
 						{
 							"fileName": "src/other/url.ts",
-							"line": 132,
+							"line": 182,
 							"character": 32
 						}
 					]
@@ -8690,6 +8690,84 @@
 					]
 				},
 				{
+					"id": 321,
+					"name": "urlDeleteParams",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 322,
+							"name": "urlDeleteParams",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "url 删除参数",
+								"returns": "最终生成的url\n"
+							},
+							"parameters": [
+								{
+									"id": 323,
+									"name": "url",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"comment": {
+										"text": "要解析的 url 字符串"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 324,
+									"name": "paramKeys",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/other/url.ts",
+							"line": 108,
+							"character": 32
+						}
+					]
+				},
+				{
 					"id": 310,
 					"name": "urlGetFileName",
 					"kind": 64,
@@ -8766,7 +8844,7 @@
 					]
 				},
 				{
-					"id": 321,
+					"id": 325,
 					"name": "urlGetParams",
 					"kind": 64,
 					"kindString": "Function",
@@ -8775,7 +8853,7 @@
 					},
 					"signatures": [
 						{
-							"id": 322,
+							"id": 326,
 							"name": "urlGetParams",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -8788,7 +8866,7 @@
 							},
 							"parameters": [
 								{
-									"id": 323,
+									"id": 327,
 									"name": "url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8824,7 +8902,7 @@
 					"sources": [
 						{
 							"fileName": "src/other/url.ts",
-							"line": 107,
+							"line": 157,
 							"character": 28
 						}
 					]
@@ -8843,8 +8921,9 @@
 					"kind": 64,
 					"children": [
 						314,
+						321,
 						310,
-						321
+						325
 					]
 				}
 			],
@@ -8864,7 +8943,7 @@
 			"children": [
 				181,
 				21,
-				370,
+				374,
 				1,
 				285,
 				5,
