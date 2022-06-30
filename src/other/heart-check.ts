@@ -5,7 +5,7 @@
  * @param heartTime 心跳间隔, 单位毫秒 - 默认 500ms
  * @param timeout 超时时间, 单位毫秒 - 默认 30000ms, 即30秒
  */
-export default function hearCheck(checkSyncFn: Function, heartTime = 500, timeout = 30000): Promise<Boolean> {
+export default function hearCheck(checkSyncFn: () => boolean, heartTime = 500, timeout = 30000): Promise<Boolean> {
   return new Promise((resolve, reject) => {
     if (checkSyncFn()) {
       resolve(true)
@@ -21,5 +21,39 @@ export default function hearCheck(checkSyncFn: Function, heartTime = 500, timeou
         reject(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`)
       }
     }, heartTime)
+  })
+}
+
+
+export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime = 1000, timeout = 30000): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    const startTime = new Date().getTime();
+    let intervalId: number;
+
+    function checkTimeout() {
+      const costTime = new Date().getTime() - startTime;
+      if (costTime >= timeout) {
+        window.clearInterval(intervalId);
+        reject(`timeout - ${timeout}: 用时 ${costTime}`);
+        return true;
+      }
+      return false;
+    }
+
+    function run() {
+      if (checkTimeout()) return;
+      checkAsyncFn().then(res => {
+        // 检测到成功时, 则 resolve
+        if (res) {
+          resolve(true);
+          return;
+        }
+        // 检测不成功时, 校验是否超时
+        if (checkTimeout()) return;
+      }).catch(err => { throw err });
+    }
+
+    run();
+    intervalId = window.setInterval(run, heartTime);
   })
 }
