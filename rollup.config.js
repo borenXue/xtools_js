@@ -50,14 +50,19 @@ const configBrowserUmd = {
  * NodeJS 环境专用: commonjs + es module
  */
 const configMainCjsAndModuleEsList = []
-const entries = glob.sync('src/**/*[!(.spec)].ts');
+
+// TODO: glob 过滤有bug: 没有列出全部的文件, eg: src/tree/array-to-tree.ts
+// const entries = glob.sync('src/**/*[!(.spec)].ts');
+const entries = glob.sync('src/**/*.ts').filter(it => !it.endsWith('.spec.ts'));
+// console.log('entries: ', entries)
+
 for (const file of entries) {
   let outputMainCjs = pkg.main.substring(0, pkg.main.lastIndexOf('/')) + '/' + file.replace(/src\//, '');
   let outputModuleEs = pkg.module.substring(0, pkg.module.lastIndexOf('/')) + '/' + file.replace(/src\//, '');
   outputMainCjs = outputMainCjs.replace(/\.ts$/, '.js')
   outputModuleEs = outputModuleEs.replace(/\.ts$/, '.js')
 
-  console.log(outputModuleEs, outputMainCjs, file);
+  // console.log(outputModuleEs, outputMainCjs, file);
   configMainCjsAndModuleEsList.push({
     external: [/\.\//], // 所有项目内相对引用的文件都会被排除
     input: resolve(file),
