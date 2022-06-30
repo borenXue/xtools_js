@@ -45,6 +45,7 @@ export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime =
       checkAsyncFn().then(res => {
         // 检测到成功时, 则 resolve
         if (res) {
+          window.clearInterval(intervalId);
           resolve(true);
           return;
         }
