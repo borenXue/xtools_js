@@ -18,7 +18,7 @@ export default function hearCheck(checkSyncFn: () => boolean, heartTime = 500, t
         resolve(true)
       } else if (new Date().getTime() - startTime >= timeout) {
         window.clearInterval(intervalId)
-        reject(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`)
+        reject(new Error(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`))
       }
     }, heartTime)
   })
@@ -34,7 +34,7 @@ export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime =
       const costTime = new Date().getTime() - startTime;
       if (costTime >= timeout) {
         window.clearInterval(intervalId);
-        reject(`timeout - ${timeout}: 用时 ${costTime}`);
+        reject(new Error(`timeout - ${timeout}: 用时 ${costTime}`));
         return true;
       }
       return false;

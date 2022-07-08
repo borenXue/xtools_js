@@ -32,7 +32,7 @@ import { timeBetweenMonth, timeBetweenDay, timeMonthStart, timeMonthEnd, timeDay
 import { fileDownload } from './other/file-download';
 import formatMoney from './other/format-money';
 import heartCheck, { hearCheckAsync } from './other/heart-check'
-import { urlAddParams, urlGetFileName, urlGetParams  } from './other/url';
+import { urlAddParams, urlGetFileName, urlGetParams, urlDeleteParams  } from './other/url';
 import { padLeft } from './utils/index';
 
 // http 模块
@@ -59,7 +59,7 @@ export {
   http, createHttpInstance, globalConfig,
   // other
   fileDownload,
-  urlAddParams, urlGetFileName, urlGetParams,
+  urlAddParams, urlGetFileName, urlGetParams, urlDeleteParams,
   padLeft,
   formatMoney,
   heartCheck, hearCheckAsync,
