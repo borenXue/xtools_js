@@ -29,22 +29,22 @@ const resolve = function(...args) {
 /**
  * 浏览器环境专用 - UMD
  */
-const configBrowserUmd = {
-  input: resolve('./src/index.ts'),
-  output: [
-    { file: resolve(pkg.browser.replace('.min', '')), format: 'umd', name: 'xtools' },
-    { file: resolve(pkg.browser), format: 'umd', name: 'xtools', plugins: [terser()] }
-  ],
-  plugins: [
-    alias({
-      entries: [{ find: /^axios$/, replacement: 'axios/dist/axios.js' }]
-    }),
-    json(),
-    nodeResolve({ extensions }),
-    commonjs(), // 将第三方依赖打包进 dist/index.js 文件内
-    babel({ exclude: ['node_modules/**'], extensions }),
-  ],
-};
+// const configBrowserUmd = {
+//   input: resolve('./src/index.ts'),
+//   output: [
+//     { file: resolve(pkg.browser.replace('.min', '')), format: 'umd', name: 'xtools' },
+//     { file: resolve(pkg.browser), format: 'umd', name: 'xtools', plugins: [terser()] }
+//   ],
+//   plugins: [
+//     alias({
+//       entries: [{ find: /^axios$/, replacement: 'axios/dist/axios.js' }]
+//     }),
+//     json(),
+//     nodeResolve({ extensions }),
+//     commonjs(), // 将第三方依赖打包进 dist/index.js 文件内
+//     babel({ exclude: ['node_modules/**'], extensions }),
+//   ],
+// };
 
 /**
  * NodeJS 环境专用: commonjs + es module
@@ -81,7 +81,7 @@ for (const file of entries) {
 
 
 module.exports = [
-  configBrowserUmd,
+  // configBrowserUmd,
 
   ...configMainCjsAndModuleEsList,
 ];

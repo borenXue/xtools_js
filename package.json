@@ -1,12 +1,11 @@
 {
   "name": "xtools_js",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "js tools",
   "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/front-packages#readme",
   "license": "MIT",
   "main": "lib/index.js",
-  "browser": "lib/_umd/index-umd.min.js",
   "module": "lib/_es/index.js",
   "directories": {
     "lib": "lib",

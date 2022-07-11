@@ -102,7 +102,7 @@ export function urlAddParams(url: string, param: {
  * url 删除参数
  *
  * @param url 要解析的 url 字符串
- * @param param 要添加的参数对象, 可一次添加多个
+ * @param paramKeys 要删除的 key 或 key 的数组
  * @return 最终生成的url
  */
  export function urlDeleteParams(url: string, paramKeys: string | string[]) {
