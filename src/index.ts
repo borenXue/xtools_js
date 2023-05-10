@@ -10,7 +10,6 @@
  *  函数中不定义 TreeItem, 而是全部替换为泛型
  *  treeMap 函数 fn 中的参数 originTree: 深度复制+函数属性兼容 or ===原始数据
  */
-
 // tree
 import arrayToTree from './tree/array-to-tree'
 import treeForEach from './tree/tree-for-each'
@@ -35,6 +34,9 @@ import heartCheck, { hearCheckAsync } from './other/heart-check'
 import { urlAddParams, urlGetFileName, urlGetParams, urlDeleteParams  } from './other/url';
 import { padLeft } from './utils/index';
 
+// dom 相关
+import { disableZoom } from './dom';
+
 // http 模块
 import http, { createHttpInstance, globalConfig } from './http';
 
@@ -57,6 +59,8 @@ export {
   timeLastMonth, timeIsBetweenMonth,
   // http 模块
   http, createHttpInstance, globalConfig,
+  // dom 相关
+  disableZoom,
   // other
   fileDownload,
   urlAddParams, urlGetFileName, urlGetParams, urlDeleteParams,
