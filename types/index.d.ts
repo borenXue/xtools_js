@@ -1,3 +1,12 @@
+export type Treeable<
+  T extends object,
+  TID extends keyof T,
+  childrenKey extends string,
+> = (T & {
+  [k in childrenKey]: Treeable<T, TID, childrenKey>[]
+})[];
+
+
 // npm 包: path-prop 中的 flat 函数
 // https://stackoverflow.com/questions/66614528/flatten-object-with-custom-keys-in-typescript
 export type FlattenObject<T extends object> = object extends T
