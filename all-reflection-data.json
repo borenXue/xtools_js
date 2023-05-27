@@ -1,6 +1,6 @@
 {
 	"id": 0,
-	"name": "xtools_js - v2.2.9",
+	"name": "xtools_js - v2.2.10",
 	"kind": 0,
 	"flags": {},
 	"originalName": "",
@@ -13,7 +13,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/tree/types.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/tree/types.ts",
 			"children": [
 				{
 					"id": 246,
@@ -1889,7 +1889,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/date/format-date.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/date/format-date.ts",
 			"children": [
 				{
 					"id": 22,
@@ -2642,7 +2642,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/other/file-download.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/other/file-download.ts",
 			"comment": {
 				"shortText": "文件相关函数: 文件下载、文件上传"
 			},
@@ -3547,7 +3547,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/china/idcard.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/china/idcard.ts",
 			"comment": {
 				"shortText": "身份证相关函数"
 			},
@@ -3631,7 +3631,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/number/index.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/number/index.ts",
 			"children": [
 				{
 					"id": 298,
@@ -3989,7 +3989,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/utils/index.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/utils/index.ts",
 			"children": [
 				{
 					"id": 106,
@@ -8811,7 +8811,7 @@
 			"flags": {
 				"isExported": true
 			},
-			"originalName": "/Users/xueboren/Documents/code/github/xtools_js/src/other/url.ts",
+			"originalName": "/Users/xueboren/Documents/code/2023/github/xtools_js/src/other/url.ts",
 			"comment": {
 				"shortText": "url 辅助工具"
 			},
