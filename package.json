@@ -1,6 +1,6 @@
 {
   "name": "xtools_js",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "description": "js tools",
   "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/front-packages#readme",
@@ -12,7 +12,8 @@
     "test": "src"
   },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
