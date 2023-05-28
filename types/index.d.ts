@@ -1,7 +1,11 @@
+// @ts-ignore
+export * from '../lib/index';
+
+
 export type Treeable<
   T extends object,
   TID extends keyof T,
-  childrenKey extends string,
+  childrenKey extends string = 'children',
 > = (T & {
   [k in childrenKey]: Treeable<T, TID, childrenKey>[]
 })[];
