@@ -12,12 +12,14 @@ export default function hearCheck(checkSyncFn: () => boolean, heartTime = 500, t
       return
     }
     const startTime = new Date().getTime()
-    const intervalId = window.setInterval(() => {
+    const intervalId = setInterval(() => {
+      // console.log("xbr setInterval entry ......");
       if (checkSyncFn()) {
-        window.clearInterval(intervalId)
+        clearInterval(intervalId)
         resolve(true)
+        // console.log("xbr setInterval resolve(true)");
       } else if (new Date().getTime() - startTime >= timeout) {
-        window.clearInterval(intervalId)
+        clearInterval(intervalId)
         reject(new Error(`timeout - ${timeout}: 用时 ${new Date().getTime() - startTime}`))
       }
     }, heartTime)
@@ -33,7 +35,7 @@ export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime =
     function checkTimeout() {
       const costTime = new Date().getTime() - startTime;
       if (costTime >= timeout) {
-        window.clearInterval(intervalId);
+        clearInterval(intervalId);
         reject(new Error(`timeout - ${timeout}: 用时 ${costTime}`));
         return true;
       }
@@ -45,7 +47,7 @@ export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime =
       checkAsyncFn().then(res => {
         // 检测到成功时, 则 resolve
         if (res) {
-          window.clearInterval(intervalId);
+          clearInterval(intervalId);
           resolve(true);
           return;
         }
@@ -55,6 +57,6 @@ export function hearCheckAsync(checkAsyncFn: () => Promise<boolean>, heartTime =
     }
 
     run();
-    intervalId = window.setInterval(run, heartTime);
+    intervalId = setInterval(run, heartTime) as unknown as number;
   })
 }

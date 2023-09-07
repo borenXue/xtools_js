@@ -33,12 +33,18 @@ import formatMoney from './other/format-money';
 import heartCheck, { hearCheckAsync } from './other/heart-check'
 import { urlAddParams, urlGetFileName, urlGetParams, urlDeleteParams  } from './other/url';
 import { padLeft } from './utils/index';
+import { nextNumber } from './other/misc';
 
 // dom 相关
 import { disableZoom } from './dom';
 
 // http 模块
 import http, { createHttpInstance, globalConfig } from './http';
+
+// 数学、几何、算法相关
+import { mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint } from './arithmetic/basic';
+import { mathCirclePointByRadian } from './arithmetic/circle';
+import { mathEllipsePointByRadian } from './arithmetic/ellipse';
 
 export {
   // tree
@@ -67,4 +73,8 @@ export {
   padLeft,
   formatMoney,
   heartCheck, hearCheckAsync,
+  nextNumber,
+  // 数学、几何、算法相关
+  mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
+  mathCirclePointByRadian, mathEllipsePointByRadian,
 }

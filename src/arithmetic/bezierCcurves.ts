@@ -3,6 +3,3 @@
  * 
  * 二次贝塞尔曲线：Quadratic Bezier curve
  */
-
-export default {}
-
