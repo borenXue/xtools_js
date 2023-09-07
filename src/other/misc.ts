@@ -7,12 +7,13 @@ function getDecimalCount(num: number): number {
 }
 
 /**
- * 从 [min, max] 数字区间中, 按指定步长获取下一个值。支持循环
+ * 从 [min, max] 数字区间中, 按指定步长获取下一个值。
+ * 支持 区间循环、负数、小数、逆向、自定义步长。
  * 
- * @param currentValue 当前值。。支持正负整数、正负小数、0
- * @param minValue 最小值。。支持正负整数、正负小数、0
- * @param maxValue 最大值。。支持正负整数、正负小数、0
- * @param step 步长, 默认值为1。。支持正负整数、正负小数、0。。负数=逆序。。0=不变
+ * @param _currentValue 当前值。。支持正负整数、正负小数、0
+ * @param _minValue 最小值。。支持正负整数、正负小数、0
+ * @param _maxValue 最大值。。支持正负整数、正负小数、0
+ * @param _step 步长, 默认值为1。。支持正负整数、正负小数、0。。负数=逆序。。0=不变
  * @returns 下个值
  */
 export function nextNumber(_currentValue: number, _minValue: number, _maxValue: number, _step: number = 1): number {
