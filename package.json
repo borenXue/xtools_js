@@ -1,6 +1,6 @@
 {
   "name": "xtools_js",
-  "version": "2.2.18",
+  "version": "2.2.19",
   "description": "js tools",
   "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/xtools_js#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/borenXue/xtools_js.git/issues"
   },
   "scripts": {
-    "deploy:docs": "typedoc && cat typedoc-custom.css >> lib/_docs/assets/css/main.css && gh-pages -d lib/_docs",
+    "deploy:docs": "typedoc && cat typedoc-custom.css >> lib/_docs/assets/css/main.css && npm run test:docs && gh-pages -d lib/_docs",
     "start": "npm run check -- --watch",
     "build": "rm -rf lib && rollup -c && npm run types:cjs && npm run types:es && mkdir lib/types && cp types/* lib/types/",
     "types:cjs": "tsc --declaration --emitDeclarationOnly --declarationMap --declarationDir lib",
@@ -39,7 +39,8 @@
     "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
     "test:temp": "ts-mocha src/arithmetic/ellipse.spec.ts -R spec",
     "test:temp2": "ts-mocha src/other/misc.spec.ts -R spec",
-    "test": "ts-mocha src/*/*.spec.ts --reporter mochawesome --reporter-options reportDir=lib/_docs/_test,reportFilename=index"
+    "test": "ts-mocha src/*/*.spec.ts",
+    "test:docs": "ts-mocha src/*/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/_test,reportFilename=index"
   },
   "dependencies": {
     "@types/chai-as-promised": "7.1.5",
