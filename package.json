@@ -1,6 +1,6 @@
 {
   "name": "xtools_js",
-  "version": "2.2.19",
+  "version": "2.2.20",
   "description": "js tools",
   "author": "xueboren <boren.xue@outlook.com>",
   "homepage": "https://github.com/borenXue/xtools_js#readme",
@@ -40,7 +40,7 @@
     "test:temp": "ts-mocha src/arithmetic/ellipse.spec.ts -R spec",
     "test:temp2": "ts-mocha src/other/misc.spec.ts -R spec",
     "test": "ts-mocha src/*/*.spec.ts",
-    "test:docs": "ts-mocha src/*/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/_test,reportFilename=index"
+    "test:docs": "ts-mocha src/*/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/test,reportFilename=index"
   },
   "dependencies": {
     "@types/chai-as-promised": "7.1.5",

@@ -3,7 +3,7 @@
 一款实用的 JS 工具库
 
 * [文档地址](https://borenxue.github.io/xtools_js/)
-* [测试用例文档](https://borenxue.github.io/xtools_js/_test/)
+* [测试用例文档](https://borenxue.github.io/xtools_js/test/)
 * [npmjs.com 链接](https://www.npmjs.com/package/xtools_js)
 
 <br/>
