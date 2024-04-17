@@ -1,5 +1,11 @@
 import { accAdd, accDiv, accMulti } from "../number";
 
+export interface IPoint { x: number, y: number }
+export interface ILine {
+  point1: IPoint,
+  point2: IPoint,
+}
+
 /**
  * 360角度=2π弧度
  * x角度 / 360角度 = y弧度 / 2π弧度
@@ -25,11 +31,22 @@ export function mathRadianToAngle(radian: number) {
 }
 
 
+export function isTwoLineIntersect(line1: ILine, line2: ILine) {
+  const p1 = line1.point1;
+  const p2 = line1.point2;
+  const p3 = line2.point1;
+  const p4 = line2.point2;
+
+  const s1 = (p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x);
+  const s2 = (p4.x - p3.x) * (p2.y - p3.y) - (p4.y - p3.y) * (p2.x - p3.x);
+  const s3 = (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x);
+  const s4 = (p2.x - p1.x) * (p4.y - p1.y) - (p2.y - p1.y) * (p4.x - p1.x);
+  return s1 * s2 <= 0 && s3 * s4 <= 0;
+}
 
 
 
 
-export interface IPoint { x: number, y: number }
 /** 计算两个坐标之间的距离 */
 export function mathDistanceTwoPoint(p1: IPoint, p2: IPoint) {
   const dep = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);

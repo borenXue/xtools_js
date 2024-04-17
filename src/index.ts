@@ -42,9 +42,17 @@ import { disableZoom } from './dom';
 import http, { createHttpInstance, globalConfig } from './http';
 
 // 数学、几何、算法相关
-import { mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint } from './arithmetic/basic';
-import { mathCirclePointByRadian } from './arithmetic/circle';
-import { mathEllipsePointByRadian } from './arithmetic/ellipse';
+import {
+  isTwoLineIntersect,
+  // 角度、弧度转换
+  mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
+  // 圆、椭圆
+  mathCirclePointByRadian, mathEllipsePointByRadian,
+  // 数据结构
+  Graph, PriorityQueue,
+  // 图论相关算法
+  dijkstra, bellmanFord, longestPathSingleSource, longestPath,
+} from './arithmetic';
 
 export {
   // tree
@@ -75,6 +83,9 @@ export {
   heartCheck, hearCheckAsync,
   nextNumber,
   // 数学、几何、算法相关
+  isTwoLineIntersect,
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
   mathCirclePointByRadian, mathEllipsePointByRadian,
+  Graph, PriorityQueue,
+  dijkstra, bellmanFord, longestPathSingleSource, longestPath,
 }
