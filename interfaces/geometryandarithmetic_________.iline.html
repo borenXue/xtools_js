@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>formatMoneyOptions | xtools_js - v2.3.0</title>
+	<title>ILine | xtools_js - v2.3.0</title>
 	<meta name="description" content="Documentation for xtools_js - v2.3.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,31 +54,24 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/other_______.html">Other 其他辅助工具</a>
+					<a href="../modules/geometryandarithmetic_________.html">GeometryAndArithmetic 几何 &amp;&amp; 算法</a>
 				</li>
 				<li>
-					<a href="other_______.formatmoneyoptions.html">formatMoneyOptions</a>
+					<a href="geometryandarithmetic_________.iline.html">ILine</a>
 				</li>
 			</ul>
-			<h1>Interface formatMoneyOptions</h1>
+			<h1>Interface ILine</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>金额格式化函数 <a href="../modules/other_______.html#formatmoney">formatMoney</a> 的选项对象</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">formatMoneyOptions</span>
+						<span class="target">ILine</span>
 					</li>
 				</ul>
 			</section>
@@ -89,8 +82,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="other_______.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="other_______.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geometryandarithmetic_________.iline.html#point1" class="tsd-kind-icon">point1</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="geometryandarithmetic_________.iline.html#point2" class="tsd-kind-icon">point2</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,34 +92,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="decimal" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> decimal</h3>
-					<div class="tsd-signature tsd-kind-icon">decimal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<a name="point1" class="tsd-anchor"></a>
+					<h3>point1</h3>
+					<div class="tsd-signature tsd-kind-icon">point1<span class="tsd-signature-symbol">:</span> <a href="geometryandarithmetic_________.ipoint.html" class="tsd-signature-type">IPoint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/fb53546/src/other/format-money.ts#L9">src/other/format-money.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/fb53546/src/arithmetic/basic.ts#L5">src/arithmetic/basic.ts:5</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>小数位个数, 默认为2</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="trim" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> trim</h3>
-					<div class="tsd-signature tsd-kind-icon">trim<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="point2" class="tsd-anchor"></a>
+					<h3>point2</h3>
+					<div class="tsd-signature tsd-kind-icon">point2<span class="tsd-signature-symbol">:</span> <a href="geometryandarithmetic_________.ipoint.html" class="tsd-signature-type">IPoint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/fb53546/src/other/format-money.ts#L13">src/other/format-money.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/borenXue/xtools_js/blob/fb53546/src/arithmetic/basic.ts#L6">src/arithmetic/basic.ts:6</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>是否删除小数位最后无意义的 0, 默认 false 即不删除</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -145,7 +128,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/file___.html">File 文件</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/geometryandarithmetic_________.html">Geometry<wbr>And<wbr>Arithmetic 几何 &amp;&amp; 算法</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -154,7 +137,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/math___.html">Math 数学</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/other_______.html">Other 其他辅助工具</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -164,116 +147,86 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/other_______.loadingtype.html" class="tsd-kind-icon">Loading<wbr>Type</a>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/geometryandarithmetic_________.graph.html" class="tsd-kind-icon">Graph</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/other_______.aborterror.html" class="tsd-kind-icon">Abort<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/other_______.ajaxerror.html" class="tsd-kind-icon">Ajax<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/other_______.notsuccesserror.html" class="tsd-kind-icon">Not<wbr>Success<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/other_______.timeouterror.html" class="tsd-kind-icon">Time<wbr>Out<wbr>Error</a>
+						<a href="../classes/geometryandarithmetic_________.priorityqueue.html" class="tsd-kind-icon">Priority<wbr>Queue</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="other_______.deleterecursionconfig.html" class="tsd-kind-icon">Delete<wbr>Recursion<wbr>Config</a>
+						<a href="geometryandarithmetic_________.bellmanfordresult.html" class="tsd-kind-icon">Bellman<wbr>Ford<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="other_______.extraaxiosrequestconfig.html" class="tsd-kind-icon">Extra<wbr>Axios<wbr>Request<wbr>Config</a>
+						<a href="geometryandarithmetic_________.dijkstraqueueitem.html" class="tsd-kind-icon">Dijkstra<wbr>Queue<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="geometryandarithmetic_________.dijkstraresult.html" class="tsd-kind-icon">Dijkstra<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="geometryandarithmetic_________.graphedge.html" class="tsd-kind-icon">Graph<wbr>Edge</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="geometryandarithmetic_________.graphnode.html" class="tsd-kind-icon">Graph<wbr>Node</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="other_______.formatmoneyoptions.html" class="tsd-kind-icon">format<wbr>Money<wbr>Options</a>
+						<a href="geometryandarithmetic_________.iline.html" class="tsd-kind-icon">ILine</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="other_______.formatmoneyoptions.html#decimal" class="tsd-kind-icon">decimal</a>
+								<a href="geometryandarithmetic_________.iline.html#point1" class="tsd-kind-icon">point1</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="other_______.formatmoneyoptions.html#trim" class="tsd-kind-icon">trim</a>
+								<a href="geometryandarithmetic_________.iline.html#point2" class="tsd-kind-icon">point2</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/other_______.html#anyplainobject" class="tsd-kind-icon">Any<wbr>Plain<wbr>Object</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="geometryandarithmetic_________.ipoint.html" class="tsd-kind-icon">IPoint</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="geometryandarithmetic_________.longestpathsinglesourceresultitem.html" class="tsd-kind-icon">Longest<wbr>Path<wbr>Single<wbr>Source<wbr>Result<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/other_______.html#deleterule" class="tsd-kind-icon">Delete<wbr>Rule</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/other_______.html#deleterulefunction" class="tsd-kind-icon">Delete<wbr>Rule<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/other_______.html#extraconfig" class="tsd-kind-icon">Extra<wbr>Config</a>
+						<a href="../modules/geometryandarithmetic_________.html#priorityqueueitem" class="tsd-kind-icon">Priority<wbr>Queue<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#closeloading-1" class="tsd-kind-icon">close<wbr>Loading</a>
+						<a href="../modules/geometryandarithmetic_________.html#bellmanford" class="tsd-kind-icon">bellman<wbr>Ford</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#createhttpinstance" class="tsd-kind-icon">create<wbr>Http<wbr>Instance</a>
+						<a href="../modules/geometryandarithmetic_________.html#dijkstra" class="tsd-kind-icon">dijkstra</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#deleteparamsrecursion" class="tsd-kind-icon">delete<wbr>Params<wbr>Recursion</a>
+						<a href="../modules/geometryandarithmetic_________.html#floyd" class="tsd-kind-icon">floyd</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#disablezoom" class="tsd-kind-icon">disable<wbr>Zoom</a>
+						<a href="../modules/geometryandarithmetic_________.html#istwolineintersect" class="tsd-kind-icon">is<wbr>Two<wbr>Line<wbr>Intersect</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#formatmoney" class="tsd-kind-icon">format<wbr>Money</a>
+						<a href="../modules/geometryandarithmetic_________.html#longestpath" class="tsd-kind-icon">longest<wbr>Path</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#globalconfig" class="tsd-kind-icon">global<wbr>Config</a>
+						<a href="../modules/geometryandarithmetic_________.html#longestpathsinglesource" class="tsd-kind-icon">longest<wbr>Path<wbr>Single<wbr>Source</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#hearcheck" class="tsd-kind-icon">hear<wbr>Check</a>
+						<a href="../modules/geometryandarithmetic_________.html#mathangletoradian" class="tsd-kind-icon">math<wbr>Angle<wbr>ToRadian</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#hearcheckasync" class="tsd-kind-icon">hear<wbr>Check<wbr>Async</a>
+						<a href="../modules/geometryandarithmetic_________.html#mathcirclepointbyradian" class="tsd-kind-icon">math<wbr>Circle<wbr>Point<wbr>ByRadian</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#isarray" class="tsd-kind-icon">is<wbr>Array</a>
+						<a href="../modules/geometryandarithmetic_________.html#mathdistancetwopoint" class="tsd-kind-icon">math<wbr>Distance<wbr>Two<wbr>Point</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#isfunction" class="tsd-kind-icon">is<wbr>Function</a>
+						<a href="../modules/geometryandarithmetic_________.html#mathellipsepointbyradian" class="tsd-kind-icon">math<wbr>Ellipse<wbr>Point<wbr>ByRadian</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#isobject" class="tsd-kind-icon">is<wbr>Object</a>
+						<a href="../modules/geometryandarithmetic_________.html#mathradiantoangle" class="tsd-kind-icon">math<wbr>Radian<wbr>ToAngle</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#nextnumber" class="tsd-kind-icon">next<wbr>Number</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#padleft" class="tsd-kind-icon">pad<wbr>Left</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#padright" class="tsd-kind-icon">pad<wbr>Right</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#randomnumber" class="tsd-kind-icon">random<wbr>Number</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#requestinterceptorfulfilled" class="tsd-kind-icon">request<wbr>Interceptor<wbr>Fulfilled</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#requestinterceptorrejected" class="tsd-kind-icon">request<wbr>Interceptor<wbr>Rejected</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#responseinterceptorfulfilled" class="tsd-kind-icon">response<wbr>Interceptor<wbr>Fulfilled</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#responseinterceptorrejected" class="tsd-kind-icon">response<wbr>Interceptor<wbr>Rejected</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/other_______.html#showloading-1" class="tsd-kind-icon">show<wbr>Loading</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-module">
-						<a href="../modules/other_______.html#defaultconfig" class="tsd-kind-icon">default<wbr>Config</a>
+						<a href="../modules/geometryandarithmetic_________.html#spfa" class="tsd-kind-icon">spfa</a>
 					</li>
 				</ul>
 			</nav>
