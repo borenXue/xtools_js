@@ -37,10 +37,10 @@
     "prepublishOnly": "npm run test && npm run build",
     "postpublish": "npm run deploy:docs",
     "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
-    "test:temp": "ts-mocha src/arithmetic/ellipse.spec.ts -R spec",
+    "test:temp": "ts-mocha src/arithmetic/test/graph.spec.ts --reporter list",
     "test:temp2": "ts-mocha src/other/misc.spec.ts -R spec",
-    "test": "ts-mocha src/*/*.spec.ts",
-    "test:docs": "ts-mocha src/*/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/test,reportFilename=index"
+    "test": "ts-mocha src/**/*.spec.ts",
+    "test:docs": "ts-mocha src/**/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/test,reportFilename=index"
   },
   "dependencies": {
     "@types/chai-as-promised": "7.1.5",

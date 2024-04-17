@@ -1,3 +1,4 @@
+import { accAdd, accDiv, accMulti, accSub } from "../number";
 
 function getDecimalCount(num: number): number {
   const str = String(num);
@@ -46,4 +47,30 @@ export function nextNumber(_currentValue: number, _minValue: number, _maxValue: 
   }
 
   return nextValue/multiple;
+}
+
+/**
+ * 生成随机数字, 支持 设置区间、自定义小数位数、decimal支持负数
+ *
+ * @param start 区间开始值
+ * @param end 区间最大值
+ * @param decimal 小数位数。为负数时代表十位、百位、千位等为0, eg: decimal=-1时, 生成的随机数645会自动转换为650
+ * @returns 
+ */
+export function randomNumber(start: number, end: number, decimal?: number) {
+  const diff = accSub(end, start);
+
+  let result = accAdd(start, Math.random() * diff);
+
+  if (typeof decimal === 'number') {
+    result = +result.toFixed(decimal >= 0 ? decimal : 0);
+
+    // decimal 为负数的情况
+    if (decimal < 0) {
+      const powVal = Math.pow(10, Math.abs(decimal));
+      const temp = +accDiv(result, powVal).toFixed(0);
+      result = accMulti(temp, powVal);
+    }
+  }
+  return result
 }

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { nextNumber } from './misc';
+import { nextNumber, randomNumber } from './misc';
 
 
 describe('nextNumber 函数', () => {
@@ -146,6 +146,61 @@ describe('nextNumber 函数', () => {
       expect(() => nextNumber(4,4,4,1)).to.not.throw();
     });
   });
+});
+
+
+describe('randomNumber 函数', () => {
+
+  function randomNumberSatisfy(decimal: number) {
+    return (val: any) => {
+      if (typeof val !== 'number') throw new Error("kkkkkkk");
+
+      if (decimal < 0) {
+        const str = String(val);
+        if (str.indexOf('.') >= 0) throw new Error(`小数位数不同, 期望${decimal}位, 实际${str.length - str.indexOf('.') - 1}位`);
+
+        if (!new RegExp(`0{${Math.abs(decimal)}}$`).test(str)) throw new Error(`小数位数不同, 期望${decimal}位, 实际${str.length - str.indexOf('.') - 1}位`);
+        return true;
+      }
+
+      // decimal 大于等于0 的情况
+      let valDecimalLength = 0;
+      const str = String(val);
+      if (str.indexOf('.') < 0) {
+        valDecimalLength = 0;
+      } else {
+        valDecimalLength = str.length - str.indexOf('.') - 1;
+      }
+      if (valDecimalLength !== decimal) throw new Error(`小数位数不同, 期望${decimal}位, 实际${valDecimalLength}位`);
+
+      return true;
+    };
+  }
+
+  describe('测试辅助函数 randomNumberSatisfy 的测试', () => {
+    it('decimal=0时: [4,4.0]都通过  4.1未通过', () => {
+      expect(randomNumberSatisfy(0)(4)).to.be.true;
+      expect(randomNumberSatisfy(0)(4.0)).to.be.true;
+      expect(() => randomNumberSatisfy(0)(4.1)).to.throw(Error, "小数位数不同, 期望0位, 实际1位");
+      expect(() => randomNumberSatisfy(0)(4.12)).to.throw(Error, "小数位数不同, 期望0位, 实际2位");
+    });
+    it('decimal=-1时: [20,330,400,20.0]通过   [11,10.1]未通过', () => {
+      expect(randomNumberSatisfy(-1)(20)).to.be.true;
+      expect(randomNumberSatisfy(-1)(20.0)).to.be.true;
+      expect(randomNumberSatisfy(-1)(330)).to.be.true;
+      expect(randomNumberSatisfy(-1)(400)).to.be.true;
+      // expect(() => randomNumberSatisfy(-1)(11)).to.throw(Error, "小数位数不同, 期望-1位, 实际0位");
+      expect(() => randomNumberSatisfy(0)(4.12)).to.throw(Error, "小数位数不同, 期望0位, 实际2位");
+    });
+  });
+
+  it('区间为 [1,99] && decimal为0 - 测试1000次', () => {
+    for (let i = 0; i < 1000; i++) {
+      const value = randomNumber(1,99,0);
+      expect(value).to.a('number').and.to.within(1, 99).and.to.satisfy(Number.isInteger);
+    }
+  });
+
 });
 
 
