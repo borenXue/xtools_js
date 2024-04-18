@@ -108,7 +108,7 @@ const graph6 = {
     { id: 'e21', from: 'v20', to: 'v21', weight: 1 },
     { id: 'e22', from: 'v21', to: 'v22', weight: 1 },
     { id: 'e23', from: 'v22', to: 'v5', weight: 1 },
-    { id: 'e24', from: 'v3', to: 'v33', weight: 1 },
+    { id: 'e24', from: 'v3', to: 'v22', weight: 1 },
   ],
 };
 

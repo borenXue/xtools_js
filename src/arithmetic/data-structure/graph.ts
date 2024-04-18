@@ -80,6 +80,11 @@ export class DirectedGraph extends DirectedGraphBase {
     const nextIds = edgeIds.map(edgeId => this.edgeList.find(e => e.id === edgeId)!.to);
     return nextIds;
   }
+  getPrevNodeIds(nodeId: string) {
+    const edgeIds = this.nodeIntoEdge[nodeId] || [];
+    const prevIds = edgeIds.map(edgeId => this.edgeList.find(e => e.id === edgeId)!.from);
+    return prevIds;
+  }
 
 
   /** 是否存在节点 */
