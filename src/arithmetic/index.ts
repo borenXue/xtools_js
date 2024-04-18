@@ -7,7 +7,7 @@ import { mathCirclePointByRadian } from './circle';
 import { mathEllipsePointByRadian } from './ellipse';
 
 // 数据结构
-import { Graph, GraphNode, GraphEdge } from './data-structure/graph';
+import { DirectedGraph, GraphNode, GraphEdge } from './data-structure/graph';
 import { PriorityQueue, PriorityQueueItem } from './data-structure/queue';
 
 // 图论相关算法
@@ -28,7 +28,7 @@ export {
   mathEllipsePointByRadian,
 
   // 数据结构
-  Graph, PriorityQueue,
+  DirectedGraph, PriorityQueue,
 
   // 图论相关算法
   dijkstra, bellmanFord,

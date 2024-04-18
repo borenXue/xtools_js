@@ -1,28 +1,16 @@
 import { use, expect } from 'chai';
 import chaiAlmost from 'chai-almost';
-import { Graph } from '../data-structure/graph';
 import dijkstra from './shortest-path/dijkstra';
 import { longestPath, longestPathSingleSource } from ".";
 import bellmanFord from './shortest-path/bellman-ford';
 import {
+  createGraph,
   graphData1, graphData1_singleSourceShortestPathResult, graphData1_longestPath,
   graphData2, graphData2_singleSourceShortestPathResult, graphData2_longestPath, graphData3_singleSourceShortestPathResult_v2,
   graphData3, graphData3_singleSourceShortestPathResult, graphData3_longestPath,
-} from "./index-datas.spec";
+} from "../datas-for-test.spec";
 
 use(chaiAlmost());
-
-
-function createGraph(data: any, negativeWeight = false) {
-  const graph = new Graph();
-  data.nodeList.forEach((node: any) => graph.addNode(node));
-  data.edgeList.forEach((edge: any) => graph.addEdge({
-    id: Math.random().toString(16).substring(2),
-    ...edge,
-    weight: negativeWeight ? -edge.weight : edge.weight,
-  }));
-  return graph;
-}
 
 describe('图论与算法', () => {
   describe('单源最短路径算法 dijkstra', () => {

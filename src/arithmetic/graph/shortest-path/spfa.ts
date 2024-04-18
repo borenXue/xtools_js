@@ -1,5 +1,5 @@
 
-import { Graph } from "../../data-structure/graph";
+import { DirectedGraph } from "../../data-structure/graph";
 
 /**
  * spfa 算法: 从起点到终点的最短路径
@@ -9,6 +9,6 @@ import { Graph } from "../../data-structure/graph";
  * 
  * 
  */
-export default function spfa(graph: Graph, startNodeId: string, endNodeId: string) {
+export default function spfa(graph: DirectedGraph, startNodeId: string, endNodeId: string) {
 
 }

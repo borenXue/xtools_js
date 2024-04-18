@@ -49,12 +49,16 @@ import {
   // 圆、椭圆
   mathCirclePointByRadian, mathEllipsePointByRadian,
   // 数据结构
-  Graph, PriorityQueue,
+  DirectedGraph, PriorityQueue,
   // 图论相关算法
   dijkstra, bellmanFord, longestPathSingleSource, longestPath,
 } from './arithmetic';
 
+import datas from './datas';
+
 export {
+  // 测试辅助数据
+  datas,
   // tree
   arrayToTree,
   treeForEach,
@@ -86,6 +90,6 @@ export {
   isTwoLineIntersect,
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
   mathCirclePointByRadian, mathEllipsePointByRadian,
-  Graph, PriorityQueue,
+  DirectedGraph, PriorityQueue,
   dijkstra, bellmanFord, longestPathSingleSource, longestPath,
 }

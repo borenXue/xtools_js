@@ -1,4 +1,4 @@
-import { Graph, GraphEdge } from "../../data-structure/graph";
+import { DirectedGraph, GraphEdge } from "../../data-structure/graph";
 
 export interface BellmanFordResult {
   [nodeId: string]: {
@@ -17,7 +17,7 @@ export interface BellmanFordResult {
  * 
  *
  */
-export default function bellmanFord(graph: Graph, startNodeId: string) {
+export default function bellmanFord(graph: DirectedGraph, startNodeId: string) {
 
   const result: BellmanFordResult = {};
   result[startNodeId] = {
@@ -35,7 +35,7 @@ export default function bellmanFord(graph: Graph, startNodeId: string) {
 
 }
 
-function getAllEdgeList(graph: Graph, nodeId: string, allEdgeList: GraphEdge[]) {
+function getAllEdgeList(graph: DirectedGraph, nodeId: string, allEdgeList: GraphEdge[]) {
 
   const outEdgeList = graph.getOutEdgeList(nodeId);
   allEdgeList.push(...outEdgeList);
@@ -45,7 +45,7 @@ function getAllEdgeList(graph: Graph, nodeId: string, allEdgeList: GraphEdge[]) 
   }
 }
 
-function handler(graph: Graph, allEdgeList: GraphEdge[], result: BellmanFordResult) {
+function handler(graph: DirectedGraph, allEdgeList: GraphEdge[], result: BellmanFordResult) {
   let resultChanged = false;
 
   for (const edge of allEdgeList) {

@@ -1,4 +1,4 @@
-import { Graph, GraphNode } from "../../data-structure/graph";
+import { DirectedGraph, GraphNode } from "../../data-structure/graph";
 import { PriorityQueue } from "../../data-structure/queue";
 
 export interface DijkstraQueueItem {
@@ -18,7 +18,7 @@ export interface DijkstraResult {
  * Dijkstra 算法: 从起点到其他点的最短路径矩阵
  * 单源最短路径算法。不支持负边权
  */
-export default function dijkstra(graph: Graph, startNodeId: string) {
+export default function dijkstra(graph: DirectedGraph, startNodeId: string) {
   validParams(graph, startNodeId);
 
   const queue = new PriorityQueue((node1: DijkstraQueueItem, node2: DijkstraQueueItem) => node1.edgeWeight - node2.edgeWeight);
@@ -33,7 +33,7 @@ export default function dijkstra(graph: Graph, startNodeId: string) {
   return result;
 }
 
-function handleQueue(queue: PriorityQueue, graph: Graph, result: any) {
+function handleQueue(queue: PriorityQueue, graph: DirectedGraph, result: any) {
   const currentNodeId = queue.pop();
 
   const outEdgeList = graph.getOutEdgeList(currentNodeId);
@@ -53,7 +53,7 @@ function handleQueue(queue: PriorityQueue, graph: Graph, result: any) {
 }
 
 
-function validParams(graph: Graph, startNodeId: string) {
+function validParams(graph: DirectedGraph, startNodeId: string) {
   if (!graph.existNode(startNodeId)) throw new Error(`起点Id(${startNodeId}) 不存在`);
 
   // 不支持负权边

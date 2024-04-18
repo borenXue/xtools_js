@@ -1,4 +1,4 @@
-import { Graph } from "../data-structure/graph";
+import { DirectedGraph } from "../data-structure/graph";
 import bellmanFord from "./shortest-path/bellman-ford";
 import dijkstra from "./shortest-path/dijkstra";
 
@@ -6,7 +6,7 @@ export interface LongestPathSingleSourceResultItem {
   nodeIdList: string[],
   edgeIdList: string[],
 }
-export function longestPathSingleSource(graph: Graph, startNodeId: string): LongestPathSingleSourceResultItem[] {
+export function longestPathSingleSource(graph: DirectedGraph, startNodeId: string): LongestPathSingleSourceResultItem[] {
   const clonedGraph = graph.clone();
 
   // 删除孤儿节点
@@ -50,7 +50,7 @@ export function longestPathSingleSource(graph: Graph, startNodeId: string): Long
   return resultList;
 }
 
-export function longestPath(graph: Graph) {
+export function longestPath(graph: DirectedGraph) {
   const clonedGraph = graph.clone();
 
   // 删除孤儿节点
@@ -69,8 +69,4 @@ export function longestPath(graph: Graph) {
   }
 
   return resultList;
-}
-
-function dijkstraForStartNode(graph: Graph, startNodeId: string) {
-  dijkstra(graph, startNodeId);
 }
