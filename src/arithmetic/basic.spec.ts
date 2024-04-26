@@ -5,6 +5,8 @@ import {
   mathDistanceTwoPoint,
   isTwoLineIntersect,
   ILine,
+  isRangeCompletelyIncludedStrict,
+  Range,
 } from './basic';
 
 /**
@@ -98,5 +100,30 @@ describe('basic: 两条线段是否相交', () => {
     expect(isTwoLineIntersect(lines.x1, lines.y0))
       .to.almost.equal(false);
   })
+})
+
+describe('basic: 区间是否包含', () => {
+  // 常规case
+  it('区间 [1,10] 包含 [2,2]', () => {
+    const rangeSmall: Range = { start: 2, end: 2, startClose: true, endClose: true };
+    const rangeBig: Range = { start: 1, end: 10, startClose: false, endClose: true };
+    expect(isRangeCompletelyIncludedStrict(rangeSmall, rangeBig))
+      .to.almost.equal(true);
+  })
+  it('区间 [1,10] 包含 [1,9]', () => {
+    const rangeSmall: Range = { start: 1, end: 9, startClose: true, endClose: true };
+    const rangeBig: Range = { start: 1, end: 10, startClose: true, endClose: true };
+    expect(isRangeCompletelyIncludedStrict(rangeSmall, rangeBig))
+      .to.almost.equal(true);
+  })
+
+  // 边界case
+  it('区间 (1,10] 不包含 [1,9]', () => {
+    const rangeSmall: Range = { start: 1, end: 9, startClose: true, endClose: true };
+    const rangeBig: Range = { start: 1, end: 10, startClose: false, endClose: true };
+    expect(isRangeCompletelyIncludedStrict(rangeSmall, rangeBig))
+      .to.almost.equal(false);
+  })
+  
 })
 

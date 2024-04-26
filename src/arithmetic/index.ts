@@ -1,7 +1,9 @@
 
 import {
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
-  isTwoLineIntersect,
+  isTwoLineIntersect, isRangeIntersect, isRangeCompletelyIncluded, isRangeCompletelyIncludedStrict,
+  listIntersection, listUnion, listSubstract,
+  Range,
 } from './basic';
 import { mathCirclePointByRadian } from './circle';
 import { mathEllipsePointByRadian } from './ellipse';
@@ -16,13 +18,15 @@ import dijkstra from "./graph/shortest-path/dijkstra";
 import { longestPathSingleSource, longestPath } from "./graph/index";
 
 export type {
+  Range,
   // 数据结构
   GraphNode, GraphEdge,
   PriorityQueueItem,
 }
 
 export {
-  isTwoLineIntersect,
+  isTwoLineIntersect, isRangeIntersect, isRangeCompletelyIncluded, isRangeCompletelyIncludedStrict,
+  listIntersection, listUnion, listSubstract,
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
   mathCirclePointByRadian,
   mathEllipsePointByRadian,

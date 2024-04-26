@@ -43,7 +43,8 @@ import http, { createHttpInstance, globalConfig } from './http';
 
 // 数学、几何、算法相关
 import {
-  isTwoLineIntersect,
+  isTwoLineIntersect, isRangeIntersect, isRangeCompletelyIncluded, isRangeCompletelyIncludedStrict,
+  listIntersection, listUnion, listSubstract,
   // 角度、弧度转换
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
   // 圆、椭圆
@@ -87,7 +88,8 @@ export {
   heartCheck, hearCheckAsync,
   nextNumber,
   // 数学、几何、算法相关
-  isTwoLineIntersect,
+  listIntersection, listUnion, listSubstract,
+  isTwoLineIntersect, isRangeIntersect, isRangeCompletelyIncluded, isRangeCompletelyIncludedStrict,
   mathAngleToRadian, mathRadianToAngle, mathDistanceTwoPoint,
   mathCirclePointByRadian, mathEllipsePointByRadian,
   DirectedGraph, PriorityQueue,

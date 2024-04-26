@@ -15,33 +15,39 @@ export interface GraphNode {
 }
 
 /** 只包含 图的数据结构、增删改操作、不含查询操作 */
-class DirectedGraphBase {
-  nodeList: GraphNode[] = [];
-  edgeList: GraphEdge[] = [];
+class DirectedGraphBase<MyNode extends GraphNode, MyEdge extends GraphEdge> {
+  nodeList: MyNode[] = [];
+  edgeList: MyEdge[] = [];
+
+  nodesObject: { [key: string]: MyNode } = {};
+  edgesObject: { [key: string]: MyEdge } = {};
 
   // node节点的 出边。值为边的id数组
   nodeOutEdge: { [nodeId: string]: string[] } = {};
   // node节点的 入边。值为边的id数组
   nodeIntoEdge: { [nodeId: string]: string[] } = {};
 
-  addNode(node: GraphNode) {
+  addNode(node: MyNode) {
     if (this.nodeOutEdge[node.id]) throw new Error(`Graph#addNode 节点不允许重复添加: ${node.id}`);
     // if (this.nodeList.find(n => n.id === node.id)) throw new Error(`Graph#addNode 节点不允许重复添加: ${node.id}`);
     this.nodeList.push(node);
+    this.nodesObject[node.id] = node;
 
     this.nodeOutEdge[node.id] = [];
     this.nodeIntoEdge[node.id] = [];
   }
 
-  addEdge(edge: GraphEdge) {
+  addEdge(edge: MyEdge) {
     if (this.edgeList.find(e => e.id === edge.id)) throw new Error(`Graph#addEdge 边不允许重复添加: ${edge.id}`);
     this.edgeList.push(edge);
+    this.edgesObject[edge.id] = edge;
 
     this.nodeOutEdge[edge.from].push(edge.id);
     this.nodeIntoEdge[edge.to].push(edge.id);
   }
 
   deleteNode(nodeId: string) {
+    delete this.nodesObject[nodeId];
     this.nodeList = this.nodeList.filter(n => n.id !== nodeId);
     (this.nodeOutEdge[nodeId] || []).forEach(edgeId => this.deleteEdge(edgeId));
     (this.nodeIntoEdge[nodeId] || []).forEach(edgeId => this.deleteEdge(edgeId));
@@ -49,6 +55,7 @@ class DirectedGraphBase {
     delete this.nodeIntoEdge[nodeId];
   }
   deleteEdge(edgeId: string) {
+    delete this.edgesObject[edgeId];
     const edge = this.edgeList.find(e => e.id === edgeId);
     if (!edge) return console.warn(`Graph#deleteEdge 边不存在: ${edgeId}`);
 
@@ -70,7 +77,9 @@ class DirectedGraphBase {
 }
 
 
-export class DirectedGraph extends DirectedGraphBase {
+export class DirectedGraph<MyNode extends GraphNode = GraphNode, MyEdge extends GraphEdge = GraphEdge> extends DirectedGraphBase<MyNode, MyEdge> {
+  getNode(nodeId: string) { return this.nodesObject[nodeId]; }
+  getEdge(edgeId: string) { return this.edgesObject[edgeId]; }
 
   getOutEdgeList(nodeId: string) {
     return (this.nodeOutEdge[nodeId] || []).map(edgeId => this.edgeList.find(e => e.id === edgeId)!);
@@ -89,7 +98,7 @@ export class DirectedGraph extends DirectedGraphBase {
 
   /** 是否存在节点 */
   existNode(nodeId: string) {
-    return !!this.nodeOutEdge[nodeId];
+    return !!this.nodesObject[nodeId];
   }
 
   /** 获取孤儿节点集合, 即 没有出边、也没有入边 的节点 */
@@ -148,7 +157,7 @@ export class DirectedGraph extends DirectedGraphBase {
 }
 
 
-function getOrphanNodes(graph: DirectedGraphBase) {
+function getOrphanNodes(graph: DirectedGraphBase<GraphNode, GraphEdge>) {
   return graph.nodeList.filter(node => 
     graph.nodeOutEdge[node.id].length === 0 && graph.nodeIntoEdge[node.id].length === 0
   );
