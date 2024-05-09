@@ -33,7 +33,7 @@ export interface SortFunction<T extends TreeItemLike> {
 /**
  * 函数 {@link arrayToTree} 的选项
  */
-export interface ArrayToTreeOptions<T> {
+export interface ArrayToTreeOptions<T extends TreeItemLike> {
   /**
    * id 的属性名
    * 
