@@ -126,8 +126,8 @@ FileSystemDirectoryHandle.prototype.xFileCreate = async function (filename: stri
     }
     const newHandle = await this.getFileHandle(filename, { create: true });
     const writable = await newHandle.createWritable();
-    writable.write(content);
-    writable.close();
+    await writable.write(content);
+    await writable.close();
     return [true, newHandle];
   } catch(err) {
     return [false, null];
@@ -296,8 +296,8 @@ FileSystemDirectoryHandle.prototype.xFileCopy = async function (sourceDir: strin
     }
     const file = await sourceHandle!.getFile();
     const writeable = await targetFileHandle.createWritable({ keepExistingData: false });
-    writeable.write(file);
-    writeable.close();
+    await writeable.write(file);
+    await writeable.close();
     return true;
   } catch(err) {
     return false;
@@ -356,7 +356,7 @@ async function copyDirectory(sourceDirHandle: FileSystemDirectoryHandle, targetD
     if (handleApp.kind === "directory") {
       const newSourceDirHandle = await sourceDirHandle.getDirectoryHandle(fileName, { create: false });
       const [_, newTargetDirHandle] = await targetDirHandle.xDirectoryCreate(fileName);
-      copyDirectory(newSourceDirHandle, newTargetDirHandle!);
+      await copyDirectory(newSourceDirHandle, newTargetDirHandle!);
     }
   }
 }
