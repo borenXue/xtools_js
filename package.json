@@ -38,7 +38,7 @@
     "postpublish": "npm run deploy:docs",
     "test:dev": "ts-mocha src/*/*.spec.ts -R spec",
     "test:temp": "ts-mocha src/arithmetic/data-structure/index.spec.ts --reporter spec",
-    "test:temp2": "ts-mocha src/arithmetic/basic.spec.ts -R spec",
+    "test:temp2": "ts-mocha src/china/idcard.spec.ts -R spec",
     "test": "ts-mocha src/{**,**/**,**/**/**}/*.spec.ts",
     "test:docs": "ts-mocha src/{**,**/**,**/**/**}/*.spec.ts --reporter mochawesome --reporter-options consoleReporter=none,reportDir=lib/_docs/test,reportFilename=index"
   },
