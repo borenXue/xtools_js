@@ -20,9 +20,12 @@ interface FileSystemDirectoryHandle {
   xFileCopy: (sourceDir: string, targetFileHandle: FileSystemFileHandle, options?: { sourceNotExist: NotExistAction }) => Promise<boolean>;
   xFileMove: (sourceDir: string, targetFileHandle: FileSystemFileHandle, options?: { sourceNotExist: NotExistAction }) => Promise<boolean>;
   // 其他 - 杂项
-  entries: () => Promise<AsyncGenerator<[string, FileSystemHandle], void, void>>;
   xGetDirectoryHandle: (dir: string) => Promise<FileSystemDirectoryHandle | null>;
   xGetFileHandle: (dir: string) => Promise<FileSystemFileHandle | null>;
+  // 其他 - 内置函数的 TypeScript 定义
+  entries: () => Promise<AsyncGenerator<[string, FileSystemHandle], void, void>>;
+  keys: () => Promise<AsyncGenerator<string, void, void>>;
+  remove: (opts?: { recursive?: boolean; }) => Promise<undefined>;
 }
 
 

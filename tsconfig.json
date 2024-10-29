@@ -6,11 +6,12 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "lib": ["ESNext", "DOM"],
+    "typeRoots": ["node_modules/@types"],
     "types": [
       "node",
       "file-saver",
       "mocha",
-      "chai"
+      "chai",
     ]
   },
   "exclude": [
