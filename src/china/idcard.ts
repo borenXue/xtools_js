@@ -73,7 +73,8 @@ export function validIdCard(idcard: string): boolean {
   // 出生日期校验
   str = String(idcard);
   const birthStr = `${str.substring(6, 10)}-${str.substring(10, 12)}-${str.substring(12, 14)}`;
-  if (new Date(birthStr) < new Date('1984-04-06') || new Date(birthStr) > new Date()) return false;
+  // if (new Date(birthStr) < new Date('1984-04-06') || new Date(birthStr) > new Date()) return false;
+  if (new Date(birthStr) > new Date()) return false;
 
   // 第二代身份证校验 - 18位
   // 计算最后一位校验码

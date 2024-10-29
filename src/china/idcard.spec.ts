@@ -7,6 +7,10 @@ describe('idcard 测试用例', () => {
     expect(validIdCard('513436201901019465')).equals(true);
   })
 
+  it('合法: 330881198402025513', () => {
+    expect(validIdCard('330881198402025513')).equals(true);
+  })
+
   it('合法: 513436201901013549', () => {
     expect(validIdCard('513436201901013549')).equals(true);
   })
