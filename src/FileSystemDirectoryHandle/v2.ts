@@ -16,7 +16,7 @@ interface FileSystemDirectoryHandle {
   x2FileCreate: (filepath: string, opts?: Partial<X2FileCreateOpts>) => Promise<[boolean, FileSystemFileHandle | null]>;
   x2FileSave: (filepath: string, str?: string | File, opts?: Partial<X2FileSaveOpts>) => Promise<boolean>;
   x2FileReadText: (filepath: string, opts?: Partial<X2FileReadOpts>) => Promise<[string | null, File | null]>;
-  x2FileReadJSON: (filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<object | null>;
+  x2FileReadJSON: (filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<[object | null, File | null]>;
   // ------------------ 其他 - 文件+目录 ------------------
   x2Exist: (fileOrDir: string, opts?: Partial<x2ExistOpts>) => Promise<[boolean, FileSystemHandle | null]>;
   x2DirectoryExist: (dirpath: string, opts?: Partial<X2DirExistOpts>) => Promise<[boolean, FileSystemDirectoryHandle | null]>;
@@ -33,12 +33,14 @@ interface FileSystemDirectoryHandle {
 //--------------------------- 目录相关 ---------------------------
 //---------------------------------------------------------------
 FileSystemDirectoryHandle.prototype.x2DirectoryCreate = async function (dirpath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2DirectoryCreate';
   try {
     const opts: X2DirCreateOpts = {
-      debugMode: _opts?.debugMode || defaultDebugMode,
+      debugMode,
       exist: _opts?.exist || 'ignore',
     };
-    logger(opts.debugMode, 'x2DirectoryCreate', opts);
+    logger(opts.debugMode, funcName, opts, dirpath);
   
     const dirList = dirpath.split('/');
     let pHandle: FileSystemDirectoryHandle = this;
@@ -53,16 +55,19 @@ FileSystemDirectoryHandle.prototype.x2DirectoryCreate = async function (dirpath,
   
     return [true, pHandle]
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [false, null]
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2ParentHandle = async function(sourceFilepathOrDirpath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2ParentHandle';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: x2PHandleOpts = { debugMode, sourceNotExist: _opts?.sourceNotExist || 'ignore' };
     const sourcePath = sourceFilepathOrDirpath || '';
+
+    logger(opts.debugMode, funcName, opts, sourceFilepathOrDirpath);
 
     let result: FileSystemDirectoryHandle | null = null;
 
@@ -82,16 +87,19 @@ FileSystemDirectoryHandle.prototype.x2ParentHandle = async function(sourceFilepa
 
     return result;
   } catch (err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return null;
   }
 
 }
 
 FileSystemDirectoryHandle.prototype.x2Clear = async function(_opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Clear';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: x2ClearOpts = { debugMode, deleteSelf: _opts?.deleteSelf || false };
+
+    logger(opts.debugMode, funcName, opts);
 
     // 1、清空内容
     const promiseList: Promise<boolean>[] = [];
@@ -109,14 +117,15 @@ FileSystemDirectoryHandle.prototype.x2Clear = async function(_opts) {
 
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Overview';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const maxLevel = typeof _opts?.maxLevel !== 'number' ? Number.POSITIVE_INFINITY : Math.max(0, _opts?.maxLevel || 0) || Number.POSITIVE_INFINITY;
     const opts: X2DirOverviewOpts = {
       debugMode, maxLevel,
@@ -124,7 +133,7 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
       ignoreDotFile: _opts?.ignoreDotFile || false,
       ignoreDotDir: _opts?.ignoreDotDir || false,
     };
-    logger(debugMode, "x2Overview opts:", opts);
+    logger(debugMode, funcName, opts);
 
     // 根据 maxLevel、ignoreXXX 来校验该 path 是否需要忽略
     const isValidPath = (path: string, kind: FileSystemHandleKind) => {
@@ -179,7 +188,7 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
     };
     return result;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return null;
   }
 }
@@ -190,12 +199,14 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
 //--------------------------- 文件相关 ---------------------------
 //---------------------------------------------------------------
 FileSystemDirectoryHandle.prototype.x2FileCreate = async function (filepath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2FileCreate';
   try {
     const opts: X2DirCreateOpts = {
-      debugMode: _opts?.debugMode || defaultDebugMode,
+      debugMode,
       exist: _opts?.exist || 'ignore',
     };
-    logger(opts.debugMode, 'x2FileCreate', opts);
+    logger(opts.debugMode, funcName, opts);
 
     const dirList = filepath.split('/');
     const fileName = dirList.pop();
@@ -214,27 +225,29 @@ FileSystemDirectoryHandle.prototype.x2FileCreate = async function (filepath, _op
     }
     return [true, fileHandle]
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [false, null]
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2FileSave = async function (filepath, str, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2FileSave';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const [ok, fileHandle] = await this.x2FileCreate(filepath, { debugMode, exist: 'ignore' })
     if (!ok || !fileHandle) throw new Error(`文件保存失败: ${filepath} 创建失败`);
     await writeFile(fileHandle, str || '');
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2FileReadText = async function (filepath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2FileReadText';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const [exist, fileHandle] = await this.x2FileExist(filepath, { debugMode });
     if (!exist || !fileHandle) throw new Error(`文件不存在: ${filepath}`);
 
@@ -243,96 +256,111 @@ FileSystemDirectoryHandle.prototype.x2FileReadText = async function (filepath, _
 
     return [contentStr, file];
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [null, null];
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2FileReadJSON = async function (filepath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2FileReadJSON';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const [exist, fileHandle] = await this.x2FileExist(filepath, { debugMode });
     if (!exist || !fileHandle) throw new Error(`文件不存在: ${filepath}`);
 
     const file = await fileHandle.getFile();
+    logger(debugMode, funcName, '文件类型:', file.type);
     if (file.type !== 'application/json') {
       throw new Error(`文件类型错误: ${filepath} 类型为 ${file.type}。而不是 application/json`);
     }
     const contentStr = await getStringFromFile(file);
+    logger(debugMode, funcName, '文件文本:', contentStr);
     const json = JSON.parse(contentStr);
 
-    return json;
+    return [json, file];
   } catch(err) {
-    console.error(err);
-    return null;
+    loggerError(debugMode, funcName, err);
+    return [null, null];
   }
 }
 
 //---------------------------------------------------------------
 //--------------------------- 其他: 文件+目录 ---------------------
 //---------------------------------------------------------------
-FileSystemDirectoryHandle.prototype.x2Exist = async function (filepath, _opts) {
+FileSystemDirectoryHandle.prototype.x2Exist = async function (fileOrDir, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Exist';
   try {
-    const opts: X2FileExistOpts = {
-      debugMode: _opts?.debugMode || defaultDebugMode,
-    };
-    logger(opts.debugMode, 'x2FileExist', opts);
+    const opts: X2FileExistOpts = { debugMode };
+    logger(opts.debugMode, funcName, opts, fileOrDir);
 
-    const dirList = filepath.split('/');
+    const dirList = fileOrDir.split('/');
     const lastStr = dirList.pop();
     if (!lastStr) throw new Error(`文件名或目录名非法: ${lastStr}`);
 
-    const [dirExist, dirHandle] = await this.x2DirectoryExist(dirList.join('/'));
-    if (!dirExist || !dirHandle) throw new Error(`前置目录不存在: ${dirList.join("/")}`);
+    let dirHandle = this;
+    if (dirList.length > 0) {
+      const [dirExist, _dirHandle] = await this.x2DirectoryExist(dirList.join('/'));
+      if (!dirExist || !_dirHandle) throw new Error(`前置目录不存在: ${dirList.join("/")}`);
+      dirHandle = _dirHandle;
+    }
 
-    let lastHandle: FileSystemHandle = await dirHandle.getDirectoryHandle(lastStr, { create: false });
-    if (!lastHandle) lastHandle = await dirHandle.getFileHandle(lastStr, { create: false });
+    let lastHandle: FileSystemHandle | null = null;
+    try { // lastStr 为文件类型时会报错
+      lastHandle = await dirHandle.getDirectoryHandle(lastStr, { create: false });
+    } catch(err) {
+      lastHandle = await dirHandle.getFileHandle(lastStr, { create: false });
+    }
+    if (!lastHandle) throw new Error('lastHandle 获取失败: 即无该文件或目录');
 
     return [true, lastHandle];
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [false,null];
   }
 }
 FileSystemDirectoryHandle.prototype.x2DirectoryExist = async function (dirpath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2DirectoryExist';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: X2DirExistOpts = { debugMode };
-    logger(opts.debugMode, 'x2DirectoryExist', opts);
+    logger(opts.debugMode, funcName, opts);
 
     const [exist, lastHandle] = await this.x2Exist(dirpath, { debugMode });
     if (!exist || !lastHandle || lastHandle.kind !== 'directory') throw new Error(`结果不符合预期: exist=${exist}, kind=${lastHandle?.kind}`);
 
     return [true, lastHandle as FileSystemDirectoryHandle]
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [false, null]
   }
 }
 FileSystemDirectoryHandle.prototype.x2FileExist = async function (filepath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2FileExist';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: X2DirExistOpts = { debugMode };
-    logger(opts.debugMode, 'x2FileExist', opts);
+    logger(opts.debugMode, funcName, opts);
 
     const [exist, lastHandle] = await this.x2Exist(filepath, { debugMode });
     if (!exist || !lastHandle || lastHandle.kind !== 'file') throw new Error(`结果不符合预期: exist=${exist}, kind=${lastHandle?.kind}`);
 
     return [true, lastHandle as FileSystemFileHandle]
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return [false, null]
   }
 }
 
 
 FileSystemDirectoryHandle.prototype.x2Delete = async function (filepathOrDirPath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Delete';
   try {
     if (!filepathOrDirPath) throw new Error(`参数 ${filepathOrDirPath} 不能为空`);
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const force = _opts?.force || defaultForce;
     const opts: x2DeleteOpts = { debugMode, force };
-    logger(opts.debugMode, 'x2Delete', opts);
+    logger(opts.debugMode, funcName, opts);
 
     // 获取 parentHandle
     const parentHandle = await this.x2ParentHandle(filepathOrDirPath, { debugMode, sourceNotExist: 'ignore' });
@@ -347,7 +375,7 @@ FileSystemDirectoryHandle.prototype.x2Delete = async function (filepathOrDirPath
     }
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
@@ -359,8 +387,9 @@ FileSystemDirectoryHandle.prototype.x2Delete = async function (filepathOrDirPath
  * 目标已存在时: kind 必须与 source的类型相同
  */
 FileSystemDirectoryHandle.prototype.x2Copy = async function(sourceFilepathOrDirPath, targetFilepathOrDirpath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Copy';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: x2CopyOpts = { debugMode, targetExist: _opts?.targetExist || 'error' };
 
     if (!sourceFilepathOrDirPath) throw new Error(`参数 sourceFilepathOrDirPath 不能为空`);
@@ -405,14 +434,15 @@ FileSystemDirectoryHandle.prototype.x2Copy = async function(sourceFilepathOrDirP
     }
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2Move = async function(sourceFilepathOrDirPath, targetFilepathOrDirpath, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Move';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: x2MoveOpts = { debugMode, targetExist: _opts?.targetExist || 'error' };
 
     if (!sourceFilepathOrDirPath) throw new Error(`参数 sourceFilepathOrDirPath 不能为空`);
@@ -425,14 +455,15 @@ FileSystemDirectoryHandle.prototype.x2Move = async function(sourceFilepathOrDirP
 
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
 
 FileSystemDirectoryHandle.prototype.x2Rename = async function (sourceFilepathOrDirPath, targetName, _opts) {
+  const debugMode = _opts?.debugMode || defaultDebugMode;
+  const funcName = 'x2Rename';
   try {
-    const debugMode = _opts?.debugMode || defaultDebugMode;
     const opts: x2RenameOpts = { debugMode };
 
     if (!sourceFilepathOrDirPath) throw new Error(`参数 sourceFilepathOrDirPath 不能为空`);
@@ -453,15 +484,34 @@ FileSystemDirectoryHandle.prototype.x2Rename = async function (sourceFilepathOrD
 
     return true;
   } catch(err) {
-    console.error(err);
+    loggerError(debugMode, funcName, err);
     return false;
   }
 }
 
+// ElementUI 色彩: primary=#409EFF、success=#67C23A、warning=#E6A23C、danger=#F56C6C、info=#909399
+const styleError = `
+  color: white;
+  font-weight: bolder;
+  background: #F56C6C;
+  padding: 4px;
+  margin-right: 8px;
+`;
+const styleLog = `
+  color: white;
+  font-weight: bolder;
+  background: #909399;
+  padding: 0px 4px;
+  margin-right: 8px;
+`;
 
 function logger(debugMode: boolean, name: string, ...rest: any[]) {
   if (!debugMode) return;
-  console.log(name, ...rest);
+  console.log(`%c${name}`, styleLog, ...rest);
+}
+function loggerError(debugMode: boolean, name: string, ...rest: any[]) {
+  if (!debugMode) return;
+  console.warn(`%c${name}`, styleError, ...rest);
 }
 
 function getPath(prefix: string, name: string) {
