@@ -1,3 +1,8 @@
+/**
+ * TODO:
+ *  1、x2Overview:  返回结果中的resTree不是树结构,而是数组
+ */
+
 type X2ExistAction = 'ThrowError' | 'ignore';
 type X2NotExistAction = 'ThrowError' | 'ignore';
 
@@ -16,7 +21,7 @@ interface FileSystemDirectoryHandle {
   x2FileCreate: (filepath: string, opts?: Partial<X2FileCreateOpts>) => Promise<[boolean, FileSystemFileHandle | null]>;
   x2FileSave: (filepath: string, str?: string | File, opts?: Partial<X2FileSaveOpts>) => Promise<boolean>;
   x2FileReadText: (filepath: string, opts?: Partial<X2FileReadOpts>) => Promise<[string | null, File | null]>;
-  x2FileReadJSON: (filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<[object | null, File | null]>;
+  x2FileReadJSON: <T>(filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<[T | null, File | null]>;
   // ------------------ 其他 - 文件+目录 ------------------
   x2Exist: (fileOrDir: string, opts?: Partial<x2ExistOpts>) => Promise<[boolean, FileSystemHandle | null]>;
   x2DirectoryExist: (dirpath: string, opts?: Partial<X2DirExistOpts>) => Promise<[boolean, FileSystemDirectoryHandle | null]>;
@@ -138,8 +143,6 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
 
     // 根据 maxLevel、ignoreXXX 来校验该 path 是否需要忽略
     const isValidPath = (path: string, kind: FileSystemHandleKind) => {
-      if (opts.kind === 'directory' && kind === 'file') return false;
-      if (opts.kind === 'file' && kind === 'directory') return false;
       const name = path.substring(path.lastIndexOf('/') + 1);
       if (opts.ignoreDotFile && kind === 'file' && /^\./.test(name)) return false;
       if (opts.ignoreDotDir && kind === 'directory' && /^\./.test(name)) return false;
@@ -165,17 +168,21 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
         if (!isValidPath(itemPath, subHandler.kind)) continue;
 
         const tempItem: X2DirOverviewResult_Item = { name, path: itemPath, level, isLastLevel, kind: subHandler.kind };
-        resList.push(tempItem);
         
         if (subHandler.kind === 'file') {
-          resTree.push({ ...tempItem });
-          returnList.push({ ...tempItem });
+          if (opts.kind === 'file' || opts.kind === 'all') {
+            resList.push(tempItem);
+            resTree.push({ ...tempItem });
+            returnList.push({ ...tempItem });
+          }
         }
         if (subHandler.kind === 'directory') {
           const children = await itemDirOverview(subHandler as FileSystemDirectoryHandle, itemPath, level+1);
-
-          resTree.push({ ...tempItem, children });
-          returnList.push({ ...tempItem, children });
+          if (opts.kind !== 'file') {
+            resList.push(tempItem);
+            resTree.push({ ...tempItem, children });
+            returnList.push({ ...tempItem, children });
+          }
         }
       }
   
@@ -588,19 +595,19 @@ interface X2DirDeleteOpts extends X2OptsBase {
 interface X2DirExistOpts extends X2OptsBase {}
 interface X2DirOverviewOpts extends X2OptsBase {
   kind: 'all' | FileSystemHandleKind;
-  maxLevel?: number;
+  maxLevel: number;
   /** 
    * 被忽略的文件或目录。
    * 被忽略的目录,其他后代文件及目录也会被忽略
    */
-  ignoreList?: (string | RegExp)[];
+  ignoreList: (string | RegExp)[];
   /** 是否忽略 . 开头的文件。 */
-  ignoreDotFile?: boolean;
+  ignoreDotFile: boolean;
   /**
    * 是否忽略 . 开头的目录。
    * 被忽略的目录,其他后代文件及目录也会被忽略
    */
-  ignoreDotDir?: boolean;
+  ignoreDotDir: boolean;
 }
 
 
