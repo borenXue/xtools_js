@@ -128,6 +128,7 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
   try {
     const maxLevel = typeof _opts?.maxLevel !== 'number' ? Number.POSITIVE_INFINITY : Math.max(0, _opts?.maxLevel || 0) || Number.POSITIVE_INFINITY;
     const opts: X2DirOverviewOpts = {
+      kind: _opts?.kind || 'all',
       debugMode, maxLevel,
       ignoreList: _opts?.ignoreList || [],
       ignoreDotFile: _opts?.ignoreDotFile || false,
@@ -137,6 +138,8 @@ FileSystemDirectoryHandle.prototype.x2Overview = async function(_opts) {
 
     // 根据 maxLevel、ignoreXXX 来校验该 path 是否需要忽略
     const isValidPath = (path: string, kind: FileSystemHandleKind) => {
+      if (opts.kind === 'directory' && kind === 'file') return false;
+      if (opts.kind === 'file' && kind === 'directory') return false;
       const name = path.substring(path.lastIndexOf('/') + 1);
       if (opts.ignoreDotFile && kind === 'file' && /^\./.test(name)) return false;
       if (opts.ignoreDotDir && kind === 'directory' && /^\./.test(name)) return false;
@@ -584,6 +587,7 @@ interface X2DirDeleteOpts extends X2OptsBase {
 }
 interface X2DirExistOpts extends X2OptsBase {}
 interface X2DirOverviewOpts extends X2OptsBase {
+  kind: 'all' | FileSystemHandleKind;
   maxLevel?: number;
   /** 
    * 被忽略的文件或目录。
