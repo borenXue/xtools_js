@@ -461,7 +461,7 @@ FileSystemDirectoryHandle.prototype.x2Move = async function(sourceFilepathOrDirP
     const copyOk = await this.x2Copy(sourceFilepathOrDirPath, targetFilepathOrDirpath, opts);
     if (!copyOk) throw new Error('复制失败');
 
-    await this.x2Delete(sourceFilepathOrDirPath);
+    await this.x2Delete(sourceFilepathOrDirPath, { debugMode, force: true });
 
     return true;
   } catch(err) {
