@@ -21,7 +21,7 @@ interface FileSystemDirectoryHandle {
   x2FileCreate: (filepath: string, opts?: Partial<X2FileCreateOpts>) => Promise<[boolean, FileSystemFileHandle | null]>;
   x2FileSave: (filepath: string, str?: string | File, opts?: Partial<X2FileSaveOpts>) => Promise<boolean>;
   x2FileReadText: (filepath: string, opts?: Partial<X2FileReadOpts>) => Promise<[string | null, File | null]>;
-  x2FileReadJSON: <T>(filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<[T | null, File | null]>;
+  x2FileReadJSON: <T = any>(filepath: string, opts?: Partial<X2FileReadJSONOpts>) => Promise<[T | null, File | null]>;
   // ------------------ 其他 - 文件+目录 ------------------
   x2Exist: (fileOrDir: string, opts?: Partial<x2ExistOpts>) => Promise<[boolean, FileSystemHandle | null]>;
   x2DirectoryExist: (dirpath: string, opts?: Partial<X2DirExistOpts>) => Promise<[boolean, FileSystemDirectoryHandle | null]>;
