@@ -57,7 +57,10 @@ import {
 
 import datas from './datas';
 
+import * as geo2d from './geometric-2d/index';
+
 export {
+  geo2d,
   // 测试辅助数据
   datas,
   // tree

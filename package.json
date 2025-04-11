@@ -49,6 +49,7 @@
     "chai-as-promised": "7.1.1",
     "core-js": "3.8.2",
     "file-saver": "2.0.2",
+    "geometric": "2.5.5",
     "nested-property": "2.0.0",
     "qs": "6.10.1"
   },
@@ -66,6 +67,7 @@
     "@types/chai": "4.2.10",
     "@types/chai-almost": "1.0.1",
     "@types/file-saver": "2.0.1",
+    "@types/geometric": "2.5.3",
     "@types/mocha": "7.0.2",
     "@types/node": "20.12.11",
     "@types/qs": "6.9.6",
